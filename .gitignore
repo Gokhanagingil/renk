@@ -1,5 +1,5 @@
 node_modules/
 qa/*.png
-qa/browser-results.json
+qa/browser*-results.json
 *.apk
 *.zip

@@ -1,284 +1,687 @@
 [
   {
     "level": 1,
-    "cars": 4,
-    "passengers": 8,
+    "cars": 12,
+    "passengers": 48,
     "solution": [
       0,
       1,
       2,
-      3
+      3,
+      11,
+      8,
+      4,
+      6,
+      5,
+      10,
+      7,
+      9
     ],
-    "randomWin": 0.38888888888888884,
-    "states": 19,
-    "deadEnds": 6,
     "trap": [
       0,
       2,
       3
-    ]
+    ],
+    "randomPolicySample": {
+      "wins": 25,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 2,
-    "cars": 6,
-    "passengers": 12,
+    "cars": 12,
+    "passengers": 48,
     "solution": [
-      0,
+      3,
       1,
+      9,
+      10,
+      8,
+      2,
+      0,
       5,
-      4,
-      3,
-      2
+      7,
+      11,
+      6,
+      4
     ],
-    "randomWin": 0.26851851851851855,
-    "states": 47,
-    "deadEnds": 15,
     "trap": [
-      0,
       1,
       3,
-      4
-    ]
+      0,
+      5,
+      11
+    ],
+    "randomPolicySample": {
+      "wins": 56,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 3,
-    "cars": 6,
-    "passengers": 12,
+    "cars": 14,
+    "passengers": 56,
     "solution": [
       1,
-      3,
-      4,
       0,
-      5,
-      2
-    ],
-    "randomWin": 0.25925925925925924,
-    "states": 57,
-    "deadEnds": 22,
-    "trap": [
-      1,
-      3,
       4,
+      6,
+      10,
       5,
-      2
-    ]
+      2,
+      7,
+      3,
+      12,
+      8,
+      9,
+      11,
+      13
+    ],
+    "trap": [
+      3,
+      0,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 33,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 4,
-    "cars": 6,
-    "passengers": 12,
+    "cars": 14,
+    "passengers": 56,
     "solution": [
-      1,
-      3,
+      8,
+      7,
+      13,
+      12,
+      11,
+      6,
       2,
+      10,
+      3,
+      1,
       5,
-      4,
+      0,
+      9,
+      4
+    ],
+    "trap": [
+      7,
+      13,
+      11,
+      12,
+      6,
+      1,
+      5,
+      9,
       0
     ],
-    "randomWin": 0.5416666666666666,
-    "states": 47,
-    "deadEnds": 13,
-    "trap": [
-      1,
-      2,
-      0,
-      3,
-      4
-    ]
+    "randomPolicySample": {
+      "wins": 23,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 5,
-    "cars": 7,
-    "passengers": 16,
+    "cars": 16,
+    "passengers": 64,
     "solution": [
-      1,
-      2,
-      6,
-      4,
+      13,
       5,
-      0,
-      3
-    ],
-    "randomWin": 0.3117283950617284,
-    "states": 38,
-    "deadEnds": 12,
-    "trap": [
+      3,
+      12,
       1,
+      15,
       2,
-      4
-    ]
+      8,
+      10,
+      14,
+      4,
+      9,
+      6,
+      0,
+      11,
+      7
+    ],
+    "trap": [
+      12,
+      3,
+      0
+    ],
+    "randomPolicySample": {
+      "wins": 6,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 6,
-    "cars": 7,
-    "passengers": 14,
+    "cars": 16,
+    "passengers": 72,
     "solution": [
-      0,
-      5,
+      12,
+      15,
+      8,
+      3,
+      11,
+      10,
+      14,
+      6,
       4,
+      9,
+      5,
       2,
       1,
-      3,
-      6
+      7,
+      13,
+      0
     ],
-    "randomWin": 0.23611111111111108,
-    "states": 79,
-    "deadEnds": 30,
     "trap": [
-      0,
+      14,
+      15,
+      5,
       3,
-      4
-    ]
+      8
+    ],
+    "randomPolicySample": {
+      "wins": 4,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 7,
-    "cars": 8,
-    "passengers": 19,
+    "cars": 18,
+    "passengers": 78,
     "solution": [
-      3,
-      4,
-      5,
+      15,
       6,
+      4,
+      7,
+      9,
+      13,
       2,
-      7,
-      0,
-      1
-    ],
-    "randomWin": 0.131929012345679,
-    "states": 234,
-    "deadEnds": 101,
-    "trap": [
-      3,
-      4,
       5,
-      6,
       0,
+      16,
+      11,
+      17,
+      14,
+      12,
+      8,
+      10,
+      1,
+      3
+    ],
+    "trap": [
+      9,
       7,
-      1
-    ]
+      16,
+      2
+    ],
+    "randomPolicySample": {
+      "wins": 6,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 8,
-    "cars": 8,
-    "passengers": 23,
+    "cars": 18,
+    "passengers": 78,
     "solution": [
-      0,
-      4,
-      3,
-      6,
       7,
-      1,
+      12,
+      3,
+      0,
+      9,
+      14,
+      15,
+      17,
       2,
-      5
+      16,
+      4,
+      1,
+      10,
+      5,
+      13,
+      8,
+      6,
+      11
     ],
-    "randomWin": 0.1505252539866255,
-    "states": 189,
-    "deadEnds": 84,
     "trap": [
       0,
-      3,
-      4,
-      2,
-      5
-    ]
+      17,
+      9
+    ],
+    "randomPolicySample": {
+      "wins": 2,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 9,
-    "cars": 9,
-    "passengers": 20,
+    "cars": 20,
+    "passengers": 88,
     "solution": [
-      3,
+      9,
       1,
-      0,
-      5,
-      7,
+      18,
+      6,
+      11,
       2,
+      19,
+      12,
+      13,
+      17,
       4,
+      3,
+      14,
       8,
-      6
-    ],
-    "randomWin": 0.19885435956790126,
-    "states": 212,
-    "deadEnds": 112,
-    "trap": [
       0,
+      16,
+      7,
+      5,
+      10,
+      15
+    ],
+    "trap": [
+      13,
+      17,
+      9,
       1,
-      2
-    ]
+      12
+    ],
+    "randomPolicySample": {
+      "wins": 2,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 10,
-    "cars": 9,
-    "passengers": 23,
+    "cars": 20,
+    "passengers": 84,
     "solution": [
-      7,
-      2,
-      0,
+      18,
+      13,
+      9,
+      12,
+      11,
       4,
-      1,
-      3,
-      8,
-      5,
-      6
-    ],
-    "randomWin": 0.12723090277777777,
-    "states": 346,
-    "deadEnds": 158,
-    "trap": [
+      16,
       0,
-      1,
-      2
-    ]
+      5,
+      19,
+      17,
+      2,
+      8,
+      7,
+      10,
+      6,
+      14,
+      15,
+      3,
+      1
+    ],
+    "trap": [
+      8,
+      13,
+      12
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 11,
-    "cars": 10,
-    "passengers": 21,
+    "cars": 22,
+    "passengers": 90,
     "solution": [
-      2,
-      8,
-      1,
-      6,
-      5,
+      10,
+      21,
       7,
+      8,
+      5,
+      16,
+      1,
+      9,
+      13,
+      4,
+      11,
+      17,
+      14,
+      19,
+      12,
+      6,
+      18,
+      15,
       3,
       0,
-      9,
-      4
+      20,
+      2
     ],
-    "randomWin": 0.09773917181069958,
-    "states": 437,
-    "deadEnds": 234,
     "trap": [
-      1,
-      2,
-      6
-    ]
+      13,
+      16,
+      11
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
   },
   {
     "level": 12,
-    "cars": 10,
-    "passengers": 22,
+    "cars": 22,
+    "passengers": 96,
     "solution": [
-      3,
-      7,
+      11,
+      4,
+      21,
+      13,
+      12,
+      14,
+      10,
+      5,
       1,
+      7,
+      6,
+      2,
+      18,
+      3,
+      20,
+      9,
+      19,
+      17,
+      15,
+      8,
+      16,
+      0
+    ],
+    "trap": [
+      11,
+      16,
+      13,
+      21,
+      1
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 13,
+    "cars": 24,
+    "passengers": 106,
+    "solution": [
+      22,
+      15,
+      7,
+      8,
+      5,
+      11,
+      13,
+      21,
+      1,
+      4,
+      12,
+      6,
+      19,
+      23,
+      3,
+      0,
+      18,
+      16,
+      9,
+      17,
+      10,
+      2,
+      20,
+      14
+    ],
+    "trap": [
+      11,
+      7,
+      1
+    ],
+    "randomPolicySample": {
+      "wins": 1,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 14,
+    "cars": 24,
+    "passengers": 106,
+    "solution": [
+      22,
+      20,
+      3,
+      0,
+      1,
+      9,
+      10,
+      7,
+      4,
+      23,
+      17,
+      8,
+      13,
       5,
       6,
-      0,
+      18,
+      11,
+      16,
+      15,
+      21,
+      12,
       2,
-      9,
-      8,
-      4
+      19,
+      14
     ],
-    "randomWin": 0.10205669581618654,
-    "states": 656,
-    "deadEnds": 348,
     "trap": [
       1,
-      0,
-      3,
+      9,
       5
-    ]
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 15,
+    "cars": 26,
+    "passengers": 112,
+    "solution": [
+      19,
+      18,
+      13,
+      3,
+      17,
+      24,
+      12,
+      16,
+      15,
+      20,
+      1,
+      23,
+      22,
+      2,
+      11,
+      21,
+      7,
+      5,
+      9,
+      14,
+      10,
+      6,
+      25,
+      8,
+      4,
+      0
+    ],
+    "trap": [
+      3,
+      9,
+      12
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 16,
+    "cars": 26,
+    "passengers": 116,
+    "solution": [
+      22,
+      14,
+      24,
+      7,
+      15,
+      0,
+      11,
+      17,
+      4,
+      5,
+      9,
+      25,
+      12,
+      18,
+      1,
+      13,
+      6,
+      10,
+      16,
+      20,
+      21,
+      23,
+      2,
+      3,
+      19,
+      8
+    ],
+    "trap": [
+      4,
+      11,
+      10,
+      25
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 17,
+    "cars": 28,
+    "passengers": 118,
+    "solution": [
+      18,
+      9,
+      2,
+      24,
+      26,
+      6,
+      25,
+      15,
+      17,
+      1,
+      10,
+      7,
+      0,
+      20,
+      5,
+      22,
+      27,
+      13,
+      23,
+      19,
+      12,
+      11,
+      21,
+      3,
+      16,
+      14,
+      4,
+      8
+    ],
+    "trap": [
+      13,
+      18,
+      1,
+      7
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 18,
+    "cars": 28,
+    "passengers": 120,
+    "solution": [
+      27,
+      1,
+      8,
+      17,
+      6,
+      7,
+      23,
+      10,
+      18,
+      24,
+      5,
+      12,
+      25,
+      21,
+      22,
+      14,
+      20,
+      13,
+      19,
+      9,
+      3,
+      16,
+      2,
+      4,
+      11,
+      26,
+      0,
+      15
+    ],
+    "trap": [
+      7,
+      1,
+      17,
+      25,
+      14
+    ],
+    "randomPolicySample": {
+      "wins": 0,
+      "runs": 160,
+      "exact": false
+    }
   }
 ]

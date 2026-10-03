@@ -1,43 +1,33 @@
-# Park bulmacası — yeni başlangıç
+# 0.4 — şehir otoparkı
 
-## Kabul edilen temel
+4 Ekim 2026, İstanbul. Kullanıcının 0.3 geri bildirimi uygulandı: daha farklı görsel dil, doğal hareket, işlem sırasında açık kontroller, uzun bölümler, gerçek otopark işaretleri, hareketli yolcular ve görünür koltuklar.
 
-Kullanıcı önceki 0.2 indirme-bindirme prototipini reddetti: trafik/otopark engelleri yoktu ve bütün geçerli seçimler sonunda tamamlanmaya gidiyordu. 3 Ekim 2026 tarihli yeni onay, özgünlük adına temel oyundan uzaklaşmadan klasik park çıkışı + yolcu eşleştirmesine dönmektir.
+## Mekanik korunuyor
 
-0.2 sürümü arşiv dalında korunur. 0.3 motoru, arayüzü, bölüm modeli ve testleri yeni kurallar için yeniden yazıldı.
+Fiziksel çıkış engelleri + üç peron + FIFO renk eşleştirmesi. Çıkabilen her aracı göndermek doğru değildir. İlk bölümde mavi, sarı, sarı gönderimi kırmızıyı dışarıda bırakarak durağı kilitler. Geri alma ücretsizdir. Yeni ceza, sayaç, bilet, VIP veya para mekaniği yoktur.
 
-## Birbirine bağlı üç karar
+## Görsel ve etkileşim
 
-1. İstenen aracın çıkış hattı açık mı?
-2. Önündeki aracı çıkarırsam durakta kaç boş yer kalır?
-3. Kuyruğun başındaki yolcular hangi araçları doldurup bu yerleri boşaltabilir?
+Önceki krem/yeşil görünüm yerine lacivert şehir arayüzü, beyaz paneller, kobalt kontroller ve canlı araçlar. Asfalt, numaralı park cepleri, çıkış okları, çevre şeridi, yaya geçidi ve bariyer alanı tanımlar. Araçlar üstü açık; boş koltuk açık renk, dolu koltukta yolcu başı ve gövdesi görünür.
 
-Araç tek tıkla ok yönünde hareket eder. Park sınırına kadar önündeki bütün hücreler boş olmalıdır. Araç park dışındaki servis yolundan durağa gider; oyuncu sürüş veya rota çizmez.
+Otopark beş hücre genişliğinde, 12–22 hücre uzunluğundadır. Araç dokunma alanları en az 44 piksel tutulur. Telefonun normal boyunda yalnız otopark kayar; sıra/peron ve kontroller aynı ekranda kalır. Kuşbakışı harita planlama içindir. Kısa ekranlarda sayfa kayması mümkündür.
 
-Durakta üç sabit yer vardır. Yolcular FIFO sırasındadır. Aynı renk birden fazla araç varsa soldaki uygun araca binerler. Araç dolmadan ayrılmaz. Tek gönderme, birden fazla bekleyen aracı doldurup zincirleme ayrılışa yol açabilir.
+Sakin varsayılan hızda park çıkışı yaklaşık 145 piksel/saniye, yaklaşma en az 1,8 saniye, her yolcunun yürüyüp oturması 1,05–1,25 saniye, araç ayrılması 2,4 saniyedir. Parkın uzak ucundaki araç daha uzun yol alır. Normal seçeneği %30 hızlandırır. Hareket azaltma sistem tercihi desteklenir. Gerçek 65+ oyuncuyla bu süreler henüz doğrulanmadı.
 
-## Hatanın sonucu
+## Eşzamanlılık ve doğruluk
 
-Üç yer dolu ve ilk yolcuya uygun araç bulunmuyorsa yeni araç getirilemez. Tahta ekranda kalır; durak ve geri alma kontrolü uyarıyla vurgulanır. Oyun kendiliğinden araç boşaltmaz, sıra değiştirmez veya oyuncuya ek yer vermez. Yardımcı kullanımı veya reklam gerektirmeden geri alarak yeni sıra denenebilir.
+`send` boş bir peron ayırır. Araç park sınırını geçene kadar `exiting` listesiyle arkadakileri engeller. `clear` sonrası çıkış hattı açılır; `arrive` sonrası yolcu alabilir. Yaklaşma şeridi sırayla kullanılır, diğer araçların park çıkışı ve yolcu binişi devam eder.
 
-İlk bölümde mavi araç kırmızının yolunu kapatır. Mavi, sarı, sarı sırası üç durak yerini doldurur; kırmızı araç çıkabilecek hale gelse bile durağa gelemez. Mavi, kırmızı, sarı, sarı sırası çözümdür. Böylece ilk bölümde bile seçim önemlidir.
+Tek bir yolcu yürütücüsü FIFO sırasını korur. `board` ancak yürüme bitince koltuğu doldurur. Araç dolunca `leaving` olur; `leave` ancak ayrılma animasyonu bitince peronu boşaltır. Aynı renkli araçlarda gönderilme sırası önceliklidir; animasyon süresi kimin yolcu alacağını değiştirmez.
 
-## Zorluk ve okunabilirlik
+Kontroller animasyon sırasında kapanmaz. Geri alma/yeniden başlatma eski animasyonları iptal eder; kuşak belirteci eski geri çağrıların yeni oyuna yazmasını önler. Geri alma son gönderimden öncesine döner, daha önce gönderilmiş araçların kalan işlemleri anında tamamlanır. Kayıt, ham duruma güvenmek yerine doğrulanan geçiş günlüğünü tekrar oynatır; yeniden yükleme hareket halindeki araçları yerleştirir.
 
-- 6×6 park alanı; büyük, yönü belli araçlar.
-- Aynı anda en çok dört renk. Her rengin sabit şekli var.
-- İlk sekiz bölüm üç renkli; dördüncü renk dokuzuncu bölümde tanıtılır.
-- Araç ve fiziksel engel sayısı, yolcu karışımı ve kapasite farklılıkları artırılır.
-- “Tüm sıra” ile gelecek yolcular görülebilir; bilgi reklam veya ödeme arkasında saklanmaz.
-- İpucu, mevcut durumdan gerçek bir çözüm arar. Çözüm kalmadığında geri alma önerir; rastgele araç parlatmaz.
-- Bölüm sırası henüz insanlarla ölçülmüş zorluk eğrisi değildir. Bazı bölümler daha rahat nefes alma aralığı olarak kalabilir.
+## Yolcu canlılığı
 
-## Rastgele seçim kontrolünün anlamı
+Nefes alma, hafif sallanma ve el hareketleri sürekli. Yaklaşık 24 saniye sonra bazı yolcular söylenir; 36 saniye sonra bazıları tuvalet ihtiyacını belli eder. Yalnızca DOM/SVG görünümü değişir; motor durumuna, sıraya, koltuklara veya kazanma koşuluna yazmaz. Bunlar rastgele kaybetme sebebi değildir.
 
-Analiz her durumda fiziksel olarak çıkabilen araçlardan eşit olasılıkla birini seçen, geri alma/ipucu kullanmayan bir politikayı hesaplar. Bu, insan başarısı tahmini değildir; bütün hamlelerin otomatik zafere gidip gitmediğini kontrol eder.
+## Bölümler
 
-Her bölümün en az bir çözümü ve erişilebilir kilitlenmesi vardır. İlk bölümde bu rastgele politikanın kazanma olasılığı 7/18, yani yaklaşık %38,9’dur. Son bölümde yaklaşık %10,2’dir. Ayrıntılar `qa/solutions.json` içindedir. Rastgele oyuncu şans eseri kazanabilir; rastgele oynamak artık garantili tamamlanma sağlamaz.
+18 sabit düzen; 12–28 araç, 48–120 yolcu, 4/6 koltuk. İlk sekiz bölüm üç renkli, devamı dört renkli. Zorluk araç engellerinden, sıradan ve peron planından gelir.
 
-## Şimdiki kapsam
-
-Yeni mekanik, VIP, iki durak arasında indirme, hat seçimi, süre baskısı ve puan optimizasyonu eklenmez. Bu sürümün amacı, özgün ilk istekteki sıkışıklık ve sıralama bulmacasını doğru hissettirmektir.
+Her bölümün çözümü ve gerçek kilitlenme yolu derlemede tekrar doğrulanır. 160 eşit olasılıklı geçerli hamle denemesi yalnız rastgele oynamanın garantili zafer olmadığını gözlemek içindir. Bu örneklem kesin olasılık veya insan başarı tahmini değildir. Büyük durum uzayının tamamı taranmış değildir. Bölüm sırası ve süresi insan denemesiyle ayarlanmalıdır.

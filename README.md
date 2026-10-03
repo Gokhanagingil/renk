@@ -1,55 +1,41 @@
-# Renk Durağı · Park bulmacası — 0.3.0
+# Renk Durağı · Şehir hareketli — 0.4.0
 
-**Araçların yolunu aç. Üç durak yerini planla. Yolcuları sırayla bindir.**
+**Yolu aç, peronda yer bırak, yolcuları koltuklarına yerleştir.**
 
-Kullanıcının ilk park sıkışıklığı fikrine dönülerek sıfırdan hazırlanmış oynanabilir prototip. Önceki indirme-bindirme denemesi terk edildi; [archive/shuttle-v0.2](https://github.com/Gokhanagingil/renk/tree/archive/shuttle-v0.2) dalında saklanıyor. Bu sürüm o mekaniği kullanmaz.
+[Oynanabilir tek dosya: renk-duragi-0.4.0.html](dist/renk-duragi-0.4.0.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
 
-## Oyna
+## Bu sürüm
 
-[`dist/renk-duragi-0.3.0.html`](dist/renk-duragi-0.3.0.html) dosyasını indirip tarayıcıda aç. GitHub dosya görüntüleyicisi oyunu çalıştırmaz; dosyayı indirmek gerekir. Çalışan oyun internet, hesap veya harici dosya gerektirmez.
-
-Yerel sunucu seçeneği:
-
-```sh
-npm run build
-npm run serve
-# http://localhost:8080/renk-duragi-0.3.0.html
-```
-
-Bu sürüm tarayıcı prototipidir. APK veya mağaza yayını değildir.
+- Yeni şehir görünümü: koyu asfalt, mavi/beyaz arayüz, canlı araç renkleri, park çizgileri, yaya geçidi ve çıkış işaretleri.
+- Açık araçlarda 4 veya 6 görünür koltuk; yürüyerek gelen yolcu seçilen koltuğa yerleşir.
+- Varsayılan **Sakin** hareket. İsteğe bağlı **Normal** hız yalnızca %30 daha hızlıdır.
+- Bir araç hareket ederken veya yolcu alırken diğer araçlar gönderilebilir. Ekran solmaz, park kilitlenmez.
+- 18 sabit bölüm, bölüm başına **12–28 araç ve 48–120 yolcu**.
+- Büyük otopark kaydırılır; araç dokunma alanları küçültülmez. Kuşbakışı harita tüm düzeni gösterir.
+- Bekleyen yolcular kıpırdanır, el sallar, söylenir veya tuvalet ihtiyacını belli eder. Bunların kurallara etkisi yoktur.
+- Hareket sırasında geri alma, yeniden başlama ve kayıt/devam desteklenir.
 
 ## Kurallar
 
-1. Araca dokun. Yalnızca üzerindeki ok yönünde çıkar; başka araç yolu kapatıyorsa hareket edemez.
-2. Durağın **üç yeri** vardır. Çıkan araç boş yere yanaşır.
-3. Sıranın en önündeki yolcu yalnızca aynı renk araca biner. Eşleşme yoksa arkasındakiler bekler.
-4. Araç kapasitesi dolunca otomatik ayrılır ve yer açılır. Kısmen dolu araç bekler.
-5. Yanlış renklerle üç yeri doldurursan durak kilitlenebilir. Ücretsiz geri alma ve yeniden deneme vardır.
-6. Bütün yolcular binip bütün araçlar ayrılınca bölüm tamamlanır.
+1. Araca dokun. Önündeki hat park sınırına kadar açıksa ok yönünde çıkar.
+2. Durağın **üç yeri** vardır. Yola çıkan araç hemen bir yer ayırır; bu yer araç ayrılana kadar doludur.
+3. Yolcular sırayla aynı renk araca biner. Aynı renkte birden çok araç varsa önce gönderilen önceliklidir.
+4. Dolu araç hareket edip perondan çıkınca yer boşalır. Kısmen dolu araç bekler.
+5. Üç yeri yanlış renklerle doldurmak kilitlenmeye yol açar. Ücretsiz geri al veya yeniden dene.
+6. Bütün yolcular binip araçlar ayrıldığında bölüm biter.
 
-Araç üzerindeki sayı koltuk kapasitesidir; şekiller renkleri ayırt etmeye yardımcı olur. Kuyruğun tamamı “Tüm sıra” düğmesinden görülebilir. Süre sınırı, reklam, ödeme, can sistemi veya rastgele kuyruk değişimi yoktur.
+İlk sekiz bölümde üç renk, sonrasında dört renk bulunur. Renkler şekillerle de belirtilir. “Tüm sıra” gelecek yolcuları gösterir. Süre sınırı, reklam, ödeme, can veya yolcu sabırsızlığı cezası yoktur.
 
-## İçerik
-
-- 12 sabit bölüm; 4 araçla başlayıp 10 araca çıkan park düzenleri.
-- İlk sekiz bölümde üç renk; dokuzuncu bölümden itibaren dört renk.
-- Gerçek dört yönlü araç engelleri; iki ve üç hücre uzunluğunda araçlar.
-- 2–4 koltuk kapasitesi, otomatik biniş ve zincirleme ayrılış.
-- Geri alma, mevcut durumdan çözüm arayan ipucu, kayıt/devam, bölüm seçimi.
-- Hareket azaltma tercihine uyum, isteğe bağlı ses ve 1×/2× animasyon.
-
-İlk iki bölüm elle düzenlendi. Diğerleri sabit tohumlu çevrimdışı bölüm aracıyla oluşturulup çözüm/kilitlenme kontrollerinden geçirilerek kaynak dosyasına kaydedildi. Oyun sırasında bölüm üretilmez veya düzen değiştirilmez. Gerçek oyuncu testine göre zorluk sırası yeniden ayarlanabilir.
-
-## Doğrulama
+## Çalıştırma ve doğrulama
 
 ```sh
 npm test
 npm run build
+npm run serve
+# http://localhost:8080/renk-duragi-0.4.0.html
 ```
 
-Motor ve derleme için harici paket gerekmez. Oyun motorunun 20 testi ile tüm bölümlerin başarılı ve başarısız yolları, koltuk/yolcu korunumu ve dört yöndeki fiziksel engeller denetlenir. Bağımsız bir hücre simülasyonu, geometrik çarpışma sonucunu her park edilmiş araç alt kümesinde karşılaştırır.
-
-Tarayıcı testleri için:
+Motor ve derleme için harici paket gerekmez. Tarayıcı testleri için Playwright ve Chromium gerekir:
 
 ```sh
 npm install --no-save playwright
@@ -57,20 +43,20 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-Alternatif Chromium yolu `RENK_CHROMIUM_PATH` ile verilebilir. `?test=1` yalnızca test kancalarını ve hızlı animasyonu açar; üretim kurallarını değiştirmez.
-
-Sonuçlar: [doğrulama notu](docs/verification.md). Bölüm çözümleri ve kilitlenme örnekleri: [`qa/solutions.json`](qa/solutions.json).
+Alternatif Chromium yolu `RENK_CHROMIUM_PATH` ile verilebilir. `?test=1` animasyonları hızlandırır ve test kancalarını açar; kuralları değiştirmez. `?test=1&motion=1` test kancalarını gerçek animasyon hızıyla çalıştırır.
 
 ## Kaynaklar
 
-| Yol | İçerik |
+| Dosya | İçerik |
 | --- | --- |
-| `src/engine.js` | Araç engelleri, üç durak yeri, FIFO biniş, çözüm ve kilitlenme |
-| `src/levels.js` | Oyun boyunca sabit kalan 12 bölüm |
-| `src/app.js` | Mobil arayüz, SVG araç/yolcu çizimleri, animasyon ve kayıt |
-| `scripts/generate-levels.cjs` | Çevrimdışı bölüm oluşturma; oyunda çalışmaz |
-| `scripts/build.cjs` | Tek dosyalık çevrimdışı dağıtım |
-| `tests/` | Motor ve dokunmatik tarayıcı testleri |
-| `docs/playtest.md` | İlk insan denemesi için kısa gözlem listesi |
+| `src/engine.js` | Saf kurallar, fiziksel engeller, geçişler, tekrar oynatma ve çözüm arama |
+| `src/levels.js` | 18 sabit bölüm ve doğrulanmış çözüm/kilitlenme yolları |
+| `src/app.js` | Eşzamanlı animasyonlar, açık araçlar, yolcu davranışları, arayüz ve kayıt |
+| `scripts/generate-levels.cjs` | Sabit tohumla çevrimdışı bölüm tasarımı |
+| `scripts/build.cjs` | Bölüm doğrulama ve tek HTML dağıtımı |
+| `tests/` | Motor ve dokunmatik tarayıcı doğrulaması |
+| `docs/playtest.md` | 65+ oyuncuyla yapılacak deneme |
 
-Gerçek Android/iOS cihaz kabul testi ve APK paketlemesi henüz yapılmadı. Önce yeni temel oyunun kullanıcı tarafından denenmesi hedefleniyor.
+[Doğrulama notu](docs/verification.md) · [Tasarım kararları](docs/design.md) · [Çözüm kanıtları](qa/solutions.json)
+
+Bu bir tarayıcı prototipidir. Gerçek 65+ oyuncu, Android/iOS cihaz ve Safari kabul testi henüz yapılmadı. APK/mağaza yayını değildir. 0.3 git geçmişinde, terk edilen 0.2 ise [arşiv dalında](https://github.com/Gokhanagingil/renk/tree/archive/shuttle-v0.2) korunur.

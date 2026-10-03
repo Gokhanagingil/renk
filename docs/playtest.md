@@ -1,26 +1,16 @@
-# Yeni sürümün ilk denemesi
+# 65+ oyuncuyla ilk deneme — 0.4
 
-Eski sürümün eğlenceli olmadığı geri bildirimi kabul edildi; bu test park sıkışıklığına dönen 0.3 içindir.
+Henüz yapılmadı. İlk denemede yönlendirmeden izleyip, oyuncunun söylediklerini ve takıldığı anları not edin. Önce telefonun normal yazı/ekran ayarlarını kullanın.
 
-İlk iki bölümü açıklama yapmadan oynatın. Yardım ekranı yeterli mi gözlemleyin. Oyuncuya çözümü önceden söylemeyin.
+1. İlk ekranda hedefi kendi sözleriyle anlatabiliyor mu? Mavinin kırmızıyı engellediğini görüyor mu?
+2. Araç dokunma alanları rahat mı? Parkı kaydırmayı ve tüm düzen haritasını buluyor mu?
+3. Sakin hızda aracı park çıkışından perona kadar takip edebiliyor mu? Kaydırırken yönünü kaybediyor mu?
+4. Biri binerken başka bir aracı gönderebildiğini fark ediyor mu? “Yolda” yerinin dolu sayılması anlaşılıyor mu?
+5. Boş/dolu koltukları sayabiliyor mu? Yolcu koltuğa oturmadan sayaç artmadığını görüyor mu?
+6. Bekleyen yolcuların hareketlerini eğlenceli mi, yorucu mu buluyor? WC/söylenme işaretlerini yanlışlıkla ceza sanıyor mu?
+7. Mavi–sarı–sarı ile kilitlendikten sonra geri alarak devam edebiliyor mu?
+8. 48 yolculu ilk bölümün süresi uygun mu? 72+ yolcuda bekleme sıkıcı hale geliyor mu?
 
-| Gözlem | Soru |
-| --- | --- |
-| Fiziksel engel | Kırmızı araç neden çıkmıyor, anlayabildi mi? |
-| Durak kapasitesi | Üç yeri düşünerek mi araç gönderiyor? |
-| Yolcu sırası | Arkadaki uygun renklerin neden hemen binmediğini anlıyor mu? |
-| Kısmen dolu araç | Neden durakta kaldığı belli mi? |
-| Kilitlenme | Hatasını görebiliyor ve geri alabiliyor mu? |
-| Düşünme ihtiyacı | Karar vermeden önce park ve kuyruk arasında bakışını değiştiriyor mu? |
-| Dokunma ve renk | Araçlar, oklar ve koltuk sayıları telefonda seçiliyor mu? |
-| Keyif | Bir sonraki bölümü kendi isteğiyle açıyor mu? |
+Birinci, altıncı ve dokuzuncu bölümlerde toplam süreyi, yanlış dokunmaları, ipucu/geri alma sayısını ve gönüllü bırakmayı kaydedin. İlk iki bölümün çözülme oranı veya ileri bölümlerin eğlencesi henüz insanlarla ölçülmüş değildir.
 
-Özellikle sorulacak üç soru:
-
-1. Bu kez başlangıçta tarif ettiğimiz park bulmacası hissi var mı?
-2. Bir aracı seçerken ne düşündün?
-3. Takıldığında nedenini anlayabildin mi; çözmek için tekrar denemek istedin mi?
-
-Başlangıç için 3–5 oyuncu nitel geri bildirim verir; sonuçlar istatistiksel ürün başarısı olarak yorumlanmaz. Bölüm sırası ve öğretici açıklamalar bu geri bildirimle ayarlanmalıdır. Test edilen HTML/cihaz/tarayıcı sürümünü not edin.
-
-Oyun telemetri veya dış veri gönderimi içermez. İlerleme yalnızca tarayıcı yerel depolamasında tutulur.
+Öncelik sırası: okunabilirlik → aracın takibi → ardışık gönderimin anlaşılması → bölüm süresi → görsel ayrıntılar. Sakin/Normal hız tercihini oyuncunun seçmesine izin verin.
