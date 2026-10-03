@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f3e9"><meta name="description" content="İki durak, dört koltuk. Yolcu indir, yer aç, yeni yolcu al. Renk Durağı oynanabilir mekanik denemesi.">
+<title>Renk Durağı · İndir, yer aç, yola çık</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<main id="app">
+ <header><div class="brand"><span class="brand-mark">↗</span><div><h1>renk durağı<span>•</span></h1><small>İNDİR · YER AÇ · YOLA ÇIK</small></div></div><div class="header-actions"><button id="sound" class="round" aria-label="Ses aç" title="Ses aç">♪<i></i></button><button id="help" class="round" aria-label="Nasıl oynanır?">?</button></div></header>
+ <section class="level-strip"><button id="levels" class="level-badge" aria-label="Bölüm seç"><b id="level-number">01</b><span>/ 08 ▾</span></button><div class="level-info"><strong id="level-title"></strong><span id="level-subtitle"></span></div><div class="trip-info"><b id="trips">0</b><small>SEFER</small></div></section>
+ <div class="route" aria-label="Durak sırası"><div class="stop-label" id="route-0"></div><div class="route-line"><span>→</span></div><div class="stop-label" id="route-1"></div></div>
+ <section class="station" id="station" aria-label="Biniş ve iniş durağı"><div id="scenery" class="scenery" aria-hidden="true"></div><div class="station-sign" id="station-sign"></div><div class="platform"><div class="platform-edge"></div></div><div id="service-bus" class="service-bus" aria-hidden="true"></div><div id="choose-prompt" class="choose-prompt">Aşağıdan bir minibüs seç <span>↓</span></div><div class="home-count" id="home-count" aria-label="Ulaşan yolcular"><span>⌂</span><b id="delivered">0</b></div><div class="scene-caption" id="scene-caption">İnen yolcu yer açar.</div></section>
+ <section class="waiting"><div class="waiting-label"><strong id="waiting-title">BEKLEYENLER</strong><span id="waiting-destination"></span></div><div class="queue" id="queue"></div><button id="queue-info" class="queue-info" aria-label="Her iki durağın yolcularını göster">⋯</button></section>
+ <div class="journey-progress"><span id="progress-label"></span><div><i id="progress-bar"></i></div><span id="target"></span></div>
+ <section class="fleet-section"><div class="section-heading"><span>MİNİBÜSLERİN</span><span>4 koltuk · dokun ve gönder</span></div><div id="fleet" class="fleet"></div></section>
+ <div id="message" class="message" role="status" aria-live="polite"></div>
+ <nav class="toolbar" aria-label="Oyun kontrolleri"><button id="undo" aria-label="Geri al"><span aria-hidden="true">↶</span>Geri al</button><button id="hint" aria-label="İpucu"><span aria-hidden="true">✦</span>İpucu</button><button id="speed" aria-label="Animasyon hızı"><span>1×</span>Hız</button><button id="restart" aria-label="Yeniden"><span aria-hidden="true">↻</span>Yeniden</button></nav>
+ <footer><span>MEKANİK DENEMESİ · 0.2</span><span>Acele yok. Herkes yetişir.</span></footer>
+</main>
+<div id="overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button id="close-modal" class="close" aria-label="Kapat">×</button><div id="modal-content"></div></section></div>
+<script src="engine.js"></script><script src="levels.js"></script><script src="app.js"></script>
+</body></html>

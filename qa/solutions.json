@@ -1,0 +1,109 @@
+[
+  {
+    "level": 1,
+    "minimumTrips": 3,
+    "path": [
+      "A",
+      "A",
+      "B"
+    ],
+    "states": 4
+  },
+  {
+    "level": 2,
+    "minimumTrips": 5,
+    "path": [
+      "A",
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
+    "states": 23
+  },
+  {
+    "level": 3,
+    "minimumTrips": 5,
+    "path": [
+      "B",
+      "A",
+      "A",
+      "A",
+      "B"
+    ],
+    "states": 7
+  },
+  {
+    "level": 4,
+    "minimumTrips": 6,
+    "path": [
+      "A",
+      "A",
+      "B",
+      "B",
+      "A",
+      "C"
+    ],
+    "states": 78
+  },
+  {
+    "level": 5,
+    "minimumTrips": 7,
+    "path": [
+      "A",
+      "A",
+      "A",
+      "B",
+      "B",
+      "A",
+      "C"
+    ],
+    "states": 72
+  },
+  {
+    "level": 6,
+    "minimumTrips": 7,
+    "path": [
+      "C",
+      "A",
+      "A",
+      "B",
+      "B",
+      "A",
+      "C"
+    ],
+    "states": 151
+  },
+  {
+    "level": 7,
+    "minimumTrips": 8,
+    "path": [
+      "A",
+      "A",
+      "B",
+      "C",
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "states": 158
+  },
+  {
+    "level": 8,
+    "minimumTrips": 10,
+    "path": [
+      "A",
+      "A",
+      "A",
+      "C",
+      "B",
+      "D",
+      "C",
+      "A",
+      "D",
+      "B"
+    ],
+    "states": 687
+  }
+]
