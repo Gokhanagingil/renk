@@ -1,35 +1,43 @@
-# Tasarım kararı — 3 Ekim 2026
+# Park bulmacası — yeni başlangıç
 
-## Amaç
+## Kabul edilen temel
 
-Kullanıcı, park sıkışıklığı ve yolcu eşleştirme türünde basit bir oyun istedi; ardından önerinin mevcut oyunlara çok benzemesini sorguladı. Son onaylanan deneme: aynı araç farklı duraklarda yolcu indirsin, boşalan koltuklara yeni yolcular binsin. Hedef, doğru renge tıklamak yerine koltukların nerede boşalacağını düşünmektir.
+Kullanıcı önceki 0.2 indirme-bindirme prototipini reddetti: trafik/otopark engelleri yoktu ve bütün geçerli seçimler sonunda tamamlanmaya gidiyordu. 3 Ekim 2026 tarihli yeni onay, özgünlük adına temel oyundan uzaklaşmadan klasik park çıkışı + yolcu eşleştirmesine dönmektir.
 
-## İlk deney
+0.2 sürümü arşiv dalında korunur. 0.3 motoru, arayüzü, bölüm modeli ve testleri yeni kurallar için yeniden yazıldı.
 
-- Sahil ve Park olmak üzere iki hedef; hedeflerin sabit simgesi ve destekleyici rengi.
-- Her araçta dört görünür koltuk. İlerleyen bölümlerde renk sayısı artırılmaz.
-- Tek etkileşim: bir minibüse dokunmak. Servis, iniş, biniş ve sonraki durağa geçiş otomatik.
-- Sefer başında ilgili hedefte inecek yolcular çıkar, sonra boş kapasite kadar bekleyenler biner.
-- Bir durağın bekleyenleri diğer durağa gitmek ister. İki kuyruk sabittir; yeniden denemede değişmez.
-- İş kalmayan durak ücretsiz atlanır. Araç dolmadan da ayrılır.
-- Araç kartı, hamle sonucundaki inecek/binecek kişi sayısını gösterir. İlk deneme anlaşılabilirliği ölçer; bu yardımın ileri seviyelerde isteğe bağlı hale gelmesi test edilebilir.
+## Birbirine bağlı üç karar
 
-Bu, şehir simülasyonu değildir: tüm filonun sefer sırası ortak aktif durakla temsil edilir. Gerçek zamanlı araç konumları izlenmez. Bu soyutlamanın anlaşılabilirliği oyuncu testinde özellikle sorulmalıdır.
+1. İstenen aracın çıkış hattı açık mı?
+2. Önündeki aracı çıkarırsam durakta kaç boş yer kalır?
+3. Kuyruğun başındaki yolcular hangi araçları doldurup bu yerleri boşaltabilir?
 
-## Kazanma ve zorluk
+Araç tek tıkla ok yönünde hareket eder. Park sınırına kadar önündeki bütün hücreler boş olmalıdır. Araç park dışındaki servis yolundan durağa gider; oyuncu sürüş veya rota çizmez.
 
-Bütün yolcular hedeflerine ulaştığında bölüm tamamlanır. Her geçerli hareket kalan işi azaltır: araçtakiler bir, durakta bekleyenler iki birim iş sayılır. Hiçbir geçerli hamle yolcuyu kaybettirmez; çıkışsız kaybetme durumları yoktur.
+Durakta üç sabit yer vardır. Yolcular FIFO sırasındadır. Aynı renk birden fazla araç varsa soldaki uygun araca binerler. Araç dolmadan ayrılmaz. Tek gönderme, birden fazla bekleyen aracı doldurup zincirleme ayrılışa yol açabilir.
 
-Zorluk verimlilikten gelir: üç yıldız en az sefer, iki yıldız en az seferin en fazla iki fazlası, bir yıldız diğer tamamlamalar. İpucu veya geri alma yıldız cezası vermez. Amaç önce temel kararın keyfini denemektir; zorunlu başarı duvarı kurmak değildir.
+## Hatanın sonucu
 
-İlk üç bölümde iki araç, sonraki üçte üç araç, son ikide dört araç bulunur. Kuyruk talebi ve araçtaki karışık yolcu dağılımı kademeli değişir. Bu sıra tasarım varsayımıdır; gerçek insan testinden geçmiş bir zorluk eğrisi olarak sunulmamalıdır.
+Üç yer dolu ve ilk yolcuya uygun araç bulunmuyorsa yeni araç getirilemez. Tahta ekranda kalır; durak ve geri alma kontrolü uyarıyla vurgulanır. Oyun kendiliğinden araç boşaltmaz, sıra değiştirmez veya oyuncuya ek yer vermez. Yardımcı kullanımı veya reklam gerektirmeden geri alarak yeni sıra denenebilir.
 
-## Önceki taslaktan değişenler
+İlk bölümde mavi araç kırmızının yolunu kapatır. Mavi, sarı, sarı sırası üç durak yerini doldurur; kırmızı araç çıkabilecek hale gelse bile durağa gelemez. Mavi, kırmızı, sarı, sarı sırası çözümdür. Böylece ilk bölümde bile seçim önemlidir.
 
-İki yolcu kuyruğu arasında “makas”, beş renge çıkan bölüm üreticisi ve park çıkış geometrisi önceki, kabul edilmeyen yaklaşımın parçalarıdır. Bu repo bu taslağı içermez. Üç durak slotu ve karmaşık park engelleri yeni mekaniğin ilk testinde ek yük yaratmamak için bekletilmiştir.
+## Zorluk ve okunabilirlik
 
-## Sonraki karar kapısı
+- 6×6 park alanı; büyük, yönü belli araçlar.
+- Aynı anda en çok dört renk. Her rengin sabit şekli var.
+- İlk sekiz bölüm üç renkli; dördüncü renk dokuzuncu bölümde tanıtılır.
+- Araç ve fiziksel engel sayısı, yolcu karışımı ve kapasite farklılıkları artırılır.
+- “Tüm sıra” ile gelecek yolcular görülebilir; bilgi reklam veya ödeme arkasında saklanmaz.
+- İpucu, mevcut durumdan gerçek bir çözüm arar. Çözüm kalmadığında geri alma önerir; rastgele araç parlatmaz.
+- Bölüm sırası henüz insanlarla ölçülmüş zorluk eğrisi değildir. Bazı bölümler daha rahat nefes alma aralığı olarak kalabilir.
 
-Önce 3–5 kişinin yardımsız ilk iki bölümü denemesi. Temel soru: oyuncu “Sahilde kim iner?” ilişkisini anlayıp ikinci seçiminde kullanıyor mu? Eğer yalnızca alttaki sayıya bakıp otomatik tıklıyorsa görsel anlatım ve karar derinliği yeniden çalışılmalı.
+## Rastgele seçim kontrolünün anlamı
 
-Olumlu geri bildirimden sonra Android paketi, cihaz testleri ve sınırlı park engelleri değerlendirilecek. Mağaza yayınlama, reklam/ödeme sistemi, hesap ve çevrimiçi hizmetler bu sürümün kapsamı dışındadır.
+Analiz her durumda fiziksel olarak çıkabilen araçlardan eşit olasılıkla birini seçen, geri alma/ipucu kullanmayan bir politikayı hesaplar. Bu, insan başarısı tahmini değildir; bütün hamlelerin otomatik zafere gidip gitmediğini kontrol eder.
+
+Her bölümün en az bir çözümü ve erişilebilir kilitlenmesi vardır. İlk bölümde bu rastgele politikanın kazanma olasılığı 7/18, yani yaklaşık %38,9’dur. Son bölümde yaklaşık %10,2’dir. Ayrıntılar `qa/solutions.json` içindedir. Rastgele oyuncu şans eseri kazanabilir; rastgele oynamak artık garantili tamamlanma sağlamaz.
+
+## Şimdiki kapsam
+
+Yeni mekanik, VIP, iki durak arasında indirme, hat seçimi, süre baskısı ve puan optimizasyonu eklenmez. Bu sürümün amacı, özgün ilk istekteki sıkışıklık ve sıralama bulmacasını doğru hissettirmektir.

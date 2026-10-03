@@ -1,8 +1,8 @@
 {
   "name": "renk-duragi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "İki durak, dört koltuk: indir, yer aç, yeni yolcu al.",
+  "description": "Parkı aç, üç durak yerini planla, yolcuları sırayla bindir.",
   "scripts": {
     "build": "node scripts/build.cjs",
     "test": "node --test tests/engine.test.cjs",

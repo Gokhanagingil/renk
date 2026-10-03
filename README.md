@@ -1,54 +1,55 @@
-# Renk Durağı — 0.2.0 mekanik denemesi
+# Renk Durağı · Park bulmacası — 0.3.0
 
-**İndir, yer aç, yeni yolcu al.** İki durak arasında, dört koltuklu minibüslerin yolcularını planladığın kısa bir bulmaca.
+**Araçların yolunu aç. Üç durak yerini planla. Yolcuları sırayla bindir.**
 
-Bu sürüm, renk eşleştirme oyunlarından farklı bir kararın eğlenceli olup olmadığını denemek için hazırlanmıştır. APK veya mağaza sürümü değildir.
+Kullanıcının ilk park sıkışıklığı fikrine dönülerek sıfırdan hazırlanmış oynanabilir prototip. Önceki indirme-bindirme denemesi terk edildi; [archive/shuttle-v0.2](https://github.com/Gokhanagingil/renk/tree/archive/shuttle-v0.2) dalında saklanıyor. Bu sürüm o mekaniği kullanmaz.
 
 ## Oyna
 
-[`dist/renk-duragi-0.2.0.html`](dist/renk-duragi-0.2.0.html) dosyasını indirip güncel bir tarayıcıda aç. Dosya tüm görselleri, stilleri ve kodu içerir; internet bağlantısı ve hesap gerektirmez. GitHub dosya görünümü oyunu çalıştırmaz: dosyayı indirmek gerekir.
+[`dist/renk-duragi-0.3.0.html`](dist/renk-duragi-0.3.0.html) dosyasını indirip tarayıcıda aç. GitHub dosya görüntüleyicisi oyunu çalıştırmaz; dosyayı indirmek gerekir. Çalışan oyun internet, hesap veya harici dosya gerektirmez.
 
-Alternatif yerel çalıştırma:
+Yerel sunucu seçeneği:
 
 ```sh
 npm run build
 npm run serve
-# http://localhost:8080/renk-duragi-0.2.0.html
+# http://localhost:8080/renk-duragi-0.3.0.html
 ```
 
-## Nasıl oynanır?
+Bu sürüm tarayıcı prototipidir. APK veya mağaza yayını değildir.
 
-1. Üstte **ŞİMDİ** yazan durağa bak: şemsiye Sahil, ağaç Park.
-2. Minibüslerin dört camındaki yolcu hedeflerine bak. Bir minibüse dokun.
-3. O durağın yolcuları iner. Açılan koltuklara, diğer durağa gitmek isteyen bekleyenler biner.
-4. Sıra diğer durağa geçer. Aynı minibüsü değişen yolcularıyla tekrar seçebilirsin.
-5. Bütün yolcuları ulaştır. En az seferle bitirirsen üç yıldız kazanırsın.
+## Kurallar
 
-İş kalmayan durak otomatik atlanır. Araç dolu olmasa da servis sonunda ayrılır; dolması için bekleme yoktur. Araç renkleri eşleşme kuralı değildir. Yolcu hedefi hem renk hem simgeyle belirtilir.
+1. Araca dokun. Yalnızca üzerindeki ok yönünde çıkar; başka araç yolu kapatıyorsa hareket edemez.
+2. Durağın **üç yeri** vardır. Çıkan araç boş yere yanaşır.
+3. Sıranın en önündeki yolcu yalnızca aynı renk araca biner. Eşleşme yoksa arkasındakiler bekler.
+4. Araç kapasitesi dolunca otomatik ayrılır ve yer açılır. Kısmen dolu araç bekler.
+5. Yanlış renklerle üç yeri doldurursan durak kilitlenebilir. Ücretsiz geri alma ve yeniden deneme vardır.
+6. Bütün yolcular binip bütün araçlar ayrılınca bölüm tamamlanır.
 
-## Kapsam
+Araç üzerindeki sayı koltuk kapasitesidir; şekiller renkleri ayırt etmeye yardımcı olur. Kuyruğun tamamı “Tüm sıra” düğmesinden görülebilir. Süre sınırı, reklam, ödeme, can sistemi veya rastgele kuyruk değişimi yoktur.
 
-- 8 sabit bölüm; 2–4 araç; iki hedef; her araçta dört koltuk.
-- Otomatik indirme/bindirme animasyonları, isteğe bağlı ses, 1× / 2× hız.
-- Ücretsiz geri alma, çözümden hesaplanan ipucu, bölüm seçimi.
-- Tarayıcı izin verdiğinde cihazda kayıt ve kaldığı yerden devam.
-- Süre sınırı, reklam, satın alma, analitik veya dış istekte bulunan kod yok.
-- Hareket azaltma tercihine uyum, etiketli düğmeler, klavye ile kullanım.
+## İçerik
 
-İlk mekanik denemesinde park engelleri ve üç araçlık durak yönetimi bilinçli olarak kapsam dışıdır. Amaç, indirme-bindirme kararını tek başına değerlendirmektir. Ayrıntılar: [tasarım kararı](docs/design.md).
+- 12 sabit bölüm; 4 araçla başlayıp 10 araca çıkan park düzenleri.
+- İlk sekiz bölümde üç renk; dokuzuncu bölümden itibaren dört renk.
+- Gerçek dört yönlü araç engelleri; iki ve üç hücre uzunluğunda araçlar.
+- 2–4 koltuk kapasitesi, otomatik biniş ve zincirleme ayrılış.
+- Geri alma, mevcut durumdan çözüm arayan ipucu, kayıt/devam, bölüm seçimi.
+- Hareket azaltma tercihine uyum, isteğe bağlı ses ve 1×/2× animasyon.
 
-## Geliştirme ve doğrulama
+İlk iki bölüm elle düzenlendi. Diğerleri sabit tohumlu çevrimdışı bölüm aracıyla oluşturulup çözüm/kilitlenme kontrollerinden geçirilerek kaynak dosyasına kaydedildi. Oyun sırasında bölüm üretilmez veya düzen değiştirilmez. Gerçek oyuncu testine göre zorluk sırası yeniden ayarlanabilir.
 
-Çalıştırma ve derleme için harici JavaScript bağımlılığı yoktur. Node.js ile:
+## Doğrulama
 
 ```sh
 npm test
 npm run build
 ```
 
-Motor testleri yolcu korunumu, kapasite, indirme sırası ve sekiz bölümde erişilebilir durumları denetler. En az sefer hedefleri BFS ile bulunur ve simetri kullanmayan ayrı bir aramayla karşılaştırılır. Çözümler: [`qa/solutions.json`](qa/solutions.json).
+Motor ve derleme için harici paket gerekmez. Oyun motorunun 20 testi ile tüm bölümlerin başarılı ve başarısız yolları, koltuk/yolcu korunumu ve dört yöndeki fiziksel engeller denetlenir. Bağımsız bir hücre simülasyonu, geometrik çarpışma sonucunu her park edilmiş araç alt kümesinde karşılaştırır.
 
-Tarayıcı testi için yerel Playwright ve Chromium gereklidir:
+Tarayıcı testleri için:
 
 ```sh
 npm install --no-save playwright
@@ -56,18 +57,20 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-Test geliştirme kancası yalnızca `?test=1` ile açılır. Test, sekiz bölümü dokunma olaylarıyla bitirir; geri alma, kayıt, bozuk kayıt, ipucu, animasyon ve 320–1280 piksel genişliklerini kontrol eder. Gerçek Android/iOS cihaz kabul testi ayrı olarak yapılmalıdır.
+Alternatif Chromium yolu `RENK_CHROMIUM_PATH` ile verilebilir. `?test=1` yalnızca test kancalarını ve hızlı animasyonu açar; üretim kurallarını değiştirmez.
 
-## Dosyalar
+Sonuçlar: [doğrulama notu](docs/verification.md). Bölüm çözümleri ve kilitlenme örnekleri: [`qa/solutions.json`](qa/solutions.json).
+
+## Kaynaklar
 
 | Yol | İçerik |
 | --- | --- |
-| `src/engine.js` | Saf, deterministik kurallar ve en az sefer çözücüsü |
-| `src/levels.js` | Sekiz sabit bölüm |
-| `src/app.js` | Etkileşimler, kayıt, animasyonlar ve SVG çizimleri |
-| `src/style.css` | Telefon öncelikli arayüz |
-| `scripts/build.cjs` | Bağımlılıksız, tek dosyalık dağıtım |
-| `tests/` | Motor ve tarayıcı testleri |
-| `docs/playtest.md` | İlk oyuncu denemesinin soruları |
+| `src/engine.js` | Araç engelleri, üç durak yeri, FIFO biniş, çözüm ve kilitlenme |
+| `src/levels.js` | Oyun boyunca sabit kalan 12 bölüm |
+| `src/app.js` | Mobil arayüz, SVG araç/yolcu çizimleri, animasyon ve kayıt |
+| `scripts/generate-levels.cjs` | Çevrimdışı bölüm oluşturma; oyunda çalışmaz |
+| `scripts/build.cjs` | Tek dosyalık çevrimdışı dağıtım |
+| `tests/` | Motor ve dokunmatik tarayıcı testleri |
+| `docs/playtest.md` | İlk insan denemesi için kısa gözlem listesi |
 
-Marka adı çalışma adıdır. Çizimler ve arayüz bu proje için kodla oluşturulmuştur; başka oyunlardan görsel veya bölüm alınmamıştır.
+Gerçek Android/iOS cihaz kabul testi ve APK paketlemesi henüz yapılmadı. Önce yeni temel oyunun kullanıcı tarafından denenmesi hedefleniyor.

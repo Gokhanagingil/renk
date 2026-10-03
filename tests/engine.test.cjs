@@ -1,55 +1,33 @@
-const test=require('node:test'),assert=require('node:assert/strict');
-const E=require('../src/engine.js'),levels=require('../src/levels.js');
-const key=s=>JSON.stringify([s.cars,s.waiting,s.stop]);
-const work=s=>s.cars.reduce((n,c)=>n+E.cargo(c),0)+2*s.waiting.reduce((a,b)=>a+b,0);
-test('Unload before boarding: mixed four-seat minibus makes room, then retains new riders',()=>{
- const before={cars:[[2,2]],waiting:[2,0],stop:0,delivered:0,trips:0};
- const original=E.copy(before),r=E.step(before,0);
- assert.deepEqual(before,original);assert.equal(r.ok,true);assert.deepEqual(r.state.cars,[[0,4]]);
- assert.deepEqual(r.state.waiting,[0,0]);assert.equal(r.state.delivered,2);assert.equal(r.state.stop,1);
- const next=E.step(r.state,0);assert.equal(next.event.out,4);assert.equal(next.state.delivered,6);assert.equal(E.won(next.state),true);
+const test=require('node:test'),assert=require('node:assert/strict'),E=require('../src/engine.js'),levels=require('../src/levels.js');
+function invariant(l,s){
+ const located=[...s.parked,...s.departed,...s.bays.filter(Boolean).map(b=>b.id)];assert.equal(new Set(located).size,l.cars.length);assert.equal(located.length,l.cars.length);
+ assert.ok(s.head>=0&&s.head<=l.queue.length);assert.equal(s.moves,l.cars.length-s.parked.length);
+ const boarded=[0,0,0,0];for(const id of s.departed){const c=E.car(l,id);boarded[c.color]+=c.capacity;}
+ for(const b of s.bays.filter(Boolean)){const c=E.car(l,b.id);assert.ok(b.filled>=0&&b.filled<c.capacity);boarded[c.color]+=b.filled;}
+ assert.deepEqual(boarded,[0,1,2,3].map(color=>l.queue.slice(0,s.head).filter(v=>v===color).length));
+}
+function gridBlockers(l,s,id){
+ const c=E.car(l,id),cells=new Map(),found=new Set(),delta={N:[0,-1],S:[0,1],E:[1,0],W:[-1,0]}[c.dir];
+ for(const other of s.parked){if(other===id)continue;const v=E.car(l,other);for(let x=v.x;x<v.x+v.w;x++)for(let y=v.y;y<v.y+v.h;y++)cells.set(x+','+y,other);}
+ for(let d=1;d<=6;d++)for(let x=c.x+delta[0]*d;x<c.x+delta[0]*d+c.w;x++)for(let y=c.y+delta[1]*d;y<c.y+delta[1]*d+c.h;y++)if(cells.has(x+','+y))found.add(cells.get(x+','+y));
+ return [...found].sort((a,b)=>a-b);
+}
+test('First puzzle has a real blocker; blocked clicks never move a car',()=>{const l=levels[0],s=E.initial(l),before=JSON.stringify(s);assert.deepEqual(E.blockers(l,s,1),[0]);assert.equal(E.step(l,s,1).ok,false);assert.equal(JSON.stringify(s),before);const after=E.step(l,s,0).state;assert.deepEqual(E.blockers(l,after,1),[]);});
+test('First puzzle can deadlock: blue, yellow, yellow consume the three bays',()=>{const l=levels[0];let s=E.initial(l);for(const id of [0,2,3])s=E.step(l,s,id).state;assert.equal(s.head,0);assert.equal(s.bays.filter(Boolean).length,3);assert.equal(E.deadlocked(l,s),true);assert.equal(E.step(l,s,1).reason,'full');assert.equal(E.solve(l,s).path,null);invariant(l,s);});
+test('Exact random-policy success for first puzzle is 7/18, not guaranteed completion',()=>{assert.ok(Math.abs(E.analyze(levels[0]).randomWin-7/18)<1e-10);});
+test('Correct order clears first puzzle without helpers',()=>{const l=levels[0];let s=E.initial(l);for(const id of [0,1,2,3]){const r=E.step(l,s,id);assert.equal(r.ok,true);s=r.state;}assert.equal(E.won(l,s),true);assert.equal(s.head,8);});
+test('FIFO passengers wait; partially filled vehicle stays; one move can dispatch two cars',()=>{
+ const l={size:6,cars:[{id:0,x:0,y:0,w:1,h:2,dir:'N',color:0,capacity:2},{id:1,x:2,y:0,w:1,h:2,dir:'N',color:1,capacity:2},{id:2,x:4,y:0,w:1,h:2,dir:'N',color:2,capacity:2}],queue:[0,1,1,0,2,2]};
+ let r=E.step(l,E.initial(l),0);assert.equal(r.state.head,1);assert.deepEqual(r.state.bays[0],{id:0,filled:1});assert.equal(r.state.departed.length,0);
+ r=E.step(l,r.state,1);assert.equal(r.state.head,4);assert.equal(r.events.filter(e=>e.type==='depart').length,2);assert.equal(r.state.bays.filter(Boolean).length,0);invariant(l,r.state);
 });
-test('Partial boarding never exceeds four seats and leaves extra people waiting',()=>{
- const s={cars:[[1,3]],waiting:[7,0],stop:0,delivered:0,trips:0};const r=E.step(s,0);
- assert.equal(r.event.on,1);assert.equal(r.state.waiting[0],6);assert.deepEqual(r.state.cars[0],[0,4]);
+test('Removing the last move restores the exact jam-free state',()=>{const l=levels[0],s=E.step(l,E.initial(l),0).state,before=JSON.stringify(s);let next=E.step(l,s,2).state;next=E.step(l,next,3).state;assert.equal(E.deadlocked(l,next),true);const restored=E.step(l,E.initial(l),0).state;assert.equal(JSON.stringify(restored),before);assert.ok(E.solve(l,restored).path);});
+test('All four directions and every parked subset agree with independent swept-grid geometry',()=>{
+ for(const l of levels)for(let mask=1;mask<(1<<l.cars.length);mask++){const s=E.initial(l);s.parked=s.parked.filter((id,i)=>(mask&(1<<i))!==0);for(const id of s.parked)assert.deepEqual(E.blockers(l,s,id).sort((a,b)=>a-b),gridBlockers(l,s,id));}
 });
-test('Full wrong-destination car and invalid indices do not spend trips or mutate state',()=>{
- const s={cars:[[0,4]],waiting:[2,0],stop:0,delivered:0,trips:0},before=JSON.stringify(s);
- for(const id of [0,-1,2,NaN,0.5])assert.equal(E.step(s,id).ok,false);
- assert.equal(JSON.stringify(s),before);
-});
-test('Empty stops are skipped without charging a trip',()=>{
- const s={cars:[[0,2],[0,1]],waiting:[0,0],stop:1,delivered:0,trips:0};const r=E.step(s,0);
- assert.equal(r.state.trips,1);assert.equal(r.state.stop,1);assert.equal(r.state.delivered,2);
-});
-test('Undo snapshot restores cargo, queue, stop and delivered count exactly',()=>{
- const s=E.initial(levels[1]),history=[E.copy(s)];let next=E.step(s,0).state;next=E.step(next,1).state;
- next=history.pop();assert.deepEqual(next,s);assert.equal(next.trips,0);
-});
-test('Invalid fleet definitions are rejected',()=>{
- assert.ok(E.validate({cars:[[5,0]],waiting:[0,0]}).length);
- assert.ok(E.validate({cars:[[2,-1]],waiting:[0,0]}).length);
- assert.ok(E.validate({cars:[[2,0]],waiting:[0,-1]}).length);
-});
-for(const l of levels)test('Level '+l.id+': every reachable state conserves passengers, respects capacity and permits progress',()=>{
- assert.deepEqual(E.validate(l),[]);const queue=[E.initial(l)],seen=new Set([key(queue[0])]);let head=0,completeCount=0;
- while(head<queue.length){
-  const s=queue[head++];assert.equal(s.delivered+s.waiting.reduce((a,b)=>a+b,0)+s.cars.reduce((n,c)=>n+E.cargo(c),0),E.total(l));
-  for(const c of s.cars){assert.ok(E.cargo(c)<=4);assert.ok(c.every(n=>Number.isInteger(n)&&n>=0));}
-  if(E.won(s)){completeCount++;continue;}
-  let legal=0;
-  for(let id=0;id<s.cars.length;id++){
-   const r=E.step(s,id);if(!r.ok)continue;legal++;
-   assert.ok(work(r.state)<work(s),'Every legal trip reduces unfinished transport work');
-   assert.equal(r.state.trips,s.trips+1);
-   const k=key(r.state);if(!seen.has(k)){seen.add(k);queue.push(r.state);}
-  }
-  assert.ok(legal>0,'No unwinnable terminal states');assert.ok(queue.length<100000);
- }
- assert.ok(completeCount>0);
- // Independent, unsymmetrized BFS traversal above retains shortest trip counts.
- const shortest=Math.min(...queue.filter(E.won).map(s=>s.trips));
- const solution=E.solve(E.initial(l));assert.equal(solution.path.length,shortest);
- let s=E.initial(l);for(const id of solution.path){const r=E.step(s,id);assert.equal(r.ok,true);s=r.state;}
- assert.equal(E.won(s),true);
+test('Malformed or overlapping levels fail validation',()=>{const l=E.copy(levels[0]);l.cars[1].x=l.cars[0].x;l.cars[1].y=l.cars[0].y;assert.ok(E.validate(l).includes('overlap'));l.queue.pop();assert.ok(E.validate(l).includes('passenger balance'));});
+for(const l of levels)test('Level '+l.id+': valid solution, real failure path, conserved passengers in every reachable state',()=>{
+ assert.deepEqual(E.validate(l),[]);const solved=E.solve(l);assert.ok(solved.path);let s=E.initial(l);for(const id of solved.path){const previous=JSON.stringify(s),r=E.step(l,s,id);assert.equal(JSON.stringify(s),previous);assert.equal(r.ok,true);s=r.state;invariant(l,s);}assert.equal(E.won(l,s),true);
+ const a=E.analyze(l);assert.ok(a.randomWin<.56);assert.ok(a.trap);s=E.initial(l);for(const id of a.trap)s=E.step(l,s,id).state;assert.equal(E.deadlocked(l,s),true);assert.equal(E.solve(l,s).path,null);
+ const queue=[E.initial(l)],seen=new Set();while(queue.length){const s=queue.pop(),k=E.key(s);if(seen.has(k))continue;seen.add(k);invariant(l,s);for(const id of E.legal(l,s)){const r=E.step(l,s,id);assert.equal(r.state.parked.length,s.parked.length-1);queue.push(r.state);}}
 });
