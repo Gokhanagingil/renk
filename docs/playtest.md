@@ -1,9 +1,9 @@
-# 65+ oyuncuyla ilk deneme — 0.4
+# 65+ oyuncuyla ilk deneme — 0.4.1
 
-Henüz yapılmadı. İlk denemede yönlendirmeden izleyip, oyuncunun söylediklerini ve takıldığı anları not edin. Önce telefonun normal yazı/ekran ayarlarını kullanın.
+Henüz yapılmadı. Android’de dosyanın hangi uygulamayla açıldığını ve kullanılabilir ekran boyutunu kaydedin. İlk denemede yönlendirmeden izleyip, oyuncunun söylediklerini ve takıldığı anları not edin. Önce telefonun normal yazı/ekran ayarlarını kullanın.
 
 1. İlk ekranda hedefi kendi sözleriyle anlatabiliyor mu? Mavinin kırmızıyı engellediğini görüyor mu?
-2. Araç dokunma alanları rahat mı? Parkı kaydırmayı ve tüm düzen haritasını buluyor mu?
+2. Araç dokunma alanları rahat mı? Parkın tamamını görüyor mu? Yakınlaştır / Tüm park kontrolünü kullanabiliyor mu?
 3. Sakin hızda aracı park çıkışından perona kadar takip edebiliyor mu? Kaydırırken yönünü kaybediyor mu?
 4. Biri binerken başka bir aracı gönderebildiğini fark ediyor mu? “Yolda” yerinin dolu sayılması anlaşılıyor mu?
 5. Boş/dolu koltukları sayabiliyor mu? Yolcu koltuğa oturmadan sayaç artmadığını görüyor mu?

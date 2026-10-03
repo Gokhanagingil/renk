@@ -3,3 +3,4 @@ qa/*.png
 qa/browser*-results.json
 *.apk
 *.zip
+qa/android-layout-results.json
