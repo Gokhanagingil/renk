@@ -1,0 +1,6387 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#d9dde3"><title>Renk Durağı · Şehir hareketli</title><style>
+*{box-sizing:border-box}
+:root{font-family:'Trebuchet MS',system-ui,sans-serif;color:#172447;background:#172447;font-synthesis:none}
+body{margin:0;min-height:100dvh;background:radial-gradient(ellipse at 5% 0,#4263ac,transparent 65%),#14213d}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid #ff8b36;outline-offset:3px}
+button:disabled{color:#8994aa;cursor:default}
+button:not(:disabled):active{transform:translateY(1px)}
+[hidden]{display:none!important}
+#app{max-width:520px;margin:auto;background:#edf2ff;min-height:100dvh;overflow:hidden;box-shadow:0 12px 90px #0004}
+header{display:flex;align-items:center;justify-content:space-between;padding:19px 17px 15px;background:#172447;color:white}
+.brand{display:flex;gap:11px;align-items:center}
+.brand-icon{width:42px;height:42px;border-radius:12px;background:#4266ff;color:white;position:relative;font-size:31px;font-weight:900;text-align:center;line-height:43px;box-shadow:0 3px 0 #0a1533}
+.brand-icon>span{position:absolute;bottom:-3px;right:-5px;background:#ff843e;border:3px solid #172447;width:23px;height:23px;border-radius:50%;font-size:18px;line-height:18px}
+h1{font-size:20px;letter-spacing:.2px;margin:0;font-weight:900}
+.brand small{display:block;font-size:9px;letter-spacing:2px;margin-top:5px;color:#acbce8}
+.header-buttons{display:flex;gap:5px}
+.round{width:44px;height:44px;border:1px solid #455578;border-radius:14px;background:#253558;color:#fff;font-size:24px;position:relative}
+#sound i{position:absolute;left:12px;top:21px;width:20px;height:2px;background:#fff;transform:rotate(-50deg)}
+.level-strip{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.level-name{flex:1}
+.level-name strong{display:block;font-size:16px}
+.level-name small{display:block;font-size:11px;color:#61708b;margin-top:4px}
+#level-menu{border:0;border-radius:13px;background:#fff;box-shadow:0 2px 0 #cdd8ef;padding:8px 10px}
+#level-menu b{font-size:25px}
+#level-menu span{font-size:11px;display:block;color:#63729c}
+.completion{text-align:right}
+.completion b{font-size:15px;display:block}
+.completion small{font-size:8px;letter-spacing:.6px;color:#647493}
+.terminal{position:relative;margin:0 12px;background:#fff;border-radius:18px 18px 0 0;border:1px solid #ccd6e9;box-shadow:0 3px 0 #c2cde3}
+.passengers{padding:0 10px}
+.section-title{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:800;min-height:32px}
+.section-title small{font-size:10px;font-weight:400;color:#67738c}
+.section-title button{min-height:44px;border:0;background:none;font-size:12px;font-weight:700;color:#3554c8}
+.queue-wrap{display:flex;align-items:center;height:63px;gap:4px}
+.queue-arrow{font-size:11px;font-weight:900;background:#ffdf8b;color:#784a00;flex:0 0 20px;height:20px;line-height:20px;text-align:center;border-radius:6px}
+.queue{display:flex;align-items:flex-end;gap:5px;flex:1;height:66px;overflow:hidden;padding:17px 2px 3px}
+.person{display:inline-flex;width:30px;min-width:30px;height:43px;position:relative;align-items:center;justify-content:center;transform-origin:50% 90%}
+.person>svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 1px #1c285520)}
+.queue .person:first-child:after{content:'';position:absolute;inset:-3px -1px -2px;border:2px solid #ffb653;border-radius:10px;pointer-events:none}
+.person .body{transform-origin:16px 34px;animation:breathe 2.6s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.person .head{transform-origin:16px 12px}
+.person .arm{transform-origin:9px 22px}
+.person.mood-wave .arm{animation:wave 1.2s ease-in-out infinite}
+.person.mood-angry .head{animation:grumble .9s ease-in-out infinite}
+.person.mood-toilet{animation:fidget .9s ease-in-out infinite}
+.mood-bubble{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-style:normal;font-size:10px;font-weight:800;padding:2px 4px;border-radius:6px;background:#fff;color:#495571;box-shadow:0 1px 5px #17244730;line-height:1.1;white-space:nowrap}
+.mood-angry .mood-bubble{color:#b43a36;background:#ffebe2}
+.mood-toilet .mood-bubble{color:#6650a9;background:#f0eaff}
+.walking-out{visibility:hidden}
+.queue-progress{height:4px;border-radius:4px;background:#e4eafb;margin:5px 0 7px;overflow:hidden}
+.queue-progress i{height:100%;display:block;width:0;background:#4164f7;transition:width .4s}
+#queue-count{font-size:13px;font-weight:800;min-width:33px;text-align:right;color:#65749b}
+.empty-queue{font-size:14px;color:#556f9d}
+.walkway{height:23px;background:repeating-linear-gradient(90deg,#e4e9f3 0 25px,#dce2ed 25px 26px);border-top:1px solid #d0d9e7;border-bottom:3px solid #b8c3d7;display:flex;justify-content:space-around;align-items:center;font-size:8px;letter-spacing:1px;color:#7f8ba5}
+.walkway i{height:8px;width:8px;background:#f5b552;border-radius:50%;border:2px solid #a58457}
+.stop{padding:0 10px;background:#8190a9}
+.stop .section-title{min-height:29px;font-size:12px;color:white}
+.stop #free-slots{font-weight:400;font-size:12px}
+.bays{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bay{height:112px;position:relative;background:#64768f;border:2px solid #e0e6f3;border-bottom:none;border-radius:10px 10px 0 0;display:flex;justify-content:center;align-items:center}
+.slot-number{font-size:38px;font-weight:900;color:#becbe250}
+.bay .bay-car{width:43px;height:86px;position:absolute;top:1px;left:calc(50% - 21.5px)}
+.bay.long .bay-car{height:89px;width:35px}
+.bay-car svg{width:100%;height:100%;display:block;filter:drop-shadow(2px 3px 1px #17244770)}
+.fill-label{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);background:#172447;color:#fff;border-radius:6px;min-width:52px;padding:3px 5px;text-align:center;font-size:12px;font-weight:800;white-space:nowrap}
+.bay.reserved{background:repeating-linear-gradient(135deg,#596c8a 0 8px,#60718c 8px 16px)}
+.bay.reserved .fill-label{background:#fff;color:#344d81}
+.bay.reserved .slot-number{color:#d5dff0;font-size:23px}
+.bay.leaving .bay-car{visibility:hidden}
+.jammed .bay{border-color:#ffb395}
+.road{height:35px;margin:0 -1px;background:#35465f;border-top:4px solid #c9d4e8;border-bottom:4px solid #ffbb71;display:flex;align-items:center;justify-content:space-around;color:#d8e0ef;overflow:hidden}
+.road i{width:25px;height:3px;background:#c1cede}
+.road span{font-size:25px;line-height:25px}
+.parking-section{margin:0 12px}
+.parking-heading{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:10px 2px 7px}
+.parking-heading b{display:block;font-size:15px}
+.parking-heading small{display:block;font-size:11px;margin-top:3px;color:#627393}
+.parking-heading button{border:1px solid #ccd6eb;background:#fff;border-radius:10px;min-height:44px;font-size:12px;padding:6px 10px}
+.lot-viewport{position:relative;height:340px;overflow:auto;overscroll-behavior:contain;border:3px solid #7889a8;border-radius:13px;background:#354159;scrollbar-width:thin;scrollbar-color:#adbbd3 #344057;touch-action:pan-y}
+.lot-world{position:relative;padding:0 13px;background:repeating-linear-gradient(0deg,transparent 0 80px,#ffffff1a 80px 99px,transparent 99px 160px) left 4px top / 3px 100% no-repeat,repeating-linear-gradient(0deg,transparent 0 80px,#ffffff1a 80px 99px,transparent 99px 160px) right 4px top / 3px 100% no-repeat,#303c52;isolation:isolate}
+.lot-entry{height:58px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;color:#c3d1e8;letter-spacing:1px}
+.parking-sign{width:25px;height:27px;background:#456bea;color:#fff;text-align:center;line-height:27px;font-size:23px;font-weight:900;border-radius:5px;box-shadow:0 3px #101e37}
+.tree{font-size:36px;color:#76b78d;filter:drop-shadow(3px 3px 1px #142333);line-height:1}
+.crosswalk{height:23px;flex:1;background:repeating-linear-gradient(90deg,#d6deea 0 7px,transparent 7px 13px);transform:skew(-12deg);max-width:80px}
+.parking{position:relative;width:100%;background:radial-gradient(ellipse at 70% 20%,#45526b50,transparent 60%),#39465d;border-top:1px solid #b4c2db50;border-bottom:1px solid #b4c2db50}
+.parking:after{content:'P';position:absolute;right:9px;bottom:15px;font-size:55px;font-weight:900;color:#b4c2db13;pointer-events:none}
+.parking #cars{position:absolute;inset:0}
+.parking-spot{position:absolute;pointer-events:none;border:2px solid #d0d9e05e;border-radius:4px}
+.parking-spot.N{border-top:0}
+.parking-spot.S{border-bottom:0}
+.parking-spot.E{border-right:0}
+.parking-spot.W{border-left:0}
+.parking-spot span{position:absolute;left:5px;bottom:5px;font-size:10px;color:#c9d6e479;font-weight:800}
+.zone{position:absolute;right:1px;font-size:10px;letter-spacing:3px;writing-mode:vertical-rl;color:#b8c7dd65;pointer-events:none}
+.car{position:absolute;display:block;border:0;background:transparent;padding:4px;z-index:2;transition:filter .2s}
+.car svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(2px 4px 1px #121d3590)}
+.car.hinted{filter:drop-shadow(0 0 7px #fff9bc)}
+.car.hinted:after{content:'';position:absolute;inset:0;border:3px solid #ffe88f;border-radius:12px}
+.car.obstacle{filter:drop-shadow(0 0 5px #ff8f66)}
+.car.bump{animation:bump .3s 2}
+.exit-layer{position:absolute;inset:0;pointer-events:none;z-index:4}
+.lot-end{height:66px;display:flex;align-items:center;justify-content:space-between;color:#b0bdd3;font-size:11px;letter-spacing:2px}
+.lot-end i{height:12px;width:95px;border-radius:3px;transform:rotate(-4deg);background:repeating-linear-gradient(120deg,#edede4 0 12px,#ed855f 12px 25px);box-shadow:0 4px #111b304a}
+.scroll-cue{display:flex;justify-content:space-between;padding:8px 3px;color:#52658b;font-size:11px}
+.scroll-cue span:last-child{font-weight:800}
+.message{min-height:53px;margin:0 13px;padding:8px 10px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:12px;background:#dfe7fc;color:#354a7c;font-size:13px;line-height:1.45}
+.message.notice{background:#ffe4d2;color:#8a3b1f}
+.toolbar{position:sticky;bottom:0;z-index:15;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:11px 12px max(11px,env(safe-area-inset-bottom));background:#edf2fff5;border-top:1px solid #d6dff2;margin-top:10px}
+.toolbar button{min-height:56px;border:1px solid #cbd6ed;border-bottom-width:3px;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;gap:3px}
+.toolbar button span{font-size:23px;line-height:23px}
+.toolbar small{font:inherit}
+#hint{background:#4163f6;color:#fff;border-color:#2449d1}
+.jammed #undo{background:#ffb07b;color:#693414;border-color:#eb8f59}
+footer{display:flex;justify-content:space-between;color:#7d8cac;font-size:9px;padding:0 15px 14px}
+.overlay{position:fixed;inset:0;z-index:50;background:#101a3c99;backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{position:relative;background:#f4f7ff;border-radius:23px;padding:28px 22px;max-width:430px;width:100%;max-height:90dvh;overflow:auto;box-shadow:0 30px 100px #0006}
+.close{position:absolute;right:8px;top:8px;width:44px;height:44px;border:0;border-radius:12px;background:#e2e9fa;font-size:25px}
+.eyebrow{font-size:10px;color:#5b71a5;font-weight:800;letter-spacing:1.5px;margin:12px 30px 13px 0}
+.modal h2{font-size:29px;line-height:1.13;margin:0 22px 17px 0;letter-spacing:-.7px}
+.modal p{font-size:15px;line-height:1.6;color:#617192}
+.modal .primary{display:block;width:100%;min-height:50px;border:0;border-bottom:4px solid #2544c4;border-radius:13px;background:#4163f6;color:white;font-size:16px;font-weight:800;margin-top:20px;padding:12px}
+.modal .secondary{display:block;width:100%;min-height:48px;border:0;border-radius:12px;background:#e1e8f9;font-size:14px;margin-top:10px}
+.rule{display:flex;gap:12px;align-items:center;font-size:15px;line-height:1.5;margin:17px 0;color:#566684}
+.rule>b{font-size:25px;color:#f27f34;min-width:28px}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:18px}
+.chip{background:#e0e8ff;border-radius:7px;padding:7px;font-size:11px}
+.levels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}
+.levels-grid button{border:1px solid #c7d4ef;background:#e5ecfd;border-radius:12px;min-height:61px;font-size:21px;font-weight:800}
+.levels-grid small{display:block;font-size:10px;color:#667fab;margin-top:4px}
+.levels-grid .current{outline:3px solid #4566e9}
+.levels-grid .done{background:#cbd7ff}
+.queue-list{display:flex;flex-wrap:wrap;gap:8px;border:1px solid #c9d5ee;border-radius:13px;background:#e4eafd;padding:24px 13px 13px;row-gap:23px}
+.queue-list .person:first-child{outline:2px solid #ffbd4e;border-radius:7px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:17px;font-size:12px}
+.legend span{display:flex;gap:5px;align-items:center}
+.legend svg{width:17px;height:17px}
+.stats{display:flex;gap:10px;margin-top:16px}
+.stats>div{flex:1;text-align:center;border-radius:12px;background:#e0e8fe;padding:14px 3px}
+.stats b{font-size:30px;display:block}
+.stats small{font-size:10px;color:#7083a9}
+.win-icon{font-size:48px;color:#ff944d}
+.mini-note{font-size:12px!important}
+.overview-map{position:relative;background:#36435b;border:10px solid #697b99;border-radius:10px;margin:15px auto;max-height:51vh;overflow:hidden}
+.map-car{position:absolute;padding:1px;pointer-events:none}
+.map-car svg{width:100%;height:100%;display:block}
+.map-focus{position:absolute;left:0;width:100%;border:2px solid #fff0a1;background:#fff0a115;pointer-events:none}
+.ghost-car{position:fixed;pointer-events:none;z-index:30;transform-origin:center;will-change:transform}
+.ghost-car.local{position:absolute;z-index:5}
+.ghost-car svg{width:100%;height:100%;filter:drop-shadow(2px 4px 1px #15244370)}
+.fly-person{position:fixed;pointer-events:none;z-index:31;width:30px;height:43px;will-change:transform}
+.fly-person .body{animation:none}
+.fly-person .leg-left{animation:walk .3s infinite alternate;transform-origin:13px 33px}
+.fly-person .leg-right{animation:walk .3s infinite alternate-reverse;transform-origin:20px 33px}
+.fly-person .mood-bubble{display:none}
+@keyframes breathe{50%{transform:translateY(-1.5px) rotate(1deg)}
+}
+@keyframes wave{50%{transform:rotate(-35deg)}
+}
+@keyframes grumble{25%{transform:rotate(-7deg)}
+75%{transform:rotate(7deg)}
+}
+@keyframes fidget{25%{transform:translateX(-1px) rotate(-4deg)}
+75%{transform:translateX(1px) rotate(4deg)}
+}
+@keyframes walk{to{transform:rotate(20deg)}
+}
+@keyframes bump{25%{transform:translateX(-3px)}
+75%{transform:translateX(3px)}
+}
+
+/* All portrait heights use the same fit layout, including Android browser bars. */
+:root{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{height:100%;overflow:hidden}body{min-height:0;padding:0}
+#app{height:100vh;height:var(--app-height,100vh);min-height:0;max-width:540px;display:flex;flex-direction:column;padding:0;overflow:hidden}
+header{height:49px;min-height:49px;flex-shrink:0;padding:2px 9px;gap:5px}
+.brand{gap:7px}.brand-icon{width:28px;height:30px;line-height:31px;font-size:24px;border-radius:7px}.brand-icon>span{width:18px;height:18px;font-size:13px;line-height:13px;bottom:-3px;right:-4px;border-width:2px}h1{font-size:14px;letter-spacing:-.3px;white-space:nowrap}
+.header-buttons{gap:3px}.round{width:40px;height:44px;border:0;background:transparent;border-radius:8px;font-size:22px}#sound i{left:10px;top:21px}
+#level-menu{height:44px;min-width:59px;display:flex;align-items:center;justify-content:center;gap:4px;padding:0 5px;background:#2b3b63;color:white;box-shadow:none;border-radius:9px;margin-left:auto}#level-menu b{font-size:21px}#level-menu span{font-size:8px;color:#c7d4f1}#level-menu span:first-child{display:none}
+.terminal{margin:0 8px;flex-shrink:0;border-radius:10px 10px 0 0;box-shadow:none}.passengers{padding:0 8px}.section-title{height:24px;min-height:24px;font-size:12px}.section-title small{font-size:10px}.section-title button{height:30px;min-height:30px;font-size:11px;padding:0 4px}.queue-wrap{height:42px;gap:3px}.queue{height:44px;gap:5px;padding:5px 1px 1px}.person{height:35px;width:26px;min-width:26px}.person>svg{height:100%;width:100%}.queue .person:first-child:after{inset:-1px;border-width:1.5px}.queue-progress{height:3px;margin:2px 0 3px}#queue-count{font-size:12px;min-width:30px}.queue-arrow{height:17px;line-height:17px;flex-basis:17px;font-size:10px}.mood-bubble{top:-8px;font-size:8px;padding:1px 3px;z-index:2}
+.walkway{height:9px;font-size:6px;border-bottom-width:2px}.walkway i{height:5px;width:5px;border-width:1px}.stop{padding:0 8px}.stop .section-title{height:20px;min-height:20px;font-size:11px}.stop #free-slots{font-size:11px}.bays{gap:12px}.bay{height:79px;border-radius:7px 7px 0 0}.slot-number{font-size:27px}.bay .bay-car{width:34px;height:65px;left:calc(50% - 17px);top:0}.bay.long .bay-car{width:27px;height:65px;left:calc(50% - 13.5px)}.fill-label{bottom:1px;min-width:44px;font-size:10px;padding:2px 4px;border-radius:4px}.bay.reserved .slot-number{display:block;width:25px;height:25px}.bay.reserved .slot-number svg{width:100%;height:100%}.road{height:19px;border-top-width:2px;border-bottom-width:2px}.road span{font-size:17px}.road i{height:2px;width:19px}
+.parking-section{flex:1;min-height:0;display:flex;flex-direction:column;margin:0 8px}.parking-heading{height:40px;min-height:40px;padding:0 1px;gap:5px}.parking-heading b{font-size:12px;line-height:15px}.parking-heading small{font-size:9px;margin-top:0}.parking-heading .completion{margin-left:auto;white-space:nowrap;color:#63749c}.parking-heading .completion b{font-size:10px}.parking-heading button{min-height:36px;height:36px;padding:0 8px;border-radius:8px;font-size:11px;white-space:nowrap}
+.lot-viewport{flex:1;min-height:0;height:auto;position:relative;border:2px solid #7889a8;border-radius:9px;overflow:auto;touch-action:pan-x pan-y;overscroll-behavior:contain;scrollbar-width:thin;background:#303c52}.lot-world{position:relative;max-width:none;box-sizing:content-box;margin:0 auto;padding:0 8px;background:#303c52}.lot-entry{height:20px;font-size:7px;gap:5px;padding:0 2px}.parking-sign{height:16px;width:16px;font-size:14px;line-height:16px;border-radius:3px}.tree{font-size:19px}.crosswalk{height:12px;max-width:58px;background:repeating-linear-gradient(90deg,#d6deea 0 5px,transparent 5px 9px)}.parking{width:auto;max-width:none;margin:0;border:0;aspect-ratio:auto;box-shadow:inset 0 0 0 1px #acbad92e}.parking:before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(#c9d8ec18 .6px,transparent .6px) 0 0/7px 7px}.parking:after{font-size:29px;bottom:4px;right:5px}.parking-spot{border-width:1px}.parking-spot span{font-size:6px;left:2px;bottom:2px}.zone{font-size:7px;letter-spacing:2px}.car{padding:2px}.car svg{overflow:hidden;filter:drop-shadow(1px 2px 1px #121d3580)}.lot-end{height:14px;font-size:7px;letter-spacing:1px}.lot-end i{height:5px;width:65px}.lot-end .tree{font-size:14px}.scroll-cue{height:15px;min-height:15px;padding:1px 2px;font-size:9px}
+.message{height:36px;min-height:36px;max-height:36px;flex-shrink:0;margin:0 8px;padding:3px 7px;font-size:11px;line-height:14px;overflow:auto;border-radius:8px}.toolbar{position:relative;bottom:auto;flex-shrink:0;z-index:15;height:54px;margin-top:3px;padding:3px 8px max(3px,env(safe-area-inset-bottom));gap:6px}.toolbar button{min-height:44px;height:44px;flex-direction:row;gap:4px;font-size:11px;border-radius:9px;border-bottom-width:2px}.toolbar button span{font-size:22px;line-height:22px}.toolbar small{font-size:11px}footer{display:none}
+.overlay{padding:10px}.modal{max-height:calc(var(--app-height,100vh) - 20px);padding:23px 20px;overscroll-behavior:contain}.script-notice{position:fixed;inset:0;z-index:100;background:#edf2ff;display:flex;align-items:center;justify-content:center;padding:30px;font:20px/1.5 sans-serif;color:#172447}
+@media(max-width:350px){header{padding-left:6px;padding-right:6px}h1{font-size:12px}.brand{gap:6px}.round{width:36px}.queue{gap:3px}.queue .person:nth-child(n+7){display:none}.completion{display:none}.toolbar{gap:4px}.toolbar button{font-size:10px}.toolbar button span{font-size:20px}.parking-heading b{font-size:11px}.section-title small{font-size:9px}}
+@media(max-height:580px) and (orientation:portrait){header{height:45px;min-height:45px}.terminal .queue-wrap{height:35px}.queue{height:37px}.person{height:30px;width:23px;min-width:23px}.bay{height:68px}.bay .bay-car{height:56px;width:29px;left:calc(50% - 14.5px)}.bay.long .bay-car{height:56px;width:23px;left:calc(50% - 11.5px)}.parking-heading{height:36px;min-height:36px}.message{height:32px;min-height:32px;max-height:32px;font-size:10px}.toolbar{height:50px}.scroll-cue{height:12px;min-height:12px;font-size:8px}}
+@media(orientation:landscape) and (max-height:500px){#app{max-width:1000px;display:grid;grid-template-columns:minmax(230px,36%) minmax(0,1fr);grid-template-rows:49px minmax(0,1fr) 36px 53px;gap:0}header{grid-column:1;grid-row:1;padding-left:5px;padding-right:5px}h1{font-size:10px}.brand-icon{display:none}.round{width:32px}.terminal{grid-column:1;grid-row:2;align-self:start}.message{grid-column:1;grid-row:3}.toolbar{grid-column:1;grid-row:4}.parking-section{grid-column:2;grid-row:1/5;margin-left:0}.parking-heading{height:40px;min-height:40px}.person{width:21px;min-width:21px}.queue{gap:2px}.queue .person:nth-child(n+6){display:none}.toolbar button{font-size:9px;gap:2px}.toolbar button span{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+/* Give the lot priority over decorative height. */
+.passengers .section-title{height:22px;min-height:22px}.queue-wrap{height:36px}.queue{height:38px}.person{height:32px}.walkway{height:7px}.stop .section-title{height:18px;min-height:18px}.bay{height:65px}.bay .bay-car{height:52px;width:27px;left:calc(50% - 13.5px)}.bay.long .bay-car{height:52px;width:21px;left:calc(50% - 10.5px)}.road{height:17px}
+/* 0.5: one continuous plaza, curb and parking scene. */
+:root{background:#aeb7c2;color:#344155}body{background:#aeb7c2}#app{background:#dce0e6;box-shadow:0 10px 70px #28384730}
+header{height:42px;min-height:42px;background:#dce0e6;color:#3f4b5c;padding:0 10px}.brand-icon{background:#fb8755;color:white;box-shadow:0 2px 0 #ad6044;border:1px solid #ffffff9c}.brand-icon>span{display:none}.brand{gap:8px}h1{letter-spacing:.6px;font-size:12px;font-weight:900}.round{color:#586778;border:0;background:transparent}#sound i{background:#586778}#level-menu{background:#eef1f5;color:#455467;height:34px;border-radius:10px;box-shadow:0 2px 0 #bfc6d0;min-width:54px}#level-menu span{color:#6c7b8d}#level-menu b{font-size:19px}
+.terminal{margin:0;border:0;border-radius:0;background:#cbd1da;box-shadow:none;position:relative}.passengers{padding:0 10px;background-color:#dce0e6;background-image:linear-gradient(#bdc5cf60 1px,transparent 1px),linear-gradient(90deg,#bdc5cf60 1px,transparent 1px);background-size:22px 22px}.passengers .section-title{height:20px;min-height:20px;font-size:10px;font-weight:700;color:#5b6878}.section-title small{font-size:9px;color:#75808c}.section-title button{font-size:10px;color:#546476;background:#f3f5f77a;border-radius:6px;min-height:22px;height:22px;padding:0 7px}.crowd-ground{position:relative;height:86px;margin:0 5px}.queue-track{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:visible}.queue-track path{fill:none;stroke-linecap:round;stroke-linejoin:round}.track-shadow{stroke:#6c788a;stroke-width:35;transform:translateY(2px)}.track-curb{stroke:#f6f7f8;stroke-width:33}#queue-route{stroke:#8b96a9;stroke-width:27}.queue{position:absolute;inset:0;height:100%;display:block;padding:0;overflow:visible}.queue .person:nth-child(n){display:flex}.queue .crowd-person{position:absolute;width:17px;min-width:17px;height:23px;transform:translate(-50%,-85%);filter:drop-shadow(1px 2px 1px #45536550)}.queue .crowd-person>svg{filter:none}.queue .crowd-person.mood-toilet{animation:none}.queue .crowd-person.mood-toilet>svg{animation:fidget .9s ease-in-out infinite}.queue .person:first-child:after{inset:-1px;border:2px solid #fff2af;background:#ffd8751a;border-radius:7px}.queue .person:first-child:before{content:'▼';position:absolute;top:-10px;color:#e77537;font-size:10px;left:50%;transform:translateX(-50%);text-shadow:0 1px white;z-index:2}.crowd-person .mood-bubble{top:-5px;font-size:6px;padding:1px 2px;box-shadow:0 1px 2px #0002}.queue-exit{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);padding:1px 5px;border-radius:3px;background:#eef1f5;color:#596879;font-size:6px;letter-spacing:1px;z-index:200;pointer-events:none}#queue-count{position:absolute;right:8px;top:0;background:#f3f5f7e6;color:#627384;padding:3px 5px;border-radius:7px;z-index:201;font-size:9px;min-width:0}.queue-progress{height:2px;margin:4px 0 0;background:#c1cbd53b}.queue-progress i{background:#929fb0}.queue .empty-queue{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;background:#eef1f5;padding:8px 12px;border-radius:9px;color:#637582;font-size:13px}
+.walkway{height:6px;border-top:1px solid #fff;border-bottom:2px solid #939eac;background:#d5dbe3}.walkway>span,.walkway i{display:none}.stop{padding:0 15px;background:#959dad;box-shadow:inset 0 1px #7a8698}.stop .section-title{height:16px;min-height:16px;font-size:9px;color:#edf0f4;letter-spacing:.4px}.stop #free-slots{font-size:9px;color:#edf0f4}.bays{gap:18px;max-width:350px;margin:auto}.bay{height:62px;border:2px solid #e6eaf2;border-bottom:0;border-radius:9px 9px 0 0;background:#8690a2;box-shadow:inset 2px 2px 0 #6b789c33}.slot-number{color:#d9e0eb50;font-size:23px}.bay.reserved{background:repeating-linear-gradient(135deg,#8e97a9 0 8px,#858fa2 8px 16px)}.bay .bay-car{filter:drop-shadow(1px 2px 1px #32425b44)}.fill-label{background:#59697e;color:#fff;font-size:9px;min-width:36px;border-radius:4px;bottom:0}.road{height:14px;background:#959dad;border-top:0;border-bottom:3px solid #f1f3f5;color:#e1e6ee}.road span{font-size:13px}.road i{height:1px;background:#c2cad7}
+.parking-section{margin:0 5px}.parking-heading{height:30px;min-height:30px;padding:0 4px;background:#dce0e6}.parking-heading b{font-size:10px;letter-spacing:.2px;color:#5e6b7c}.parking-heading small{display:none}.parking-heading .completion b{font-size:9px;color:#8b96a4}.parking-heading button{min-height:26px;height:26px;font-size:10px;border:0;background:#f5f6f7ab;border-radius:7px;color:#697788;padding:0 8px}.lot-viewport{border:0;border-radius:0;background:#dce0e6;scrollbar-color:#a0acba #dce0e6}.lot-world{background:#dce0e6}.lot-entry{height:20px;color:#8a97a6;letter-spacing:1px}.parking-sign{background:#8d9bad;border:1px solid #c9d1dc;color:#eef2f6;box-shadow:none;font-size:12px}.tree{color:#8aab72;filter:drop-shadow(2px 2px 0 #647c6855);background:#bfc8bd;border-radius:6px;padding:0 1px}.crosswalk{opacity:.65}.parking{background:#c3c9d2;box-shadow:inset 0 0 0 1px #a3aebc,inset 0 0 13px #8493a02b;border-radius:5px}.parking:before{opacity:.25}.parking:after{color:#93a3b12a}.parking-spot{border-color:#f1f4f757;border-radius:3px}.parking-spot span{color:#8797aa60;font-size:6px}.zone{display:none}.car{padding:1px}.car svg{filter:drop-shadow(1px 3px 1px #34496270);overflow:visible}.car:hover{filter:brightness(1.04)}.car.hinted:after{border:2px solid #f6a959;border-radius:6px}.car.obstacle{filter:drop-shadow(0 0 3px #d44424)}.lot-end{color:#93a0ad}.lot-end i{opacity:.75}.scroll-cue{font-size:8px;color:#909aa8;padding:1px 4px}
+.message{background:transparent;color:#637184;border-radius:0;font-size:10px;line-height:13px;padding:3px 7px}.message.notice{background:#ffe3c9;color:#864e29;border-radius:8px}.toolbar{background:#dce0e6;border-top:1px solid #b9c3d170;gap:7px;padding-left:9px;padding-right:9px}.toolbar button{border:1px solid #bcc7d3;border-bottom:3px solid #a9b5c4;border-radius:11px;background:linear-gradient(#f8fafc,#e9edf2);color:#6e7b8a;box-shadow:0 2px 4px #4d5f7310}.toolbar button:disabled{color:#a6b0bd}#hint{background:linear-gradient(#ffc778,#f3a861);border-color:#d69354;color:#7b4a1c}.toolbar button[data-speed="Hızlı"]{background:#d5e8df;border-color:#9cb7ac;color:#3e6b59}.jammed #undo{background:#ffd2a1;border-color:#d89761;color:#895129}
+.modal{background:#f1f3f6;color:#3b4a5e}.modal .primary{background:#ec9c59;border-color:#c87d41;color:#fff}.modal .secondary{background:#dfe5ec;color:#637284}.close{background:#e1e6ee;color:#65768a}.eyebrow{color:#8795a7}.queue-list{background:#dce2e9;border-color:#c3ccd7}.queue-list .person{width:26px;min-width:26px;height:37px}.queue-list .person:first-child{background:#fff2d0}.levels-grid button{background:#e0e5ed;border-color:#c2ccda;color:#617184}.levels-grid .current{outline-color:#ec9c59}.levels-grid .done{background:#d0dfd6}.stats>div{background:#dce4ec}
+@media(min-height:740px) and (orientation:portrait){.crowd-ground{height:115px}.queue .crowd-person{width:18px;min-width:18px;height:25px}.bays{max-width:380px}.bay{height:74px}.bay .bay-car{width:32px;height:62px;left:calc(50% - 16px)}.bay.long .bay-car{width:25px;height:62px;left:calc(50% - 12.5px)}}
+@media(max-height:580px) and (orientation:portrait){header{height:39px;min-height:39px}.crowd-ground{height:57px}.passengers .section-title{height:18px;min-height:18px}.queue .crowd-person{width:13px;min-width:13px;height:18px}.queue .person:first-child:before{font-size:7px;top:-7px}.crowd-person .mood-bubble{font-size:5px;top:-4px}.parking-heading{height:29px;min-height:29px}.bay{height:60px}}
+@media(orientation:landscape) and (max-height:500px){#app{grid-template-rows:42px minmax(0,1fr) 36px 53px}header{height:42px;min-height:42px}.crowd-ground{height:70px}.queue .crowd-person{width:13px;min-width:13px;height:19px}.terminal{margin:0 4px}.parking-section{margin:0 4px}.parking-heading{height:30px;min-height:30px}}
+.crowd-ground{overflow:hidden}.queue-track,.queue{top:14px;height:calc(100% - 14px)}.tree{font-size:0;width:17px;height:17px;display:inline-block;border-radius:50%;padding:0;background:radial-gradient(circle at 32% 25%,#b0c68b 0 25%,#92ad70 45%,#748e5b 80%);box-shadow:2px 3px 0 #5f73603b;border:2px solid #c9d1c4;filter:none}.lot-end .tree{font-size:0;width:12px;height:12px}.parking-heading b{color:#536276}.message{color:#596c82}
+.queue-track,.queue{height:calc(100% - 18px)}
+
+/* 0.5.2: a continuous, single-file crowd with visible spacing between lanes. */
+.passengers .section-title{height:25px;min-height:25px;font-size:11px;color:#344155}.passengers .section-title button{font-size:11px;min-height:25px;height:25px}
+.crowd-ground{--queue-rows:3;--crowd-height:24px;position:relative;height:104px;margin:0 2px;overflow:hidden}
+#queue-track{position:absolute;inset:0;width:100%;height:100%;overflow:visible}#queue-track path{fill:none;stroke-linecap:round;stroke-linejoin:round}.queue-rail-shadow{stroke:#748195;stroke-width:19;transform:translateY(2px)}.queue-rail{stroke:#f5f7fa;stroke-width:18}.queue-paving{stroke:#9ca8b9;stroke-width:14}.queue-flow{stroke:#fff;stroke-width:2}
+.queue{inset:0;height:100%;display:block;padding:0;overflow:visible}.queue-standing{position:absolute;transform:translate(-50%,-100%);width:calc(var(--crowd-height) * .7);height:var(--crowd-height);border:0;background:none;border-radius:0}
+.queue .person{position:relative;width:100%;min-width:0;height:100%;transform:none;filter:drop-shadow(1px 1px 0 #43516b30)}.queue .person:first-child:before,.queue .person:first-child:after{display:none}.queue .person.mood-toilet{animation:none}.queue .person.mood-toilet>svg{animation:fidget .9s ease-in-out infinite}
+.queue .queue-number{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:7px;line-height:10px;font-weight:700;color:#fff;text-shadow:0 1px #40536c}
+.queue .next-passenger:before{content:'';position:absolute;inset:-3px -5px -11px;border:2px solid #b6772d;background:#ffeac054;border-radius:13px;box-shadow:0 0 0 1px #fff8}.queue .next-passenger .queue-number{color:#5c3b0e;background:#ffdc91;border-radius:5px;min-width:15px;text-align:center;text-shadow:none;font-size:9px;font-weight:900}
+.queue .mood-bubble{top:0;left:50%;right:auto;transform:translateX(-50%);font-size:6px;padding:1px 2px;z-index:2}.queue-summary{display:flex;justify-content:space-between;align-items:center;height:17px;font-size:9px;color:#536276}#queue-count{position:static;background:none;padding:0;font-size:10px;z-index:auto}.queue-progress{margin-top:0}
+.queue-place{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0;border-radius:8px;border:1px solid #b8c2cf;background:#edf0f5;padding:2px 0}.queue-list .queue-number{font-size:12px;font-weight:800;line-height:17px;color:#536276}.queue-list .next-passenger{border:2px solid #a56523;background:#fff1d5}
+.queue-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:8px;max-height:45vh;overflow:auto}.queue-list .person{width:29px;min-width:29px;height:42px}.queue-list .person:first-child{background:none;outline:0}.queue-list .mood-bubble{display:none}.queue-list .person.mood-toilet{animation:none}.queue-list .person.mood-toilet>svg{animation:fidget .9s ease-in-out infinite}
+@media(min-height:740px) and (orientation:portrait){.crowd-ground{--crowd-height:30px;height:128px}}
+@media(max-height:580px) and (orientation:portrait){.crowd-ground{--queue-rows:2;--crowd-height:20px;height:58px}.queue-summary{height:12px;font-size:8px}#queue-count{font-size:9px}.passengers .section-title{height:21px;min-height:21px;font-size:10px}.passengers .section-title button{height:21px;min-height:21px;font-size:10px}.queue .queue-number{font-size:6px;line-height:9px}.queue .next-passenger .queue-number{font-size:8px}}
+@media(orientation:landscape) and (max-height:500px){.crowd-ground{--queue-rows:2;--crowd-height:23px;height:72px}.queue-summary{font-size:8px}#queue-count{font-size:9px}.passengers .section-title{font-size:10px}}
+
+</style></head>
+<body><noscript><div class="script-notice">Bu önizleme oyunu çalıştıramıyor. Dosyayı Chrome veya Samsung Internet ile aç.</div></noscript><main id="app">
+<header><div class="brand"><span class="brand-icon" aria-hidden="true">P<span>↗</span></span><h1>RENK DURAĞI</h1></div><button id="level-menu" aria-label="Bölüm seç"><span>BÖLÜM</span><b id="level-number">01</b><span>▾</span></button><div class="header-buttons"><button id="sound" class="round" aria-label="Ses aç">♪<i></i></button><button id="help" class="round" aria-label="Nasıl oynanır?">?</button></div></header>
+<div class="terminal">
+<section class="passengers"><div class="section-title"><span id="next-passenger-label">İlk yolcu · sıra →</span><button id="queue-info" aria-label="Yolcu sırasının tamamı">Tüm sıra ↗</button></div><div class="crowd-ground"><svg id="queue-track" aria-hidden="true"></svg><div id="queue" class="queue" role="list" aria-label="Biniş sırası, soldan sağa"></div></div><div class="queue-summary"><span id="queue-count"></span><span>↓ Biniş: sol alttaki 1 numara</span></div><div class="queue-progress"><i id="queue-progress"></i></div></section>
+<div class="walkway" aria-hidden="true"><span>YAYA YOLU</span><i></i><i></i><i></i></div>
+<section id="stop" class="stop"><div class="section-title"><span>Biniş peronu</span><span id="free-slots">3 yer boş</span></div><div id="bays" class="bays"></div></section>
+<div class="road" aria-hidden="true"><span>→</span><i></i><i></i><i></i><span>→</span></div>
+</div>
+<section class="parking-section"><div class="parking-heading"><div><b id="level-title"></b><small id="lot-count"></small></div><span class="completion"><b id="departed"></b></span><button id="overview" aria-label="Otoparkı yakınlaştır" aria-pressed="false">Yakınlaştır +</button></div><div id="lot-viewport" class="lot-viewport" tabindex="0" role="region" aria-label="Otopark, tamamı ekrana sığar"><div id="lot-world" class="lot-world"><div class="lot-entry" aria-hidden="true"><span class="parking-sign">P</span><span>ÇIKIŞ ↑</span><div class="crosswalk"></div><span class="tree">✦</span></div><div id="parking" class="parking"><div id="markings" aria-hidden="true"></div><div id="cars"></div></div><div id="exit-layer" class="exit-layer"></div><div class="lot-end" aria-hidden="true"><span>↓ ÇIKIŞ</span><i></i><span class="tree">✦</span></div></div></div><div class="scroll-cue"><span id="view-label">Parkın tamamı · araca dokun</span><span id="lot-position"></span></div></section>
+<div id="message" class="message" role="status" aria-live="polite"></div>
+<nav class="toolbar" aria-label="Oyun kontrolleri"><button id="undo" aria-label="Geri al"><span aria-hidden="true">↶</span>Geri al</button><button id="hint" aria-label="İpucu"><span aria-hidden="true">✦</span>İpucu</button><button id="speed" aria-label="Hareket hızı"><span>♧</span><small>Sakin</small></button><button id="restart" aria-label="Yeniden"><span aria-hidden="true">↻</span>Yeniden</button></nav>
+<footer><span>RENK DURAĞI · 0.5.2</span><span>Acele yok. Yol var.</span></footer>
+</main><div id="overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button id="close-modal" class="close" aria-label="Kapat">×</button><div id="modal-content"></div></section></div>
+<script>
+/* Pure parking rules. Animation completion is explicit; bays stay reserved. */
+(function(root){
+'use strict';
+const copy=value=>JSON.parse(JSON.stringify(value));
+function initial(level){return {parked:level.cars.map(c=>c.id),exiting:[],bays:[null,null,null],head:0,departed:[],moves:0};}
+function car(level,id){return level.cars.find(c=>c.id===id);}
+function blockers(level,state,id){
+ const a=car(level,id);if(!a||!state.parked.includes(id))return [];
+ return [...state.parked,...(state.exiting||[])].filter(other=>{
+  if(other===id)return false;const b=car(level,other);
+  if(a.dir==='N')return b.x<a.x+a.w&&b.x+b.w>a.x&&b.y+b.h<=a.y;
+  if(a.dir==='S')return b.x<a.x+a.w&&b.x+b.w>a.x&&b.y>=a.y+a.h;
+  if(a.dir==='W')return b.y<a.y+a.h&&b.y+b.h>a.y&&b.x+b.w<=a.x;
+  return b.y<a.y+a.h&&b.y+b.h>a.y&&b.x>=a.x+a.w;
+ }).sort((i,j)=>{const b=car(level,i),c=car(level,j);return a.dir==='N'?c.y-b.y:a.dir==='S'?b.y-c.y:a.dir==='W'?c.x-b.x:b.x-c.x;});
+}
+function settle(level,state,events=[]){
+ while(state.head<level.queue.length){
+  const color=level.queue[state.head],slot=nextBoard(level,state);
+  if(slot<0)break;
+  const b=state.bays[slot],v=car(level,b.id);b.filled++;
+  events.push({type:'board',id:b.id,slot,color,index:state.head++,filled:b.filled});
+  if(b.filled===v.capacity){state.bays[slot]=null;state.departed.push(v.id);events.push({type:'depart',id:v.id,slot});}
+ }
+ return events;
+}
+function step(level,previous,id){
+ if(!Number.isInteger(id)||!previous.parked.includes(id))return {ok:false,reason:'missing'};
+ const blockedBy=blockers(level,previous,id);if(blockedBy.length)return {ok:false,reason:'blocked',blockedBy};
+ const slot=previous.bays.indexOf(null);if(slot<0)return {ok:false,reason:'full'};
+ const state=copy(previous);state.parked=state.parked.filter(v=>v!==id);state.moves++;state.bays[slot]={id,filled:0,ticket:state.moves,phase:'waiting'};
+ const events=[{type:'move',id,slot}];settle(level,state,events);return {ok:true,state,events};
+}
+function won(level,state){return state.head===level.queue.length&&state.parked.length===0&&state.bays.every(b=>b===null);}
+function legal(level,state){return state.bays.includes(null)?state.parked.filter(id=>!blockers(level,state,id).length):[];}
+function active(level,state){return state.bays.some(b=>b&&['driving','leaving'].includes(b.phase))||nextBoard(level,state)>=0;}
+function deadlocked(level,state){return !won(level,state)&&!active(level,state)&&legal(level,state).length===0;}
+function key(s){return s.parked.join(',')+'|'+s.bays.map(b=>b?b.id+':'+b.filled+':'+b.ticket:'-').join(',')+'|'+s.head;}
+function nextBoard(level,state){
+ if(state.head>=level.queue.length)return -1;
+ const options=state.bays.map((b,slot)=>({b,slot})).filter(({b})=>b&&b.phase!=='leaving'&&b.filled<car(level,b.id).capacity&&car(level,b.id).color===level.queue[state.head]);
+ options.sort((a,b)=>a.b.ticket-b.b.ticket);
+ return options.length&&options[0].b.phase!=='driving'?options[0].slot:-1;
+}
+// Live commands are replayable. No passenger or bay is released before its animation ends.
+function transition(level,previous,action){
+ if(!action||typeof action.type!=='string')return {ok:false,reason:'action'};
+ const state=copy(previous),id=action.id,slot=state.bays.findIndex(b=>b&&b.id===id),bay=state.bays[slot];
+ if(action.type==='send'){
+  if(!Number.isInteger(id)||!state.parked.includes(id))return {ok:false,reason:'missing'};
+  const blockedBy=blockers(level,state,id);if(blockedBy.length)return {ok:false,reason:'blocked',blockedBy};
+  const free=state.bays.indexOf(null);if(free<0)return {ok:false,reason:'full'};
+  state.parked=state.parked.filter(n=>n!==id);state.exiting.push(id);state.moves++;
+  state.bays[free]={id,filled:0,ticket:state.moves,phase:'driving'};
+ }else if(action.type==='clear'){
+  if(!bay||bay.phase!=='driving'||!state.exiting.includes(id))return {ok:false,reason:'phase'};
+  state.exiting=state.exiting.filter(n=>n!==id);
+ }else if(action.type==='arrive'){
+  if(!bay||bay.phase!=='driving'||state.exiting.includes(id))return {ok:false,reason:'phase'};
+  bay.phase='waiting';
+ }else if(action.type==='board'){
+  if(slot<0||slot!==nextBoard(level,state))return {ok:false,reason:'queue'};
+  bay.filled++;state.head++;if(bay.filled===car(level,id).capacity)bay.phase='leaving';
+ }else if(action.type==='leave'){
+  if(!bay||bay.phase!=='leaving')return {ok:false,reason:'phase'};
+  state.bays[slot]=null;state.departed.push(id);
+ }else return {ok:false,reason:'action'};
+ return {ok:true,state};
+}
+function replay(level,log){let state=initial(level);if(!Array.isArray(log)||log.length>2000)throw Error('Invalid log');for(const action of log){const result=transition(level,state,action);if(!result.ok)throw Error('Invalid command');state=result.state;}return state;}
+function solve(level,start=initial(level),budget=150000){
+ if(level.solution){let state=copy(start),path=[];for(const id of level.solution){if(!state.parked.includes(id))continue;const r=step(level,state,id);if(!r.ok)break;state=r.state;path.push(id);}if(won(level,state))return {path,visited:path.length,exhausted:false};}
+ let visited=0,exhausted=false;const seen=new Set();
+ function visit(state){
+  if(won(level,state))return [];
+  const k=key(state);if(seen.has(k))return null;seen.add(k);
+  if(++visited>budget){exhausted=true;return null;}
+  const candidates=legal(level,state).map(id=>({id,r:step(level,state,id)}));candidates.sort((a,b)=>b.r.state.head-a.r.state.head);
+  for(const {id,r} of candidates){if(exhausted)break;const rest=visit(r.state);if(rest)return [id,...rest];}
+  return null;
+ }
+ const path=visit(copy(start));return {path,visited,exhausted};
+}
+function analyze(level,budget=200000){
+ // Exact probability for uniform random legal moves, not human difficulty.
+ const memo=new Map();let states=0,deadEnds=0,firstTrap=null;
+ function visit(s,path){
+  if(won(level,s))return 1;const k=key(s);if(memo.has(k))return memo.get(k);
+  if(++states>budget)throw Error('Analysis budget exceeded');
+  const options=legal(level,s);if(!options.length){deadEnds++;if(!firstTrap)firstTrap=path;memo.set(k,0);return 0;}
+  const probability=options.reduce((n,id)=>n+visit(step(level,s,id).state,[...path,id]),0)/options.length;
+  memo.set(k,probability);return probability;
+ }
+ const randomWin=visit(initial(level),[]);return {randomWin,states,deadEnds,trap:firstTrap};
+}
+function validate(level){
+ const errors=[],cells=new Set(),ids=new Set(),seats={},people={};
+ const width=level.width||level.size,height=level.height||level.size;
+ if(!Number.isInteger(width)||!Number.isInteger(height)||width<4||width>12||height<4||height>30)errors.push('size');
+ if(!Array.isArray(level.cars)||level.cars.length<1||level.cars.length>40)return ['cars'];
+ for(const c of level.cars){
+  if(!Number.isInteger(c.id)||ids.has(c.id))errors.push('id');ids.add(c.id);
+  if(!['N','S','E','W'].includes(c.dir))errors.push('direction');
+  if(!Number.isInteger(c.color)||c.color<0||c.color>3)errors.push('color');
+  if(!Number.isInteger(c.capacity)||c.capacity<2||c.capacity>6)errors.push('capacity');
+  if(![c.x,c.y,c.w,c.h].every(Number.isInteger)||c.w<1||c.h<1)errors.push('geometry');
+  if((c.dir==='N'||c.dir==='S')?(c.w!==1||![2,3].includes(c.h)):(c.h!==1||![2,3].includes(c.w)))errors.push('orientation');
+  for(let x=c.x;x<c.x+c.w;x++)for(let y=c.y;y<c.y+c.h;y++){
+   if(x<0||y<0||x>=width||y>=height)errors.push('bounds');const k=x+','+y;if(cells.has(k))errors.push('overlap');cells.add(k);
+  }
+  seats[c.color]=(seats[c.color]||0)+c.capacity;
+ }
+ if(!Array.isArray(level.queue))return [...errors,'queue'];
+ for(const color of level.queue)people[color]=(people[color]||0)+1;
+ for(const color of new Set([...Object.keys(seats),...Object.keys(people)]))if(seats[color]!==people[color])errors.push('passenger balance');
+ return errors;
+}
+const API={copy,initial,car,blockers,settle,step,won,legal,deadlocked,solve,analyze,validate,key,active,nextBoard,transition,replay};
+if(typeof module!=='undefined'&&module.exports)module.exports=API;else root.ParkingEngine=API;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(root){const levels=[
+  {
+    "id": 1,
+    "title": "Sabah buluşması",
+    "tip": "İlk yolcu kırmızı. Önce kırmızının önündeki mavi aracı çıkar.",
+    "width": 8,
+    "height": 8,
+    "cars": [
+      {
+        "id": 0,
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 2,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 4,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 7,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 2,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 5,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 6,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 0,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 0,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 3,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 0,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "solution": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7,
+      11,
+      10,
+      6,
+      8,
+      9,
+      5
+    ],
+    "trap": [
+      0,
+      2,
+      3
+    ],
+    "sampleWins": 15,
+    "sampleRuns": 160
+  },
+  {
+    "id": 2,
+    "title": "İlk yoğunluk",
+    "tip": "Üç durak yeri var. Sıradaki yolcu için bir yer ayır.",
+    "width": 8,
+    "height": 8,
+    "cars": [
+      {
+        "id": 0,
+        "x": 2,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 4,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 4,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 5,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 3,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 6,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 0,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 0,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 1,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 4,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      2,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "solution": [
+      2,
+      11,
+      8,
+      4,
+      3,
+      7,
+      6,
+      5,
+      10,
+      1,
+      0,
+      9
+    ],
+    "trap": [
+      2,
+      3,
+      11,
+      6,
+      5
+    ],
+    "sampleWins": 46,
+    "sampleRuns": 160
+  },
+  {
+    "id": 3,
+    "title": "Sahil otoparkı",
+    "tip": "Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.",
+    "width": 8,
+    "height": 8,
+    "cars": [
+      {
+        "id": 0,
+        "x": 7,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 5,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 5,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 2,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 5,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 6,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 6,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 6,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 0,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 0,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 3,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 7,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 5,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2,
+      0,
+      0,
+      2,
+      2,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      2,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "solution": [
+      0,
+      6,
+      3,
+      13,
+      8,
+      1,
+      2,
+      4,
+      12,
+      5,
+      9,
+      10,
+      7,
+      11
+    ],
+    "trap": [
+      2,
+      8,
+      1
+    ],
+    "sampleWins": 14,
+    "sampleRuns": 160
+  },
+  {
+    "id": 4,
+    "title": "Pazar kalabalığı",
+    "tip": "Araç dolmadan ayrılmaz. Sıranın devamına da bak.",
+    "width": 8,
+    "height": 8,
+    "cars": [
+      {
+        "id": 0,
+        "x": 6,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 7,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 6,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 6,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 5,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 2,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 2,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 1,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 6,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 1,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 3,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 3,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 4,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 3,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2
+    ],
+    "solution": [
+      0,
+      4,
+      2,
+      3,
+      8,
+      5,
+      13,
+      1,
+      9,
+      7,
+      10,
+      6,
+      11,
+      12
+    ],
+    "trap": [
+      0,
+      9,
+      2
+    ],
+    "sampleWins": 14,
+    "sampleRuns": 160
+  },
+  {
+    "id": 5,
+    "title": "Bir yer ayır",
+    "tip": "Her açık yolu hemen kullanmak zorunda değilsin.",
+    "width": 8,
+    "height": 8,
+    "cars": [
+      {
+        "id": 0,
+        "x": 0,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 6,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 3,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 2,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 4,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 4,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 2,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 2,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 1,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 6,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 7,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 3,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 6,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 6,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 4,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      0,
+      2,
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "solution": [
+      0,
+      8,
+      1,
+      14,
+      12,
+      11,
+      2,
+      15,
+      9,
+      3,
+      13,
+      6,
+      10,
+      7,
+      5,
+      4
+    ],
+    "trap": [
+      0,
+      11,
+      1,
+      3,
+      6
+    ],
+    "sampleWins": 11,
+    "sampleRuns": 160
+  },
+  {
+    "id": 6,
+    "title": "Minibüs geliyor",
+    "tip": "Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.",
+    "width": 8,
+    "height": 8,
+    "cars": [
+      {
+        "id": 0,
+        "x": 1,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 1,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 5,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 3,
+        "y": 2,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 4,
+        "x": 5,
+        "y": 4,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 5,
+        "x": 4,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 3,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 3,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 1,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 2,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 1,
+        "y": 4,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 11,
+        "x": 5,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 0,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 5,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 5,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 4,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1
+    ],
+    "solution": [
+      2,
+      13,
+      12,
+      4,
+      8,
+      3,
+      7,
+      1,
+      15,
+      9,
+      0,
+      6,
+      5,
+      11,
+      10,
+      14
+    ],
+    "trap": [
+      12,
+      8,
+      3
+    ],
+    "sampleWins": 1,
+    "sampleRuns": 160
+  },
+  {
+    "id": 7,
+    "title": "İki sıra sonrası",
+    "tip": "İlk yolcu kırmızı. Önce kırmızının önündeki mavi aracı çıkar.",
+    "width": 8,
+    "height": 9,
+    "cars": [
+      {
+        "id": 0,
+        "x": 3,
+        "y": 2,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 1,
+        "x": 4,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 0,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 3,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 0,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 3,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 5,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 5,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 6,
+        "y": 3,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 9,
+        "x": 4,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 1,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 1,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 0,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 6,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 7,
+        "y": 1,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 15,
+        "x": 3,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 5,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 7,
+        "y": 6,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 2,
+        "capacity": 6
+      }
+    ],
+    "queue": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      2,
+      0,
+      1,
+      2,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      2,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "solution": [
+      3,
+      10,
+      2,
+      17,
+      5,
+      9,
+      13,
+      14,
+      16,
+      8,
+      0,
+      15,
+      1,
+      11,
+      6,
+      7,
+      4,
+      12
+    ],
+    "trap": [
+      2,
+      10,
+      13
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 8,
+    "title": "Çıkışa doğru",
+    "tip": "Üç durak yeri var. Sıradaki yolcu için bir yer ayır.",
+    "width": 8,
+    "height": 9,
+    "cars": [
+      {
+        "id": 0,
+        "x": 2,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 0,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 2,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 0,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 5,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 3,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 4,
+        "y": 6,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 7,
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 4,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 2,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 6,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 1,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 2,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 7,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 0,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 5,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 6,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 0,
+        "y": 7,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 6
+      }
+    ],
+    "queue": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "solution": [
+      16,
+      3,
+      14,
+      11,
+      15,
+      1,
+      5,
+      13,
+      8,
+      6,
+      4,
+      9,
+      17,
+      7,
+      2,
+      0,
+      12,
+      10
+    ],
+    "trap": [
+      14,
+      5,
+      16
+    ],
+    "sampleWins": 37,
+    "sampleRuns": 160
+  },
+  {
+    "id": 9,
+    "title": "Morun sırası",
+    "tip": "Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.",
+    "width": 8,
+    "height": 9,
+    "cars": [
+      {
+        "id": 0,
+        "x": 6,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 0,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 7,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 4,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 2,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 7,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 6,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 4,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 0,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 10,
+        "x": 6,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 5,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 6,
+        "y": 5,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 14,
+        "x": 3,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 0,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 3,
+        "y": 3,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 17,
+        "x": 6,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 2,
+        "y": 5,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 19,
+        "x": 0,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      3,
+      0,
+      3,
+      3,
+      0,
+      0,
+      3,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      0,
+      3,
+      3,
+      0,
+      0,
+      3,
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      3,
+      2,
+      2,
+      3,
+      3,
+      2,
+      2,
+      3
+    ],
+    "solution": [
+      4,
+      19,
+      14,
+      10,
+      8,
+      11,
+      18,
+      12,
+      0,
+      1,
+      9,
+      16,
+      15,
+      3,
+      17,
+      6,
+      13,
+      5,
+      2,
+      7
+    ],
+    "trap": [
+      0,
+      19,
+      5,
+      2,
+      18,
+      11
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 10,
+    "title": "Akşamüstü",
+    "tip": "Araç dolmadan ayrılmaz. Sıranın devamına da bak.",
+    "width": 8,
+    "height": 9,
+    "cars": [
+      {
+        "id": 0,
+        "x": 5,
+        "y": 4,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 1,
+        "x": 1,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 1,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 1,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 4,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 5,
+        "y": 5,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 6,
+        "x": 3,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 0,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 1,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 5,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 0,
+        "y": 4,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 11,
+        "x": 7,
+        "y": 5,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 12,
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 13,
+        "x": 0,
+        "y": 8,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 14,
+        "x": 6,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 4,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 4,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 2,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 6,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 4,
+        "y": 1,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 6
+      }
+    ],
+    "queue": [
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      3,
+      3,
+      3,
+      1,
+      3,
+      1,
+      1,
+      1,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      3,
+      2,
+      3,
+      3,
+      2,
+      3,
+      3,
+      3,
+      0,
+      3,
+      3,
+      0,
+      0,
+      0,
+      3,
+      3,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      3,
+      2,
+      3,
+      2,
+      3,
+      2,
+      2,
+      3,
+      0,
+      0,
+      3,
+      3,
+      3,
+      0,
+      0,
+      3
+    ],
+    "solution": [
+      0,
+      10,
+      2,
+      12,
+      9,
+      4,
+      13,
+      19,
+      5,
+      17,
+      18,
+      11,
+      8,
+      3,
+      1,
+      14,
+      6,
+      15,
+      7,
+      16
+    ],
+    "trap": [
+      9,
+      5,
+      18
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 11,
+    "title": "Uzun kuyruk",
+    "tip": "Her açık yolu hemen kullanmak zorunda değilsin.",
+    "width": 8,
+    "height": 9,
+    "cars": [
+      {
+        "id": 0,
+        "x": 2,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 3,
+        "y": 8,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 2,
+        "x": 3,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 2,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 5,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 7,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 0,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 5,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 6,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 6,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 12,
+        "x": 0,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 3,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 2,
+        "y": 1,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 15,
+        "x": 4,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 6,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 3,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 0,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 5,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 3,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 0,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      3,
+      3,
+      3,
+      1,
+      1,
+      3,
+      3,
+      3,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      3,
+      0,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      3,
+      2,
+      3,
+      3,
+      3,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "solution": [
+      18,
+      14,
+      11,
+      17,
+      12,
+      7,
+      9,
+      10,
+      8,
+      21,
+      6,
+      16,
+      0,
+      13,
+      4,
+      20,
+      1,
+      5,
+      19,
+      2,
+      3,
+      15
+    ],
+    "trap": [
+      9,
+      10,
+      18,
+      12,
+      6
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 12,
+    "title": "Yol arkadaşları",
+    "tip": "Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.",
+    "width": 8,
+    "height": 9,
+    "cars": [
+      {
+        "id": 0,
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 2,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 4,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 0,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 5,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 2,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 5,
+        "y": 1,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 7,
+        "x": 6,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 6,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 2,
+        "y": 8,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 10,
+        "x": 2,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 3,
+        "y": 1,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 12,
+        "x": 5,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 6,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 2,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 1,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 3,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 4,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 6,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 5,
+        "y": 3,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 1,
+        "capacity": 6
+      }
+    ],
+    "queue": [
+      3,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0,
+      3,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      3,
+      3,
+      0,
+      3,
+      0,
+      3,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      2,
+      3,
+      3,
+      2,
+      3,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "solution": [
+      16,
+      3,
+      9,
+      2,
+      1,
+      13,
+      4,
+      5,
+      8,
+      7,
+      12,
+      21,
+      14,
+      17,
+      20,
+      6,
+      0,
+      18,
+      19,
+      10,
+      11,
+      15
+    ],
+    "trap": [
+      16,
+      14,
+      3,
+      9,
+      2,
+      6,
+      17,
+      20
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 13,
+    "title": "Dolu otopark",
+    "tip": "İlk yolcu kırmızı. Önce kırmızının önündeki mavi aracı çıkar.",
+    "width": 9,
+    "height": 10,
+    "cars": [
+      {
+        "id": 0,
+        "x": 6,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 4,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 1,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 6,
+        "y": 0,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 4,
+        "x": 1,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 5,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 2,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 2,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 8,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 2,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 2,
+        "y": 2,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 12,
+        "x": 8,
+        "y": 8,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 4,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 7,
+        "y": 8,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 7,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 3,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 3,
+        "y": 5,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 18,
+        "x": 1,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 5,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 5,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 22,
+        "x": 6,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 23,
+        "x": 1,
+        "y": 9,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      3,
+      3,
+      2,
+      3,
+      3,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      3,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "solution": [
+      23,
+      6,
+      11,
+      3,
+      4,
+      22,
+      15,
+      12,
+      1,
+      0,
+      5,
+      10,
+      2,
+      18,
+      20,
+      14,
+      19,
+      7,
+      8,
+      9,
+      21,
+      17,
+      16,
+      13
+    ],
+    "trap": [
+      5,
+      12,
+      3
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 14,
+    "title": "Biraz sabır",
+    "tip": "Üç durak yeri var. Sıradaki yolcu için bir yer ayır.",
+    "width": 9,
+    "height": 10,
+    "cars": [
+      {
+        "id": 0,
+        "x": 1,
+        "y": 9,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 1,
+        "x": 4,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 1,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 5,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 1,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 4,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 6,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 7,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 7,
+        "y": 8,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 8,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 2,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 3,
+        "y": 2,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 12,
+        "x": 1,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 5,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 0,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 0,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 3,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 8,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 4,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 1,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 6,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 22,
+        "x": 7,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 23,
+        "x": 5,
+        "y": 5,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 6
+      }
+    ],
+    "queue": [
+      2,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      3,
+      1,
+      1,
+      1,
+      3,
+      3,
+      1,
+      3,
+      1,
+      1,
+      3,
+      1,
+      3,
+      3,
+      1,
+      3,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      0,
+      3,
+      3,
+      0,
+      0,
+      2,
+      3,
+      2,
+      3,
+      3,
+      2,
+      3,
+      2,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      3,
+      1,
+      3,
+      3,
+      1,
+      3,
+      3,
+      1,
+      1,
+      3
+    ],
+    "solution": [
+      2,
+      3,
+      5,
+      15,
+      19,
+      1,
+      9,
+      18,
+      8,
+      16,
+      11,
+      0,
+      7,
+      10,
+      6,
+      20,
+      14,
+      17,
+      4,
+      21,
+      22,
+      12,
+      23,
+      13
+    ],
+    "trap": [
+      15,
+      10,
+      8,
+      0,
+      14
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 15,
+    "title": "Düğüm çözülüyor",
+    "tip": "Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.",
+    "width": 9,
+    "height": 10,
+    "cars": [
+      {
+        "id": 0,
+        "x": 5,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 2,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 4,
+        "y": 6,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 4,
+        "x": 2,
+        "y": 7,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 5,
+        "x": 8,
+        "y": 0,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 6,
+        "x": 6,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 7,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 3,
+        "y": 3,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 9,
+        "x": 5,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 2,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 0,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 1,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 5,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 0,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 6,
+        "y": 8,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 16,
+        "x": 4,
+        "y": 4,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 17,
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 4,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 7,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 3,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 0,
+        "y": 8,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 22,
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 23,
+        "x": 2,
+        "y": 9,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 24,
+        "x": 0,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 25,
+        "x": 0,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      3,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      3,
+      0,
+      3,
+      0,
+      3,
+      3,
+      0,
+      0,
+      3,
+      0,
+      0,
+      3,
+      0,
+      3,
+      3,
+      3,
+      0,
+      0,
+      3,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      3,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0
+    ],
+    "solution": [
+      18,
+      22,
+      19,
+      15,
+      23,
+      16,
+      21,
+      14,
+      3,
+      4,
+      7,
+      24,
+      5,
+      0,
+      10,
+      12,
+      20,
+      11,
+      13,
+      1,
+      6,
+      25,
+      2,
+      17,
+      8,
+      9
+    ],
+    "trap": [
+      18,
+      22,
+      21,
+      19,
+      23,
+      5,
+      14
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 16,
+    "title": "Şehir hareketli",
+    "tip": "Araç dolmadan ayrılmaz. Sıranın devamına da bak.",
+    "width": 9,
+    "height": 10,
+    "cars": [
+      {
+        "id": 0,
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 7,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 3,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 5,
+        "y": 1,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 4,
+        "x": 0,
+        "y": 6,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 5,
+        "x": 0,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 2,
+        "y": 0,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 7,
+        "x": 7,
+        "y": 3,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 3,
+        "y": 9,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 5,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 3,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 11,
+        "x": 0,
+        "y": 7,
+        "w": 1,
+        "h": 3,
+        "dir": "S",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 12,
+        "x": 7,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 4,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 8,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 0,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 3,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 2,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 1,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 2,
+        "y": 8,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 6,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 5,
+        "y": 9,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 22,
+        "x": 4,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 23,
+        "x": 1,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 24,
+        "x": 8,
+        "y": 7,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 25,
+        "x": 4,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      1,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      2,
+      3,
+      2,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      1,
+      1,
+      3,
+      3,
+      3,
+      1,
+      3,
+      3,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      3,
+      0,
+      3,
+      0,
+      3,
+      0,
+      0,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      1,
+      3,
+      1,
+      1,
+      3,
+      1,
+      3,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      2,
+      1
+    ],
+    "solution": [
+      14,
+      1,
+      12,
+      17,
+      6,
+      23,
+      19,
+      11,
+      5,
+      3,
+      4,
+      20,
+      25,
+      16,
+      15,
+      0,
+      18,
+      2,
+      9,
+      7,
+      24,
+      22,
+      21,
+      8,
+      10,
+      13
+    ],
+    "trap": [
+      17,
+      1,
+      4
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  },
+  {
+    "id": 17,
+    "title": "Son birkaç hamle",
+    "tip": "Her açık yolu hemen kullanmak zorunda değilsin.",
+    "width": 9,
+    "height": 10,
+    "cars": [
+      {
+        "id": 0,
+        "x": 2,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 1,
+        "x": 5,
+        "y": 9,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 2,
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 3,
+        "x": 0,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 3,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 8,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 5,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 5,
+        "y": 8,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 6
+      },
+      {
+        "id": 8,
+        "x": 1,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 2,
+        "y": 0,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 10,
+        "x": 1,
+        "y": 2,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 11,
+        "x": 8,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 7,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 2,
+        "y": 5,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 14,
+        "x": 7,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 2,
+        "y": 9,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 6,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 6,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 2,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 4,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 4,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 4,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 22,
+        "x": 1,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 23,
+        "x": 3,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 24,
+        "x": 6,
+        "y": 2,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 25,
+        "x": 5,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 26,
+        "x": 3,
+        "y": 8,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 27,
+        "x": 5,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      3,
+      3,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      3,
+      2,
+      2,
+      3,
+      3,
+      2,
+      3,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      3,
+      0,
+      3,
+      2,
+      3,
+      2,
+      2,
+      3,
+      2,
+      3,
+      2,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      2,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      2,
+      3,
+      3,
+      3,
+      2,
+      3,
+      2,
+      2,
+      3,
+      3,
+      0,
+      3,
+      0,
+      3,
+      0,
+      0,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2
+    ],
+    "solution": [
+      5,
+      1,
+      16,
+      0,
+      7,
+      2,
+      10,
+      15,
+      3,
+      8,
+      19,
+      18,
+      25,
+      22,
+      26,
+      20,
+      4,
+      13,
+      23,
+      6,
+      27,
+      12,
+      11,
+      9,
+      21,
+      17,
+      24,
+      14
+    ],
+    "trap": [
+      10,
+      15,
+      5,
+      7
+    ],
+    "sampleWins": 2,
+    "sampleRuns": 160
+  },
+  {
+    "id": 18,
+    "title": "Büyük buluşma",
+    "tip": "Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.",
+    "width": 9,
+    "height": 10,
+    "cars": [
+      {
+        "id": 0,
+        "x": 4,
+        "y": 9,
+        "w": 3,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 6
+      },
+      {
+        "id": 1,
+        "x": 2,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 2,
+        "x": 0,
+        "y": 5,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 3,
+        "x": 8,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 4,
+        "x": 5,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 5,
+        "x": 2,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 6,
+        "x": 1,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 7,
+        "x": 4,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 8,
+        "x": 0,
+        "y": 1,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 9,
+        "x": 1,
+        "y": 4,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 10,
+        "x": 0,
+        "y": 9,
+        "w": 3,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 6
+      },
+      {
+        "id": 11,
+        "x": 4,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 12,
+        "x": 7,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 13,
+        "x": 7,
+        "y": 2,
+        "w": 1,
+        "h": 3,
+        "dir": "N",
+        "color": 1,
+        "capacity": 6
+      },
+      {
+        "id": 14,
+        "x": 6,
+        "y": 1,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 15,
+        "x": 5,
+        "y": 0,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 16,
+        "x": 2,
+        "y": 4,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 17,
+        "x": 2,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 18,
+        "x": 4,
+        "y": 6,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 19,
+        "x": 6,
+        "y": 7,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 20,
+        "x": 7,
+        "y": 9,
+        "w": 2,
+        "h": 1,
+        "dir": "E",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 21,
+        "x": 2,
+        "y": 2,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 22,
+        "x": 7,
+        "y": 6,
+        "w": 1,
+        "h": 2,
+        "dir": "N",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 23,
+        "x": 8,
+        "y": 3,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 3,
+        "capacity": 4
+      },
+      {
+        "id": 24,
+        "x": 3,
+        "y": 8,
+        "w": 1,
+        "h": 2,
+        "dir": "S",
+        "color": 0,
+        "capacity": 4
+      },
+      {
+        "id": 25,
+        "x": 0,
+        "y": 0,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 1,
+        "capacity": 4
+      },
+      {
+        "id": 26,
+        "x": 2,
+        "y": 5,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 2,
+        "capacity": 4
+      },
+      {
+        "id": 27,
+        "x": 4,
+        "y": 7,
+        "w": 2,
+        "h": 1,
+        "dir": "W",
+        "color": 3,
+        "capacity": 4
+      }
+    ],
+    "queue": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1,
+      3,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      2,
+      2,
+      2,
+      1,
+      2,
+      3,
+      1,
+      3,
+      1,
+      3,
+      1,
+      3,
+      1,
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      1,
+      1,
+      3,
+      1,
+      3,
+      1,
+      3,
+      3,
+      1,
+      3,
+      1,
+      1,
+      1,
+      3,
+      3,
+      3,
+      1,
+      1,
+      3,
+      1,
+      1,
+      3,
+      3,
+      1,
+      1,
+      3,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      3,
+      3,
+      0,
+      0,
+      0,
+      3,
+      0,
+      3,
+      3,
+      3,
+      0,
+      0,
+      0,
+      3,
+      0,
+      3,
+      0,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "solution": [
+      8,
+      24,
+      15,
+      5,
+      10,
+      25,
+      7,
+      1,
+      2,
+      12,
+      20,
+      6,
+      3,
+      17,
+      23,
+      13,
+      27,
+      9,
+      16,
+      26,
+      4,
+      11,
+      0,
+      19,
+      22,
+      18,
+      14,
+      21
+    ],
+    "trap": [
+      20,
+      24,
+      25,
+      8,
+      5
+    ],
+    "sampleWins": 0,
+    "sampleRuns": 160
+  }
+];if(typeof module!=='undefined'&&module.exports)module.exports=levels;else root.PARKING_LEVELS=levels;})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(){
+'use strict';
+const E=window.ParkingEngine,levels=window.PARKING_LEVELS,$=id=>document.getElementById(id),params=new URLSearchParams(location.search);
+const KEY='renk-parking-v041',names=['Kırmızı','Mavi','Sarı','Mor'],colors=['#ff5063','#4295ff','#ffcc43','#a174ff'],angles={N:0,E:90,S:180,W:270},directions={N:'yukarı',E:'sağa',S:'aşağı',W:'sola'};
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches,testMode=params.has('test'),fast=testMode&&!params.has('motion');
+let index=0,state,log=[],completed=[],seen=false,speed=1,sound=false,epoch=0,boarding=false,focused=null,audioContext,queueHead=-1,levelStarted=Date.now(),moodOffset=0,roadTail=Promise.resolve();
+let zoomed=false,layoutFrame=0,svgSerial=0;
+const speedModes=[{value:1,label:'Sakin',icon:'◷'},{value:1.3,label:'Normal',icon:'▷'},{value:2,label:'Hızlı',icon:'»'}];
+const animations=new Set(),departures=new Set(),level=()=>levels[index],duration=n=>fast||reduced?1:n;
+function shape(c,fill='white'){const forms=[`<circle cx="12" cy="12" r="7" fill="${fill}"/>`,`<path d="m12 2 10 10-10 10L2 12Z" fill="${fill}"/>`,`<path d="m12 3 10 18H2Z" fill="${fill}"/>`,`<path d="M9 2h6v7h7v6h-7v7H9v-7H2V9h7Z" fill="${fill}"/>`];return `<svg viewBox="0 0 24 24" aria-hidden="true">${forms[c]}</svg>`;}
+function person(color,id=0){const skin=['#f3c6a3','#a96749','#d49974','#f6d5ba'][id%4],hair=['#392b34','#60434a','#342e41','#a57851'][id%4];return `<span class="person" data-person="${id}" data-color="${color}" aria-label="${names[color]} yolcu" style="--delay:-${id%7*.4}s"><svg viewBox="0 0 32 46" aria-hidden="true"><ellipse cx="16" cy="43" rx="11" ry="2.5" fill="#12244420"/><path class="leg-left" d="M12 32v8l-3 1" fill="none" stroke="#2c385c" stroke-width="4.5" stroke-linecap="round"/><path class="leg-right" d="M21 32v8l3 1" fill="none" stroke="#2c385c" stroke-width="4.5" stroke-linecap="round"/><g class="body"><path d="M8 23q0-6 8-6t8 6v11H8Z" fill="${colors[color]}" stroke="#152b4e24"/><path class="arm" d="m9 22-4 9" stroke="${colors[color]}" stroke-width="5" stroke-linecap="round"/><path d="m23 22 4 9" stroke="${colors[color]}" stroke-width="5" stroke-linecap="round"/><circle cx="5" cy="32" r="2.5" fill="${skin}"/><circle cx="27" cy="32" r="2.5" fill="${skin}"/><g class="head"><ellipse cx="16" cy="12" rx="8" ry="9" fill="${skin}"/><path d="M8 12Q5 2 15 2q12-1 10 11l-4-6q-4 3-9 1Z" fill="${hair}"/><circle cx="13" cy="12" r="1" fill="#342e41"/><circle cx="20" cy="12" r="1" fill="#342e41"/><path d="M14 16q2 2 4 0" fill="none" stroke="#975e55" stroke-width="1"/></g><svg x="11" y="23" width="11" height="11" viewBox="0 0 24 24">${shape(color,color===2?'#584718':'white').replace(/^<svg[^>]*>|<\/svg>$/g,'')}</svg></g></svg><i class="mood-bubble" hidden></i></span>`;}
+function carSvg(c,dir=c.dir,filled=0,parked=false){
+ const uid='vehicle-'+(++svgSerial),paint=colors[c.color];
+ const h=c.capacity===6?136:102,angle=angles[dir],horizontal='EW'.includes(dir),vw=horizontal?h:52,vh=horizontal?52:h;
+ const seats=Array.from({length:c.capacity},(_,i)=>{const x=i%2?29:13,y=41+Math.floor(i/2)*20;return `<g data-seat="${i}"><rect x="${x-2}" y="${y-3}" width="14" height="17" rx="4" fill="${i<filled?'#d1d6e7':'#c3cee6'}" stroke="#18294b" stroke-width="1.4"/><path d="M${x} ${y+9}h9" stroke="#e6eeff" stroke-width="2"/>${i<filled?`<ellipse cx="${x+5}" cy="${y+4}" rx="5.2" ry="6.5" fill="${colors[c.color]}"/><circle cx="${x+5}" cy="${y+1}" r="4.6" fill="#efb893"/><path d="M${x+1} ${y}q4-6 8 0" stroke="#453444" stroke-width="2.5" fill="none"/>`:''}</g>`;}).join('');
+ const roof=parked?`<g class="vehicle-roof"><rect x="10" y="38" width="32" height="${h-61}" rx="7" fill="${paint}"/><rect x="10" y="38" width="32" height="${h-61}" rx="7" fill="url(#${uid}-light)"/><path d="M12 42v${h-73}" stroke="#ffffff80" stroke-width="2"/><path class="direction-arrow" d="M26 ${h/2-12} 14 ${h/2+1}h7v18h10V${h/2+1}h7Z" fill="white" stroke="#14213a60" stroke-width="1" stroke-linejoin="round"/><path d="M11 ${h-24}h30l-3 8H14Z" fill="#22394f"/><path d="M15 ${h-22}h19" stroke="#8fc8e0" stroke-width="2"/></g>`:'';
+ return `<svg viewBox="0 0 ${vw} ${vh}" aria-hidden="true"><defs><linearGradient id="${uid}-light" x1="0" x2="1" y1="0" y2=".3"><stop stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="#fff" stop-opacity=".07"/><stop offset=".7" stop-color="#14213a" stop-opacity=".07"/><stop offset="1" stop-color="#14213a" stop-opacity=".4"/></linearGradient></defs><g transform="translate(${vw/2} ${vh/2}) rotate(${angle}) translate(-26 ${-h/2})"><rect x="0" y="23" width="9" height="19" rx="3" fill="#101b32"/><rect x="43" y="23" width="9" height="19" rx="3" fill="#101b32"/><rect x="0" y="${h-32}" width="9" height="18" rx="3" fill="#101b32"/><rect x="43" y="${h-32}" width="9" height="18" rx="3" fill="#101b32"/><rect x="6" y="6" width="44" height="${h-6}" rx="11" fill="#233049"/><rect x="4" y="2" width="44" height="${h-7}" rx="11" fill="${colors[c.color]}" stroke="#ffffff50" stroke-width="1"/><rect x="4" y="2" width="44" height="${h-7}" rx="11" fill="url(#${uid}-light)"/><path d="M9 17v${h-34}" stroke="#ffffff40" stroke-width="3" stroke-linecap="round"/><rect x="10" y="6" width="8" height="4" rx="2" fill="#fff9cf"/><rect x="34" y="6" width="8" height="4" rx="2" fill="#fff9cf"/>${parked?'':`<path d="m21 21 5-6 5 6m-5-6v12" stroke="${c.color===2?'#755b20':'white'}" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`}<rect x="9" y="32" width="34" height="${h-46}" rx="7" fill="#24324f"/><path d="M9 31h34l-3 6H12Z" fill="#a6e0f2"/><path d="M14 32h24" stroke="#e6fbff" stroke-width="2"/>${parked?roof:seats}<path d="M12 ${h-9}h7m14 0h7" stroke="#b82744" stroke-width="3" stroke-linecap="round"/><svg x="21" y="${h-18}" width="10" height="10" viewBox="0 0 24 24">${shape(c.color,c.color===2?'#6a5015':'#fff').replace(/^<svg[^>]*>|<\/svg>$/g,'')}</svg></g></svg>`;
+}
+function message(text,notice=false){$('message').textContent=text;$('message').classList.toggle('notice',notice);}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({version:4,index,log,completed,seen,speed,sound}));}catch(_){}}
+function act(action,paint=true){const r=E.transition(level(),state,action);if(!r.ok)return r;state=r.state;log.push(action);save();if(paint)render();return r;}
+function finishInstant(){
+ for(const b of [...state.bays].filter(Boolean)){if(b.phase==='driving'){if(state.exiting.includes(b.id))act({type:'clear',id:b.id},false);act({type:'arrive',id:b.id},false);}else if(b.phase==='leaving')act({type:'leave',id:b.id},false);}
+ let slot;while((slot=E.nextBoard(level(),state))>=0){const id=state.bays[slot].id;act({type:'board',id},false);if(state.bays[slot]?.phase==='leaving')act({type:'leave',id},false);}
+}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(!d||d.version!==4)return;if(Number.isInteger(d.index)&&d.index>=0&&d.index<levels.length)index=d.index;state=E.replay(level(),d.log);log=d.log;seen=d.seen===true;speed=speedModes.some(m=>m.value===d.speed)?d.speed:1;sound=d.sound===true;completed=levels.map((_,i)=>d.completed?.[i]===true);finishInstant();}catch(_){log=[];state=E.initial(level());}}
+function layoutLot(){const l=level();zoomed=false;$('markings').innerHTML=l.cars.map(c=>`<div class="parking-spot ${c.dir}" style="left:${c.x/l.width*100}%;top:${c.y/l.height*100}%;width:${c.w/l.width*100}%;height:${c.h/l.height*100}%"><span>${String(c.id+1).padStart(2,'0')}</span></div>`).join('')+Array.from({length:Math.ceil(l.height/4)},(_,i)=>`<span class="zone" style="top:${i*4/l.height*100+2}%">${String.fromCharCode(65+i)} BLOK</span>`).join('');$('lot-viewport').scrollTop=0;$('lot-viewport').scrollLeft=0;queueHead=-1;fitLot();}
+// Use the visual viewport, not a height breakpoint; browser bars can change it.
+function fitLot(){
+ const v=$('lot-viewport'),l=level();if(!v.clientWidth||!v.clientHeight)return;
+ const fit=Math.max(8,Math.min((v.clientWidth-18)/l.width,(v.clientHeight-36)/l.height,46));
+ const cell=zoomed?Math.max(44,fit*1.45):fit,w=Math.floor(cell*l.width),h=Math.floor(cell*l.height);
+ $('parking').style.width=w+'px';$('parking').style.height=h+'px';$('lot-world').style.width=w+'px';
+ $('overview').textContent=zoomed?'Tüm park −':'Yakınlaştır +';$('overview').setAttribute('aria-label',zoomed?'Otoparkın tamamını göster':'Otoparkı yakınlaştır');$('overview').setAttribute('aria-pressed',String(zoomed));
+ $('view-label').textContent=zoomed?'Yakın görünüm · iki yönde kaydır':'Parkın tamamı · araca dokun';$('lot-position').textContent='';
+ v.setAttribute('aria-label',zoomed?'Yakın otopark görünümü, iki yönde kaydırılabilir':'Otoparkın tamamı, araçlara dokunarak oynanabilir');
+}
+function resizeGame(){
+ cancelAnimationFrame(layoutFrame);layoutFrame=requestAnimationFrame(()=>{const visual=window.visualViewport,height=visual&&visual.scale===1?visual.height:innerHeight;document.documentElement.style.setProperty('--app-height',Math.floor(height)+'px');fitLot();if(state)renderCrowd();});
+}
+function renderSpeed(){const mode=speedModes.find(m=>m.value===speed);$('speed').querySelector('small').textContent=mode.label;$('speed').querySelector('span').textContent=mode.icon;$('speed').setAttribute('aria-label','Hareket hızı: '+mode.label);$('speed').dataset.speed=mode.label;}
+function queuePassenger(color,i){return `<div class="queue-place${i===0?' next-passenger':''}" role="listitem" aria-label="${i+1}. sırada, ${names[color]}"><span class="queue-number" aria-hidden="true">${i+1}</span>${person(color,state.head+i)}</div>`;}
+function renderCrowd(){
+ const ground=document.querySelector('.crowd-ground'),style=getComputedStyle(ground),w=ground.clientWidth,h=ground.clientHeight;
+ if(!w||!h)return;
+ const rows=+style.getPropertyValue('--queue-rows')||3,ph=parseFloat(style.getPropertyValue('--crowd-height'))||28;
+ const cols=Math.max(6,Math.min(12,Math.floor((w-44)/28)+1)),step=(w-48)/(cols-1),bottom=h-13,top=ph+3,dy=(bottom-top)/(rows-1);
+ const remaining=level().queue.slice(state.head,state.head+cols*rows),ys=Array.from({length:rows},(_,row)=>bottom-row*dy);
+ let path=`M24 ${bottom+10}V${bottom}H${w-24}`,arrows='';
+ for(let row=1;row<rows;row++){const right=row%2===1,edge=right?w-7:7,x=right?w-24:24,prev=ys[row-1],y=ys[row];path+=`Q${edge} ${prev} ${edge} ${(prev+y)/2}Q${edge} ${y} ${x} ${y}H${right?24:w-24}`;arrows+=`<path class="queue-flow" d="M${edge-3} ${(prev+y)/2-2}l3 4 3-4"/>`;}
+ $('queue-track').setAttribute('viewBox',`0 0 ${w} ${h}`);
+ $('queue-track').innerHTML=`<path class="queue-rail-shadow" d="${path}"/><path class="queue-rail" d="${path}"/><path class="queue-paving" d="${path}"/>${arrows}`;
+ $('queue').innerHTML=remaining.map((color,i)=>{const row=Math.floor(i/cols),col=i%cols,x=24+(row%2?cols-1-col:col)*step,y=ys[row];return `<div class="queue-standing${i===0?' next-passenger':''}" role="listitem" data-order="${i+1}" data-row="${row}" style="left:${x}px;top:${y}px;z-index:${rows-row}" aria-label="${i+1}. sırada, ${names[color]}">${person(color,state.head+i)}<span class="queue-number" aria-hidden="true">${i+1}</span></div>`;}).join('')||'<span class="empty-queue">Herkes bindi ✓</span>';
+ // A viewport resize must not duplicate the passenger already walking to a seat.
+ if(document.querySelector('.fly-person'))$('queue').querySelector('.person')?.classList.add('walking-out');
+ $('next-passenger-label').textContent=remaining.length?'İlk yolcu: '+names[remaining[0]]:'Herkes bindi';
+ $('queue').setAttribute('aria-label','Biniş sırası, en altta soldaki yolcudan başlayarak kıvrımlı tek sıra');
+ updateMoods();
+}
+function render(){
+ const l=level(),free=state.bays.filter(b=>!b).length;
+ $('level-number').textContent=String(l.id).padStart(2,'0');$('level-title').textContent=l.title;$('departed').textContent=state.departed.length+' / '+l.cars.length;$('lot-count').textContent=state.parked.length+' araç parkta · '+l.queue.length+' yolcu';
+ if(queueHead!==state.head){queueHead=state.head;renderCrowd();}
+ const remaining=l.queue.length-state.head;$('queue-count').textContent=remaining+' yolcu bekliyor';$('queue-count').setAttribute('aria-label',remaining+' yolcu bekliyor');$('queue-progress').style.width=state.head/l.queue.length*100+'%';$('free-slots').textContent=free?free+' yer boş':'3 yer dolu';
+ $('bays').innerHTML=state.bays.map((b,i)=>{const c=b&&E.car(l,b.id);return `<div class="bay ${b?.phase==='driving'?'reserved ':''}${b?.phase==='leaving'?'leaving ':''}${c?.capacity===6?'long':''}" data-slot="${i}" role="img" aria-label="${b?names[c.color]+' araç, '+b.filled+'/'+c.capacity+' dolu, '+(b.phase==='driving'?'yolda':b.phase==='leaving'?'çıkıyor':'bekliyor'):'Boş durak yeri '+(i+1)}">${b?b.phase==='driving'?`<span class="slot-number" style="color:${colors[c.color]}">${shape(c.color,colors[c.color])}</span><span class="fill-label">Yolda</span>`:`<div class="bay-car" data-bay-car="${b.id}">${carSvg(c,'N',b.filled)}</div><span class="fill-label">${b.phase==='leaving'?'Çıkıyor':b.filled+' / '+c.capacity}</span>`:`<span class="slot-number">${i+1}</span>`}</div>`;}).join('');
+ $('cars').innerHTML=state.parked.map(id=>{const c=E.car(l,id),blocked=E.blockers(l,state,id).length;return `<button class="car" data-car="${id}" style="left:${c.x/l.width*100}%;top:${c.y/l.height*100}%;width:${c.w/l.width*100}%;height:${c.h/l.height*100}%" aria-label="${names[c.color]} araç ${id+1}, ${c.capacity} boş koltuk, ${directions[c.dir]}, önü ${blocked?'kapalı':'açık'}">${carSvg(c,c.dir,0,true)}</button>`;}).join('');
+ $('app').classList.toggle('jammed',E.deadlocked(l,state));$('undo').disabled=!log.some(a=>a.type==='send');$('hint').disabled=E.won(l,state);renderSpeed();$('sound').querySelector('i').hidden=sound;$('sound').setAttribute('aria-label',sound?'Ses kapat':'Ses aç');
+}
+function updateMoods(){const elapsed=(Date.now()-levelStarted+moodOffset)/1000;let bubbleShown=false;for(const el of document.querySelectorAll('.person')){if(el.closest('.fly-person'))continue;const id=+el.dataset.person,mood=elapsed>36&&id%5===1?'toilet':elapsed>24&&id%3===2?'angry':id%4===0?'wave':'idle';el.classList.remove('mood-wave','mood-angry','mood-toilet');el.classList.add('mood-'+mood);el.dataset.mood=mood;const bubble=el.querySelector('.mood-bubble');const show=!bubbleShown&&Math.floor(elapsed/4)%3===0&&el.closest('#queue')&&(+el.closest('.queue-standing')?.dataset.order>6)&&['toilet','angry'].includes(mood);bubble.hidden=!show;if(show)bubbleShown=true;bubble.textContent=mood==='toilet'?'WC?':mood==='angry'?'…!':'';el.setAttribute('aria-label',names[+el.dataset.color]+' yolcu'+(mood==='toilet'?', tuvaleti gelmiş':mood==='angry'?', beklemekten sıkılmış':''));}}
+function showStatus(){if(E.won(level(),state))return;if(E.deadlocked(level(),state))message('Durak kilitlendi. Sıradaki '+names[level().queue[state.head]].toLocaleLowerCase('tr')+' yolcu için yer yok. Geri alıp yeni bir sıra dene.',true);else if(!E.active(level(),state))message(level().tip);}
+function tone(frequency=520,length=.08){if(!sound)return;try{const A=window.AudioContext||window.webkitAudioContext;if(!A)return;audioContext=audioContext||new A();audioContext.resume().catch(()=>{});const o=audioContext.createOscillator(),g=audioContext.createGain();o.frequency.value=frequency;g.gain.setValueAtTime(.035,audioContext.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+length);o.connect(g);g.connect(audioContext.destination);o.start();o.stop(audioContext.currentTime+length);}catch(_){}}
+const center=el=>{const r=el.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2};};
+async function animate(el,frames,ms,token){if(token!==epoch)return false;if(!el.animate)return true;const a=el.animate(frames,{duration:duration(ms),easing:'linear',fill:'forwards'});if(!fast&&!reduced)a.playbackRate=speed;animations.add(a);try{await a.finished;}catch(_){return false;}finally{animations.delete(a);}return token===epoch;}
+function ghost(c,x,y,w,h,filled=0,local=false){const el=document.createElement('div');el.className='ghost-car'+(local?' local':'');el.style.cssText=`left:${x-w/2}px;top:${y-h/2}px;width:${w}px;height:${h}px`;el.innerHTML=carSvg(c,'N',filled,local);(local?$('exit-layer'):document.body).append(el);return el;}
+function cancelMotion(){epoch++;for(const a of animations)a.cancel();animations.clear();document.querySelectorAll('.ghost-car,.fly-person').forEach(el=>el.remove());boarding=false;departures.clear();roadTail=Promise.resolve();}
+async function drive(id,token){
+ const c=E.car(level(),id),parking=$('parking'),cell=parking.clientWidth/level().width,world=$('lot-world'),origin={x:parking.offsetLeft+(c.x+c.w/2)*cell,y:parking.offsetTop+(c.y+c.h/2)*cell},w=cell*.84,h=cell*Math.max(c.w,c.h)*.88;
+ const edge={x:origin.x,y:origin.y};if(c.dir==='N')edge.y=-h/2;else if(c.dir==='S')edge.y=world.clientHeight+h/2;else if(c.dir==='W')edge.x=-h/2;else edge.x=world.clientWidth+h/2;
+ const g=ghost(c,origin.x,origin.y,w,h,0,true),distance=Math.hypot(edge.x-origin.x,edge.y-origin.y);
+ if(!await animate(g,[{transform:`rotate(${angles[c.dir]}deg)`},{transform:`translate(${edge.x-origin.x}px,${edge.y-origin.y}px) rotate(${angles[c.dir]}deg)`}],Math.max(950,distance/145*1000),token)){g.remove();return;}g.remove();act({type:'clear',id});
+ // A shared approach lane prevents vehicles crossing each other at the curb.
+ const previous=roadTail;let release;roadTail=new Promise(resolve=>release=resolve);await previous;
+ try{
+  if(token!==epoch)return;const slot=state.bays.findIndex(b=>b?.id===id);if(slot<0)return;
+  const road=document.querySelector('.road').getBoundingClientRect(),target=center(document.querySelector(`[data-slot="${slot}"] .slot-number`)),from={x:road.left-35,y:road.top+road.height/2};
+  const probe=document.createElement('div');probe.className='bay-car';const bayEl=document.querySelector(`[data-slot="${slot}"]`);bayEl.classList.toggle('long',c.capacity===6);bayEl.append(probe);const box=probe.getBoundingClientRect();target.x=box.left+box.width/2;target.y=box.top+box.height/2;probe.remove();
+  const car=ghost(c,from.x,from.y,box.width,box.height);const scale=1;
+  const frames=[{transform:'rotate(90deg)'},{transform:`translate(${target.x-from.x-24}px,0) rotate(90deg)`,offset:.65},{transform:`translate(${target.x-from.x}px,-22px) rotate(0deg)`,offset:.8},{transform:`translate(${target.x-from.x}px,${target.y-from.y}px) rotate(0deg) scale(${scale})`}];
+  const ok=await animate(car,frames,Math.max(1800,(target.x-from.x+90)/120*1000),token);car.remove();if(!ok)return;
+  act({type:'arrive',id});tone(390);pump(token);
+ }finally{release();}
+}
+async function boardOne(slot,token){const bay=state.bays[slot],id=bay.id,c=E.car(level(),id),source=$('queue').querySelector('.person'),target=document.querySelector(`[data-bay-car="${id}"] [data-seat="${bay.filled}"]`);if(!source||!target)return false;
+ const from=center(source),to=center(target),walkY=center(document.querySelector('.walkway')).y,door={x:to.x+24,y:to.y};const el=document.createElement('div');el.className='fly-person';el.style.left=from.x-15+'px';el.style.top=from.y-21+'px';el.innerHTML=person(c.color,state.head);document.body.append(el);source.classList.add('walking-out');
+ const ok=await animate(el,[{transform:'translate(0,0) scale(1)'},{transform:`translate(0,${walkY-from.y}px) scale(.95)`,offset:.2},{transform:`translate(${door.x-from.x}px,${walkY-from.y}px) scale(.9)`,offset:.6},{transform:`translate(${door.x-from.x}px,${to.y-from.y}px) scale(.72)`,offset:.83},{transform:`translate(${to.x-from.x}px,${to.y-from.y}px) scale(.28)`}],1050+slot*100,token);el.remove();if(!ok)return false;
+ act({type:'board',id});tone(550+bay.filled*40);return true;
+}
+async function depart(id,token){
+ if(departures.has(id))return;departures.add(id);const slot=state.bays.findIndex(b=>b?.id===id),c=E.car(level(),id),bay=document.querySelector(`[data-slot="${slot}"]`),carEl=bay.querySelector('.bay-car'),from=center(carEl),carBox=carEl.getBoundingClientRect();
+ const road=document.querySelector('.road').getBoundingClientRect(),dy=road.top+road.height/2-from.y,g=ghost(c,from.x,from.y,carBox.width,carBox.height,c.capacity);
+ const ok=await animate(g,[{transform:'rotate(0deg)'},{transform:`translate(0,${dy-18}px) rotate(0deg)`,offset:.35},{transform:`translate(23px,${dy}px) rotate(90deg)`,offset:.55},{transform:`translate(${road.right-from.x+65}px,${dy}px) rotate(90deg)`}],2400,token);g.remove();if(token!==epoch)return;departures.delete(id);if(!ok)return;act({type:'leave',id});tone(780);pump(token);finishCheck();
+}
+async function pump(token=epoch){
+ if(token!==epoch)return;for(const b of state.bays.filter(Boolean))if(b.phase==='leaving')depart(b.id,token);
+ if(boarding)return;boarding=true;
+ try{let slot;while(token===epoch&&(slot=E.nextBoard(level(),state))>=0){if(!await boardOne(slot,token))break;for(const b of state.bays.filter(Boolean))if(b.phase==='leaving')depart(b.id,token);}}
+ finally{if(token===epoch){boarding=false;finishCheck();}}
+}
+function finishCheck(){if(E.won(level(),state)){if($('overlay').hidden)complete();return;}showStatus();}
+function indicateBlock(id,blocked){document.querySelector(`[data-car="${id}"]`)?.classList.add('bump');const other=blocked[0];document.querySelector(`[data-car="${other}"]`)?.classList.add('obstacle');message('Önü kapalı. '+names[E.car(level(),other).color]+' araç yolu açınca çıkabilir.',true);tone(180);const token=epoch;setTimeout(()=>{if(token!==epoch)return;document.querySelectorAll('.bump,.obstacle').forEach(el=>el.classList.remove('bump','obstacle'));},1600);}
+function dispatch(id){if(!$('overlay').hidden)return;const r=act({type:'send',id});if(!r.ok){if(r.reason==='blocked')indicateBlock(id,r.blockedBy);else if(r.reason==='full')message(E.active(level(),state)?'Üç yer de ayrılmış. Bir araç perondan çıkınca yer açılacak.':'Durak dolu. Son aracı geri alıp sıradaki yolcuya yer aç.',true);return r;}
+ message(names[E.car(level(),id).color]+' araç yolda. Boş yer varsa başka bir araç da gönderebilirsin.');drive(id,epoch);return r;}
+function openModal(html){focused=document.activeElement;$('modal-content').innerHTML=html;$('overlay').hidden=false;$('app').inert=true;($('modal-content').querySelector('button')||$('close-modal')).focus();updateMoods();}
+function closeModal(){if($('overlay').hidden)return;$('overlay').hidden=true;$('app').inert=false;(focused?.isConnected?focused:$('level-menu')).focus();if(E.won(level(),state)&&!completed[index])complete();}
+function help(first=false){openModal(`<div class="eyebrow">HOŞ GELDİN · ACELE YOK</div><h2 id="modal-title">Şehrin yolu<br>senden sorulur.</h2><div class="rule"><b>1</b><span>Araca dokun. <strong>Önü açıksa</strong> ok yönünde çıkar.</span></div><div class="rule"><b>2</b><span>Perona en yakın sıranın solundaki 1 numaralı yolcu kendi rengindeki araca biner. <strong>Dolan araç ayrılır.</strong></span></div><div class="rule"><b>3</b><span>Üç peron var. Araçlar hareket ederken <strong>diğerlerini de gönderebilirsin.</strong></span></div><p>Otoparkın tamamı ekranda. Yakınlaştır ile büyüt; Tüm park ile geri dön. Parkta büyük okları izle. Peronda araçların içi açılır; boş koltukları sayabilirsin. Hız düğmesi Sakin, Normal ve Hızlı arasında geçer.</p><p class="mini-note">Yolcular bazen söylenir, bazen tuvalet arar. Bunlar yalnızca hareket: puan, ceza veya süre sınırı yok.</p><div class="chips"><span class="chip">Ücretsiz geri al</span><span class="chip">3 renk + şekiller</span><span class="chip">Yavaş hareket</span></div><button class="primary" data-action="start">${first?'Otoparka gir →':'Oyuna dön →'}</button>`);}
+function queueDetails(){openModal(`<div class="eyebrow">ÖNDEN ARKAYA · SOLDAN SAĞA</div><h2 id="modal-title">${level().queue.length-state.head} yolcu bekliyor.</h2><p>1 numara önce biner. Numaraları soldan sağa, sonra alt satırdan takip et. Öndeki yolcunun aracı yoksa sıra bekler.</p><div class="queue-list" role="list" aria-label="Bütün yolcular, biniş sırasıyla">${level().queue.slice(state.head).map(queuePassenger).join('')||'Herkes bindi.'}</div><div class="legend">${names.slice(0,index<8?3:4).map((n,i)=>`<span>${shape(i,colors[i])}${n}</span>`).join('')}</div><button class="primary" data-action="close">Oyuna dön →</button>`);}
+function levelMenu(){openModal(`<div class="eyebrow">18 OTOPARK · 48–120 YOLCU</div><h2 id="modal-title">Şehirde bir tur.</h2><p>Her otopark aynı düzenle başlar. Bölüm ilerledikçe araç sayısı ve planlanacak yollar artar.</p><div class="levels-grid">${levels.map((l,i)=>`<button data-level="${i}" class="${completed[i]?'done ':''}${i===index?'current':''}" aria-label="Bölüm ${l.id}, ${l.title}">${String(l.id).padStart(2,'0')}<small>${completed[i]?'✓':l.cars.length+' araç'}</small></button>`).join('')}</div><p class="mini-note">Denemek için bütün bölümler açık. Mor renk 9. bölümde eklenir.</p>`);}
+function overview(){zoomed=!zoomed;fitLot();$('lot-viewport').scrollTop=0;$('lot-viewport').scrollLeft=0;message(zoomed?'Yakın görünüm açık. Parkı kaydırabilir, Tüm park ile geri dönebilirsin.':'Otoparkın tamamı ekranda. Araçlara buradan dokunarak oynayabilirsin.');}
+function reset(i){cancelMotion();index=i;state=E.initial(level());log=[];levelStarted=Date.now();moodOffset=0;layoutLot();save();render();showStatus();}
+function undo(){let last=log.length-1;while(last>=0&&log[last].type!=='send')last--;if(last<0)return;cancelMotion();log=log.slice(0,last);state=E.replay(level(),log);finishInstant();queueHead=-1;save();render();message('Son gönderdiğin araç geri döndü. Önceki araçlar perondaki işlemlerini tamamladı.');}
+function hint(){if(E.active(level(),state)){message('İpucunu araçlar yerleşince hesaplayabilirim. Bu sırada araç göndermeye devam edebilirsin.');return;}const plan=E.solve(level(),state,12000);if(!plan.path){message(plan.exhausted?'Bu konum için ipucu bulunamadı. Son hamleyi geri almayı deneyebilirsin.':'Bu sırayla çözüm kalmadı. Son aracı geri al.',true);return;}const id=plan.path[0];if(id===undefined)return;const el=document.querySelector(`[data-car="${id}"]`);el?.classList.add('hinted');if(el&&zoomed){const v=$('lot-viewport'),r=el.getBoundingClientRect(),vr=v.getBoundingClientRect();v.scrollTo({top:v.scrollTop+r.top-vr.top-v.clientHeight/2+r.height/2,behavior:reduced?'instant':'smooth'});}message(names[E.car(level(),id).color]+' araç işaretlendi. Çözüm için güvenli bir sonraki hamle.',true);}
+function complete(){completed[index]=true;save();openModal(`<div class="eyebrow">ŞEHİR BİR NEFES ALDI</div><div class="win-icon">✦</div><h2 id="modal-title">Park açıldı!</h2><p>Bütün araçlar yola çıktı. Herkes kendi koltuğuna yerleşti.</p><div class="stats"><div><b>${level().cars.length}</b><small>ARAÇ</small></div><div><b>${level().queue.length}</b><small>YOLCU</small></div></div><button class="primary" data-action="${index<levels.length-1?'next':'levels'}">${index<levels.length-1?'Sonraki otopark →':'Bölümlere dön →'}</button><button class="secondary" data-action="retry">Yeniden oyna</button>`);tone(950,.2);}
+$('cars').addEventListener('click',event=>{const el=event.target.closest('[data-car]');if(el)dispatch(+el.dataset.car);});
+$('undo').addEventListener('click',undo);$('hint').addEventListener('click',hint);$('restart').addEventListener('click',()=>{if(!log.length){reset(index);return;}openModal('<div class="eyebrow">AYNI OTOPARK, YENİ PLAN</div><h2 id="modal-title">Baştan başlayalım mı?</h2><p>Araçlar ve sıra aynı kalır. Bu bölümdeki hamlelerin sıfırlanır.</p><button class="primary" data-action="retry">Yeniden başlat</button><button class="secondary" data-action="close">Oyuna dön</button>');});
+$('speed').addEventListener('click',()=>{const current=speedModes.findIndex(m=>m.value===speed);speed=speedModes[(current+1)%speedModes.length].value;for(const a of animations)if(!fast&&!reduced)a.playbackRate=speed;save();renderSpeed();message(speedModes.find(m=>m.value===speed).label+' hız açık. Hareket hızı değişti; araç sırası aynı.');});
+$('sound').addEventListener('click',()=>{sound=!sound;save();render();if(sound)tone(650);});$('help').addEventListener('click',()=>help());$('queue-info').addEventListener('click',queueDetails);$('overview').addEventListener('click',overview);$('level-menu').addEventListener('click',levelMenu);
+$('lot-viewport').addEventListener('scroll',()=>{if(!zoomed)return;const progress=$('lot-viewport').scrollTop/Math.max(1,$('lot-world').clientHeight-$('lot-viewport').clientHeight);$('lot-position').textContent=Math.round(progress*100)+'%';});
+$('close-modal').addEventListener('click',()=>{seen=true;save();closeModal();});
+$('modal-content').addEventListener('click',event=>{const b=event.target.closest('button');if(!b)return;if(b.dataset.level!==undefined){const i=+b.dataset.level;if(Number.isInteger(i)&&i>=0&&i<levels.length){closeModal();reset(i);}return;}switch(b.dataset.action){case'start':seen=true;save();closeModal();break;case'close':closeModal();break;case'next':closeModal();reset(Math.min(index+1,levels.length-1));break;case'retry':closeModal();reset(index);break;case'levels':levelMenu();break;}});
+document.addEventListener('keydown',event=>{if($('overlay').hidden)return;if(event.key==='Escape'){event.preventDefault();seen=true;save();closeModal();}if(event.key==='Tab'){const buttons=[...$('overlay').querySelectorAll('button:not(:disabled)')],first=buttons[0],last=buttons[buttons.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)save();});
+document.documentElement.style.setProperty('--app-height',Math.floor(window.visualViewport?.height||innerHeight)+'px');
+load();state=state||E.initial(level());layoutLot();render();showStatus();
+addEventListener('resize',resizeGame);window.visualViewport?.addEventListener('resize',resizeGame);if(window.ResizeObserver)new ResizeObserver(fitLot).observe($('lot-viewport'));resizeGame();setInterval(updateMoods,4000);if(!seen)help(true);else if(E.won(level(),state))complete();
+if(testMode)window.ParkingTest={E,levels,get:()=>({index,state:E.copy(state),log:E.copy(log),busy:E.active(level(),state)||boarding,speed}),load:i=>{closeModal();reset(i);},dispatch,undo,close:closeModal,solve:()=>E.solve(level(),state),storageKey:KEY,moods:ms=>{moodOffset=ms;updateMoods();}};
+})();
+
+</script></body></html>
