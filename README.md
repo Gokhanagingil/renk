@@ -1,40 +1,35 @@
-# Renk Durağı · Şehir hareketli — 0.5.2
+# Renk Durağı — 0.6.0
 
 **Yolu aç, peronda yer bırak, yolcuları koltuklarına yerleştir.**
 
-[Oynanabilir tek dosya: renk-duragi-0.5.2.html](dist/renk-duragi-0.5.2.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
+[Oynanabilir tek dosya: renk-duragi-0.6.0.html](dist/renk-duragi-0.6.0.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
 
-## 0.5.2: kalabalık ve okunabilir kuyruk
+## Yeni deneyim
 
-Kullanıcının paylaştığı görsel referans doğrultusunda yolcu kuyruğu, peron ve park daha bütünlüklü bir şehir sahnesine dönüştürüldü. Doygun arayüz panelleri yerine nötr zemin, kaldırım ve renkli araçlar öne çıkar.
-
-- Ana ekranda kartlar yerine **tek kişi genişliğinde kıvrımlı kuyruk** vardır. Ekrana göre 2–3 hat ve en fazla 36 gerçek yolcu gösterilir. İnsanlar üst üste binmez; numaralar hattın dönüşlerinde de devam eder. İlk yolcu sol altta, perona yakın ve işaretlidir. Tüm sıra penceresinde bütün yolcular numaralıdır. İlk altı kişide balon gösterilmez; diğerlerinde aralıklı olarak en fazla bir balon görünür.
-- Araçlarda gövde katmanları, ışık/gölge, camlar ve büyük beyaz yön oku vardır. Parkta kapalı tavan; peronda açık kabin ve görünür koltuklar gösterilir. Bunlar kodla çizilen SVG'lerdir, 3D motor kullanılmaz.
-- **Sakin (1×) → Normal (1,3×) → Hızlı (2×)**. Düğme üç seçenek arasında döner; devam eden araç ve biniş animasyonu da yeni hıza geçer. Hız tercihi kaydedilir.
-- Android'de doğrulanan tam park / yakınlaştırma düzeni, üç peron, fiziksel engeller ve 18 bölüm korunur. Kısa ekranlarda dekoratif alan büyüyüp otoparkı gizlemez.
-- 0.4.1 ile kayıt biçimi ve bölüm düzenleri aynıdır. Tarayıcının erişime sunduğu mevcut kayıt yeniden oynatılabilir. Farklı yerel HTML dosyalarının kayıt alanını paylaşması tarayıcıya bağlıdır.
+- **Yürüyen kuyruk:** Yolcular yerlerine ışınlanmaz; aynı kişiler korkuluk boyunca ilerler. Dönüşleri izler, adım atar ve baştaki kişi öne ulaşınca biniş başlar. Ekrana göre 2–3 hatta en fazla 36 yolcu görünür.
+- **Kapıdan koltuğa:** Yolcu yaya yolunu takip eder, kapıdan geçer, boş koltuğuna oturur. Araç dolunca kısa bir hazır işareti ve el sallama görünür.
+- **Doğal sürüş:** Araç hızlanır, dönüşte yavaşlar ve perona yaklaşırken frenler. Diğer araçları göndermek için animasyonların bitmesi gerekmez.
+- **Açılan yol:** Engellenen araç ok yönünde küçük bir hareketle durur. Engel gerçekten kalkınca yolu açılan araçların konumu kısa süreli vurgulanır.
+- **Beş bölge:** Mahalle, sahil, pazar, festival, havaalanı. Zemin tonları, küçük çevre çizimleri ve şehir haritası değişir. Tamamlanan duraklar kaydedilir. Bütün duraklar denemeye açıktır.
+- **Altı özel rota:** Koridor açma, farklı çıkış yönleri, 4/6 koltuk kapasitesi ve peronda yer ayırma üzerine düzenlenmiş 19–24. bölümler. Önceki 18 bölümün geometrisi ve kuyrukları korunur.
+- **Boşalan park:** Bölüm sonu ekranı karartmaz. Boş otopark görünür kalır; küçük bir devam alanı ve kısa kutlama çıkar.
+- **Küçük canlılıklar:** Telefonuna bakan ve esneyen yolcular, el sallama, kıpırdanma ve duraktaki kedi. Bekleme cezası yoktur. İlk altı yolcuda konuşma balonu yok; diğerlerinde aralıklı olarak en fazla bir balon.
+- **İsteğe bağlı ses:** Motor, varış, koltuğa oturma, dolu araç ve tamamlanma için düşük sesli kısa efektler. Harici ses dosyası yoktur. Ses kapatma devam eden notaları da durdurur.
 
 ## Oyun
 
-- Yeni şehir görünümü: koyu asfalt, mavi/beyaz arayüz, canlı araç renkleri, park çizgileri, yaya geçidi ve çıkış işaretleri.
-- Peronda açılan araçlarda 4 veya 6 görünür koltuk; yürüyerek gelen yolcu seçilen koltuğa yerleşir.
-- Varsayılan **Sakin** hareket; **Normal** %30, **Hızlı** %100 daha hızlıdır.
-- Bir araç hareket ederken veya yolcu alırken diğer araçlar gönderilebilir. Ekran solmaz, park kilitlenmez.
-- 18 sabit bölüm, bölüm başına **12–28 araç ve 48–120 yolcu**.
-- Küçük araçlarla tüm park ekrana sığar. Yakın görünümde araç dokunma alanı en az 44 pikseldir.
-- Bekleyen yolcular kıpırdanır, el sallar, söylenir veya tuvalet ihtiyacını belli eder. Bunların kurallara etkisi yoktur.
-- Hareket sırasında geri alma, yeniden başlama ve kayıt/devam desteklenir.
-
-## Kurallar
+24 sabit bölüm; 12–28 araç, 48–120 yolcu. İlk sekiz ana bölüm üç renkli, sonrakiler dört renkli; özel rotalar üç renklidir. Renkler şekillerle de belirtilir. Süre sınırı, reklam, ödeme ve can sistemi yoktur.
 
 1. Araca dokun. Önündeki hat park sınırına kadar açıksa ok yönünde çıkar.
-2. Durağın **üç yeri** vardır. Yola çıkan araç hemen bir yer ayırır; bu yer araç ayrılana kadar doludur.
-3. Yolcular sırayla aynı renk araca biner. Aynı renkte birden çok araç varsa önce gönderilen önceliklidir.
-4. Dolu araç hareket edip perondan çıkınca yer boşalır. Kısmen dolu araç bekler.
+2. Durağın üç yeri vardır. Yola çıkan araç hemen bir yer ayırır; ayrılana kadar o yer doludur.
+3. Yolcular sırayla kendi renklerindeki araca biner. Aynı renkteki araçlardan önce gönderilen önceliklidir.
+4. Dolan araç perondan çıkınca yer boşalır. Kısmen dolu araç bekler.
 5. Üç yeri yanlış renklerle doldurmak kilitlenmeye yol açar. Ücretsiz geri al veya yeniden dene.
 6. Bütün yolcular binip araçlar ayrıldığında bölüm biter.
 
-İlk sekiz bölümde üç renk, sonrasında dört renk bulunur. Renkler şekillerle de belirtilir. “Tüm sıra” gelecek yolcuları gösterir. Süre sınırı, reklam, ödeme, can veya yolcu sabırsızlığı cezası yoktur.
+Sakin (1×), Normal (1,3×), Hızlı (2×) seçenekleri devam eden sürüş, biniş ve kuyruk yürüyüşüne uygulanır. Sakin varsayılandır. Hareket azaltma tercihi desteklenir. Tam park görünümü ve en az 44 piksel araç dokunma alanı veren yakınlaştırma korunur.
+
+Önceki 0.4.1–0.5.2 sürümlerinin kayıt biçimiyle uyumludur; ilk 18 bölümün kayıtları tekrar oynatılır. Farklı HTML dosyalarının aynı kayıt alanını paylaşması tarayıcıya bağlıdır.
 
 ## Çalıştırma ve doğrulama
 
@@ -42,7 +37,7 @@ Kullanıcının paylaştığı görsel referans doğrultusunda yolcu kuyruğu, p
 npm test
 npm run build
 npm run serve
-# http://localhost:8080/renk-duragi-0.5.2.html
+# http://localhost:8080/renk-duragi-0.6.0.html
 ```
 
 Motor ve derleme için harici paket gerekmez. Tarayıcı testleri için Playwright ve Chromium gerekir:
@@ -50,25 +45,24 @@ Motor ve derleme için harici paket gerekmez. Tarayıcı testleri için Playwrig
 ```sh
 npm install --no-save playwright
 npx playwright install chromium
-npm run test:browser
 npm run test:android
 npm run test:scene
+npm run test:experience
+RENK_SMOKE=1 npm run test:browser
 ```
 
-Alternatif Chromium yolu `RENK_CHROMIUM_PATH` ile verilebilir. `?test=1` animasyonları hızlandırır ve test kancalarını açar; kuralları değiştirmez. `?test=1&motion=1` test kancalarını gerçek animasyon hızıyla çalıştırır.
-
-## Kaynaklar
+Alternatif Chromium yolu `RENK_CHROMIUM_PATH` ile verilebilir. `?test=1` test kancalarını açıp animasyonları hızlandırır; `?test=1&motion=1` gerçek animasyon hızını korur. Oyunun kuralları değişmez.
 
 | Dosya | İçerik |
 | --- | --- |
-| `src/engine.js` | Saf kurallar, fiziksel engeller, geçişler, tekrar oynatma ve çözüm arama |
-| `src/levels.js` | 18 sabit bölüm ve doğrulanmış çözüm/kilitlenme yolları |
-| `src/app.js` | Eşzamanlı animasyonlar, açık araçlar, yolcu davranışları, arayüz ve kayıt |
-| `scripts/generate-levels.cjs` | Sabit tohumla çevrimdışı bölüm tasarımı |
-| `scripts/build.cjs` | Bölüm doğrulama ve tek HTML dağıtımı |
-| `tests/` | Motor ve dokunmatik tarayıcı doğrulaması |
-| `docs/playtest.md` | 65+ oyuncuyla yapılacak deneme |
+| `src/engine.js` | Fiziksel engeller, saf durum geçişleri, kayıt oynatma, çözüm arama |
+| `src/levels.js` | Mevcut 18 ana bölüm |
+| `src/routes.js` | Altı özel rota, çözüm ve kilitlenme yolları |
+| `src/app.js` | Canlı kuyruk, animasyon, şehir haritası, ses ve kayıt |
+| `scripts/author-routes.cjs` | Özel rotaların açık geometrisi ve deterministik kuyruk tasarımı |
+| `scripts/build.cjs` | Bütün bölümlerin doğrulaması ve tek HTML dağıtımı |
+| `tests/` | Motor, mobil yerleşim, eşzamanlılık ve deneyim testleri |
 
-[Doğrulama notu](docs/verification.md) · [Tasarım kararları](docs/design.md) · [Çözüm kanıtları](qa/solutions.json)
+[Doğrulama](docs/verification.md) · [Tasarım](docs/design.md) · [İnsan denemesi](docs/playtest.md)
 
-Bu bir tarayıcı prototipidir. Gerçek 65+ oyuncu, Android/iOS cihaz ve Safari kabul testi henüz yapılmadı. APK/mağaza yayını değildir. 0.3 git geçmişinde, terk edilen 0.2 ise [arşiv dalında](https://github.com/Gokhanagingil/renk/tree/archive/shuttle-v0.2) korunur.
+Bu bir SVG/HTML tarayıcı prototipidir; gerçek 3D veya APK/mağaza yayını değildir. Önceki sürümler kullanıcı tarafından Android'de denendi. 0.6'nın gerçek telefon performansı, sesi ve eğlencesi henüz kullanıcı denemesiyle değerlendirilmedi.

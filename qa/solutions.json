@@ -687,5 +687,179 @@
       "runs": 160,
       "exact": false
     }
+  },
+  {
+    "level": 19,
+    "cars": 12,
+    "passengers": 48,
+    "solution": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      2,
+      5,
+      8,
+      10,
+      11
+    ],
+    "trap": [
+      0,
+      3,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 13,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 20,
+    "cars": 12,
+    "passengers": 48,
+    "solution": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      2,
+      5,
+      8,
+      11
+    ],
+    "trap": [
+      0,
+      3,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 25,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 21,
+    "cars": 12,
+    "passengers": 54,
+    "solution": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      2,
+      5,
+      8,
+      10,
+      11
+    ],
+    "trap": [
+      0,
+      3,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 19,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 22,
+    "cars": 12,
+    "passengers": 48,
+    "solution": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      2,
+      5,
+      8,
+      11
+    ],
+    "trap": [
+      0,
+      3,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 30,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 23,
+    "cars": 12,
+    "passengers": 48,
+    "solution": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      2,
+      5,
+      8,
+      10,
+      11
+    ],
+    "trap": [
+      0,
+      3,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 23,
+      "runs": 160,
+      "exact": false
+    }
+  },
+  {
+    "level": 24,
+    "cars": 12,
+    "passengers": 54,
+    "solution": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      2,
+      5,
+      8,
+      10,
+      11
+    ],
+    "trap": [
+      0,
+      3,
+      6
+    ],
+    "randomPolicySample": {
+      "wins": 22,
+      "runs": 160,
+      "exact": false
+    }
   }
 ]

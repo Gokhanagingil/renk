@@ -1,4 +1,4 @@
-# 65+ oyuncuyla ilk deneme — 0.5
+# 65+ oyuncuyla ilk deneme — 0.6
 
 Henüz yapılmadı. Android’de dosyanın hangi uygulamayla açıldığını ve kullanılabilir ekran boyutunu kaydedin. İlk denemede yönlendirmeden izleyip, oyuncunun söylediklerini ve takıldığı anları not edin. Önce telefonun normal yazı/ekran ayarlarını kullanın.
 
@@ -16,3 +16,5 @@ Birinci, altıncı ve dokuzuncu bölümlerde toplam süreyi, yanlış dokunmalar
 Öncelik sırası: okunabilirlik → aracın takibi → ardışık gönderimin anlaşılması → bölüm süresi → görsel ayrıntılar. Sakin/Normal/Hızlı hız tercihini oyuncunun seçmesine izin verin.
 
 Görsel sürüm için ayrıca: çıkıştaki ilk yolcu anlaşılır mı, parkın büyük yön okları okunur mu, peronda açılan koltuklar fark edilir mi? Sürüş ve biniş sırasında Hızlı → Sakin geçişini deneyin. Kalabalık yolcu animasyonunun düşük donanımlı Android cihazda akıcılığını izleyin.
+
+0.6 için: kuyruk yürüyüşünü ve kapıdan koltuğa geçişi takip edebiliyor mu? Yolu açılan araç işareti sebep-sonuç ilişkisini anlatıyor mu? Şehir haritasında hangi durakta olduğunu bulabiliyor mu? 19–24 özel rotalarda farklı bir düşünme ihtiyacı hissediyor mu? Sesli ve sessiz birer bölümün ardından hangisini tercih ediyor? En önemlisi: yönlendirmeden bir bölüm daha oynamak istiyor mu?

@@ -403,7 +403,7 @@
   },
   {
     "id": 3,
-    "title": "Sahil otoparkı",
+    "title": "Dar sokak",
     "tip": "Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.",
     "width": 8,
     "height": 8,
@@ -633,7 +633,7 @@
   },
   {
     "id": 4,
-    "title": "Pazar kalabalığı",
+    "title": "Mahalle meydanı",
     "tip": "Araç dolmadan ayrılmaz. Sıranın devamına da bak.",
     "width": 8,
     "height": 8,
@@ -863,7 +863,7 @@
   },
   {
     "id": 5,
-    "title": "Bir yer ayır",
+    "title": "Kıyı yolu",
     "tip": "Her açık yolu hemen kullanmak zorunda değilsin.",
     "width": 8,
     "height": 8,
@@ -1125,7 +1125,7 @@
   },
   {
     "id": 6,
-    "title": "Minibüs geliyor",
+    "title": "Minibüs durağı",
     "tip": "Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.",
     "width": 8,
     "height": 8,
@@ -1391,7 +1391,7 @@
   },
   {
     "id": 7,
-    "title": "İki sıra sonrası",
+    "title": "İskele sırası",
     "tip": "İlk yolcu kırmızı. Önce kırmızının önündeki mavi aracı çıkar.",
     "width": 8,
     "height": 9,
@@ -1689,7 +1689,7 @@
   },
   {
     "id": 8,
-    "title": "Çıkışa doğru",
+    "title": "Sahilden çıkış",
     "tip": "Üç durak yeri var. Sıradaki yolcu için bir yer ayır.",
     "width": 8,
     "height": 9,
@@ -1983,7 +1983,7 @@
   },
   {
     "id": 9,
-    "title": "Morun sırası",
+    "title": "Pazar açılıyor",
     "tip": "Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.",
     "width": 8,
     "height": 9,
@@ -2314,7 +2314,7 @@
   },
   {
     "id": 10,
-    "title": "Akşamüstü",
+    "title": "Tezgâh arası",
     "tip": "Araç dolmadan ayrılmaz. Sıranın devamına da bak.",
     "width": 8,
     "height": 9,
@@ -2648,7 +2648,7 @@
   },
   {
     "id": 11,
-    "title": "Uzun kuyruk",
+    "title": "Alışveriş saati",
     "tip": "Her açık yolu hemen kullanmak zorunda değilsin.",
     "width": 8,
     "height": 9,
@@ -3006,7 +3006,7 @@
   },
   {
     "id": 12,
-    "title": "Yol arkadaşları",
+    "title": "Pazar dönüşü",
     "tip": "Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.",
     "width": 8,
     "height": 9,
@@ -3369,7 +3369,7 @@
   },
   {
     "id": 13,
-    "title": "Dolu otopark",
+    "title": "Festival kapısı",
     "tip": "İlk yolcu kırmızı. Önce kırmızının önündeki mavi aracı çıkar.",
     "width": 9,
     "height": 10,
@@ -3755,7 +3755,7 @@
   },
   {
     "id": 14,
-    "title": "Biraz sabır",
+    "title": "Konser çıkışı",
     "tip": "Üç durak yeri var. Sıradaki yolcu için bir yer ayır.",
     "width": 9,
     "height": 10,
@@ -4143,7 +4143,7 @@
   },
   {
     "id": 15,
-    "title": "Düğüm çözülüyor",
+    "title": "Son şarkı",
     "tip": "Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.",
     "width": 9,
     "height": 10,
@@ -4569,7 +4569,7 @@
   },
   {
     "id": 16,
-    "title": "Şehir hareketli",
+    "title": "Terminal yolu",
     "tip": "Araç dolmadan ayrılmaz. Sıranın devamına da bak.",
     "width": 9,
     "height": 10,
@@ -4989,7 +4989,7 @@
   },
   {
     "id": 17,
-    "title": "Son birkaç hamle",
+    "title": "Uçuş saati",
     "tip": "Her açık yolu hemen kullanmak zorunda değilsin.",
     "width": 9,
     "height": 10,
@@ -5438,7 +5438,7 @@
   },
   {
     "id": 18,
-    "title": "Büyük buluşma",
+    "title": "Son çağrı",
     "tip": "Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.",
     "width": 9,
     "height": 10,

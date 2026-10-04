@@ -1,4 +1,4 @@
-# 0.5 — tek sahne, canlı kuyruk ve üç hız
+# 0.6 — canlı şehir ve akıcı oyun
 
 4 Ekim 2026, İstanbul. Kullanıcının 0.3 geri bildirimi uygulandı: daha farklı görsel dil, doğal hareket, işlem sırasında açık kontroller, uzun bölümler, gerçek otopark işaretleri, hareketli yolcular ve görünür koltuklar.
 
@@ -18,7 +18,7 @@ Otopark 8×8 ile 9×10 arasında kompakt düzenlerden oluşur. Varsayılan oynan
 
 Ekran yüksekliği için 720 piksel eşiği kullanılmaz. `visualViewport` veya `innerHeight` değeri, tarayıcı çubukları açılıp kapanırken de yerleşimi günceller. Parka açık piksel genişlik/yükseklik atanır. Çok kısa ekranda tüm park görünümü daha küçük araçlar gösterir; yakınlaştırma kullanılabilir. Yatay telefonda peron/kontroller solda, otopark sağda durur.
 
-Sakin varsayılan hızda park çıkışı yaklaşık 145 piksel/saniye, yaklaşma en az 1,8 saniye, her yolcunun yürüyüp oturması 1,05–1,25 saniye, araç ayrılması 2,4 saniyedir. Parkın uzak ucundaki araç daha uzun yol alır. Normal seçeneği %30, Hızlı seçeneği %100 hızlandırır. Hız düğmesi Sakin → Normal → Hızlı → Sakin döngüsündedir. Devam eden Web Animations örneklerinin oynatma oranı da değişir; durum veya FIFO sırası hızdan etkilenmez. Hareket azaltma sistem tercihi desteklenir. Gerçek 65+ oyuncuyla bu süreler henüz doğrulanmadı.
+Sakin varsayılan hızdır. Çıkış mesafesi yaklaşık 125 piksel/saniye baz alınarak hızlanma eğrisiyle oynatılır. Perona yaklaşma en az 1,8 saniye; kapıya yürüyüş 1,05–1,37 saniye, koltuğa geçiş 0,33 saniye, kuyruk ilerlemesi 0,62 saniyedir. Tam doluluk işareti 0,65 saniye, ayrılma 2,4 saniyedir. Normal 1,3×, Hızlı 2× çalışır; devam eden bütün hareket animasyonları da hız değişimini alır. Bu süreler 65+ oyuncuyla henüz doğrulanmadı.
 
 ## Eşzamanlılık ve doğruluk
 
@@ -38,10 +38,18 @@ Nefes alma, hafif sallanma ve el hareketleri sürekli. Yaklaşık 24 saniye sonr
 
 ## Bölümler
 
-18 sabit düzen; 12–28 araç, 48–120 yolcu, 4/6 koltuk. İlk sekiz bölüm üç renkli, devamı dört renkli. Zorluk araç engellerinden, sıradan ve peron planından gelir.
+18 ana bölüm + 6 özel rota; 12–28 araç, 48–120 yolcu, 4/6 koltuk. İlk sekiz bölüm üç renkli, devamı dört renkli. Zorluk araç engellerinden, sıradan ve peron planından gelir.
 
 Her bölümün çözümü ve gerçek kilitlenme yolu derlemede tekrar doğrulanır. 160 eşit olasılıklı geçerli hamle denemesi yalnız rastgele oynamanın garantili zafer olmadığını gözlemek içindir. Bu örneklem kesin olasılık veya insan başarı tahmini değildir. Büyük durum uzayının tamamı taranmış değildir. Bölüm sırası ve süresi insan denemesiyle ayarlanmalıdır.
 
-## Kapsam sınırı
+## 0.6 deneyim kararları
 
-0.5 görsel ve hız güncellemesidir. 0.4.1 bölüm geometrisi, araç sayısı, renk sınırı ve motor kuralları değişmedi. Yoğun ileri bölümler korunur; ilk öğretici bölüm daha seyrektir. Yeni sürümün estetik beğenisi ve gerçek cihaz akıcılığı kullanıcı denemesiyle değerlendirilmelidir.
+Kuyruk ilerleyişi motor durumunu değiştirmez; yalnızca `board` geçişi sırayı tüketir. Görünen kişiler bölüm ve kimlik üzerinden yeniden kullanılır. Dönüşteki kişiler korkuluk kıvrımını izleyen iki quadratic eğriden örneklenen ara noktalardan geçer. Kuyruk animasyonu tamamlanınca sonraki kişi kapıya yürür. Bu sırada başka araçlar gönderilebilir.
+
+Yeni bölgeler: mahalle (1–4), sahil (5–8), pazar (9–12), festival (13–15), havaalanı (16–18). Yeni kurallar veya harcama sistemi yoktur. Tamamlanan duraklar haritada işaretlenir; test için bütün duraklar açıktır. Renk tonu ve küçük çevre çizimleri değişir; oyun hedefleri aynı boyutta kalır.
+
+Özel rotalar 19–24, açıkça tanımlanmış zincir ve dört yönlü çıkış geometrileriyle yazıldı. Bazıları aynı geometrinin dönmüş varyantıdır; kapasite ve yolcu dizileri farklı planlama deneyimleri sunar. Koltuk hesabı / Son bağlantı 4 ve 6 koltuklu araçları birlikte kullanır. Sahil molası daha az iç içe geçen renk gruplarıyla bir nefes arası hedefler. Gerçek insan zorluğu henüz ölçülmedi.
+
+Araç dolunca son yolcu el sallar ve kısa bir doluluk işareti görünür. Kazanma ekranı parkı karartmaz; ilerleme düğmesi boş parkın üzerinde küçük bir alan olarak gösterilir. Kedi, telefon ve esneme davranışları görseldir. Sesler yerel Web Audio senteziyle üretilir, kapalı başlayıp isteğe bağlı açılır. Harici ses veya görsel indirilmez.
+
+İlk 18 bölümün kuralları, geometrisi ve yolcu sıraları korunur. Kayıt anahtarı değişmedi; eklenen rotalar mevcut kayda uyumlu biçimde sona eklenir. Daha kapsamlı 3D sanat, özgün müzik, otomatik zorluk uyarlaması ve yeni bariyer mekanikleri bu sürümde yoktur.

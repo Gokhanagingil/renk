@@ -4,7 +4,7 @@ const fs=require('node:fs'),E=require('../src/engine.js');let seed=20261005;
 function random(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;}
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 const C=(id,x,y,dir,color,capacity=4)=>({id,x,y,w:'EW'.includes(dir)?(capacity===6?3:2):1,h:'NS'.includes(dir)?(capacity===6?3:2):1,dir,color,capacity});
-const titles=['Sabah buluşması','İlk yoğunluk','Sahil otoparkı','Pazar kalabalığı','Bir yer ayır','Minibüs geliyor','İki sıra sonrası','Çıkışa doğru','Morun sırası','Akşamüstü','Uzun kuyruk','Yol arkadaşları','Dolu otopark','Biraz sabır','Düğüm çözülüyor','Şehir hareketli','Son birkaç hamle','Büyük buluşma'];
+const titles=["Sabah buluşması", "İlk yoğunluk", "Dar sokak", "Mahalle meydanı", "Kıyı yolu", "Minibüs durağı", "İskele sırası", "Sahilden çıkış", "Pazar açılıyor", "Tezgâh arası", "Alışveriş saati", "Pazar dönüşü", "Festival kapısı", "Konser çıkışı", "Son şarkı", "Terminal yolu", "Uçuş saati", "Son çağrı"];
 const tips=['İlk yolcu kırmızı. Önce kırmızının önündeki mavi aracı çıkar.','Üç durak yeri var. Sıradaki yolcu için bir yer ayır.','Parkın tamamı ekranda. Daha büyük görmek için Yakınlaştır’a dokun.','Araç dolmadan ayrılmaz. Sıranın devamına da bak.','Her açık yolu hemen kullanmak zorunda değilsin.','Uzun araçlarda altı koltuk var. Boş koltuklara dikkat.'];
 const levels=[];
 for(let index=0;index<18;index++){
