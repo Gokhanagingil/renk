@@ -1,14 +1,14 @@
-# Renk Durağı · Şehir hareketli — 0.5.0
+# Renk Durağı · Şehir hareketli — 0.5.1
 
 **Yolu aç, peronda yer bırak, yolcuları koltuklarına yerleştir.**
 
-[Oynanabilir tek dosya: renk-duragi-0.5.0.html](dist/renk-duragi-0.5.0.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
+[Oynanabilir tek dosya: renk-duragi-0.5.1.html](dist/renk-duragi-0.5.1.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
 
-## 0.5: tek sahne ve üç hız
+## 0.5.1: okunabilir yolcu sırası
 
 Kullanıcının paylaştığı görsel referans doğrultusunda yolcu kuyruğu, peron ve park daha bütünlüklü bir şehir sahnesine dönüştürüldü. Doygun arayüz panelleri yerine nötr zemin, kaldırım ve renkli araçlar öne çıkar.
 
-- Kıvrımlı, korkuluklu kuyrukta **64'e kadar gerçek yolcu** görünür. Görünen yolcuların renk ve sırası motorla aynıdır. Daha uzun sıra, sayaç ve Sırayı gör düğmesiyle izlenir.
+- Ana ekranda **ilk altı yolcu**, soldan sağa 1–6 numaralarıyla gösterilir. İlk yolcunun rengi yazıyla belirtilir ve kartı çerçevelenir. Tüm sıra penceresinde bütün yolcular numaralıdır. Bekleme balonları aralıklı ve aynı anda en fazla bir kişide görünür; ilk yolcunun üzerinde gösterilmez.
 - Araçlarda gövde katmanları, ışık/gölge, camlar ve büyük beyaz yön oku vardır. Parkta kapalı tavan; peronda açık kabin ve görünür koltuklar gösterilir. Bunlar kodla çizilen SVG'lerdir, 3D motor kullanılmaz.
 - **Sakin (1×) → Normal (1,3×) → Hızlı (2×)**. Düğme üç seçenek arasında döner; devam eden araç ve biniş animasyonu da yeni hıza geçer. Hız tercihi kaydedilir.
 - Android'de doğrulanan tam park / yakınlaştırma düzeni, üç peron, fiziksel engeller ve 18 bölüm korunur. Kısa ekranlarda dekoratif alan büyüyüp otoparkı gizlemez.
@@ -42,7 +42,7 @@ Kullanıcının paylaştığı görsel referans doğrultusunda yolcu kuyruğu, p
 npm test
 npm run build
 npm run serve
-# http://localhost:8080/renk-duragi-0.5.0.html
+# http://localhost:8080/renk-duragi-0.5.1.html
 ```
 
 Motor ve derleme için harici paket gerekmez. Tarayıcı testleri için Playwright ve Chromium gerekir:

@@ -1,6 +1,6 @@
-# Doğrulama — 0.5.0
+# Doğrulama — 0.5.1
 
-4 Ekim 2026, İstanbul. Kullanıcı 0.4.1'in fiziksel Android telefonda çalıştığını bildirdi. 0.5 için aşağıdaki kontroller Chromium mobil benzetiminde yapıldı; yeni sürüm henüz fiziksel telefonda denenmedi.
+4 Ekim 2026, İstanbul. Kullanıcı önceki sürümlerin Android telefonda çalıştığını, 0.5 kuyruğunun okunmasının zor olduğunu bildirdi. 0.5.1 için aşağıdaki kontroller Chromium mobil benzetiminde yapıldı; yeni sürüm henüz fiziksel telefonda denenmedi.
 
 ## Kurallar ve yerleşim
 
@@ -10,11 +10,14 @@
 - Yakınlaştır / Tüm park iki yönde çalışıyor; yakın görünümde kısa dokunma kenarı en az 44 piksel.
 - Birinci bölüm dokunarak tamamlandı; engel, kilitlenme, ipucu, biniş sırasında yeni araç, hareket sırasında geri alma/sıfırlama, kayıt ve azaltılmış hareket yeniden doğrulandı. 18 bölümün tamamının tarayıcı çözümü önceki 0.4.1 sürümünde yapılmıştı; bu sürümde motor/bölüm değişmediği için aynı kapsam tekrar edilmedi.
 
-## Yeni sahne ve hız kontrolleri
+## Yolcu sırası ve hız kontrolleri
 
-- 48 ve 64 görünür yolcunun kimliği/rengi, motor kuyruğuyla birebir karşılaştırıldı. Binişten ve yeniden yüklemeden sonra sıra korunuyor.
+- Kartların soldan sağa çakışmadan sıralanması, 1–6 numaraları ve tüm sıra penceresindeki 120 numara doğrulandı.
+- Uzun beklemelerde en fazla bir balon, ilk yolcuda ve tüm sıra penceresinde sıfır balon; motor durumuna etkisizlik doğrulandı.
+
+- Altı görünür yolcunun kimliği/rengi, motor kuyruğuyla birebir karşılaştırıldı. Binişten ve yeniden yüklemeden sonra sıra korunuyor.
 - Park araçlarında büyük ok ve kapalı tavan; perondaki araçta açık kabin ve doğru sayıda koltuk doğrulandı.
-- Küçük ekranlarda yolcular sahne sınırları içinde; Sırayı gör düğmesinin merkezi gerçek dokunma hedefi olarak kontrol edildi.
+- Küçük ekranlarda yolcular sahne sınırları içinde; Tüm sıra düğmesinin merkezi gerçek dokunma hedefi olarak kontrol edildi.
 - Sakin → Normal → Hızlı → Sakin döngüsü 1 / 1,3 / 2 / 1 değerleriyle çalışıyor; durgun oyunun motor durumu değişmiyor.
 - Normal animasyon sırasında araç oynatma oranı 1 → 1,3 → 2 olarak değişiyor.
 - Hızlı tercih yeniden yüklemede korunuyor; sonraki yolcu binişi 2× başlıyor. Biniş sürerken Sakin seçildiğinde devam eden animasyon 1× oluyor.
@@ -22,6 +25,6 @@
 
 ## Sınırlar
 
-Gerçek 3D motor, çapraz sürüş veya ek araç/renk eklenmedi. Görsel hacim SVG katmanları ve gölgelerle sağlanır. Aynı anda en çok 64 kuyruk yolcusu çizilir; tamamı sıra penceresinde görülebilir. Çok kısa ekranda araçlar küçülür; yakınlaştırma desteklenir. Fiziksel Android/Samsung Internet/WebView, pil/ısınma ve 65+ oyuncu kabul testi bekliyor.
+Gerçek 3D motor, çapraz sürüş veya ek araç/renk eklenmedi. Görsel hacim SVG katmanları ve gölgelerle sağlanır. Ana ekranda ilk altı kuyruk yolcusu çizilir; tamamı sıra penceresinde görülebilir. Çok kısa ekranda araçlar küçülür; yakınlaştırma desteklenir. Fiziksel Android/Samsung Internet/WebView, pil/ısınma ve 65+ oyuncu kabul testi bekliyor.
 
 Komutlar: `npm test`, `npm run build`, `npm run test:android`, `npm run test:scene`, `RENK_SMOKE=1 npm run test:browser`.

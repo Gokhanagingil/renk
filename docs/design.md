@@ -12,7 +12,7 @@ Kullanıcının paylaştığı referans, kalabalık kuyruğun ve trafik sıkış
 
 Parktaki araçların kapalı gövdesinde gölge/ışık katmanları, camlar ve büyük yön oku bulunur. Perona gelen araç açık kabinle gösterilir, yolcular oturdukça koltuklar dolar. Bu görünüm SVG tabanlı hacim etkisidir; gerçek 3D perspektif veya serbest çapraz sürüş eklenmedi. Fiziksel yönler N/E/S/W olarak korunur.
 
-Kıvrımlı kuyruk, motor sırasından alınan ilk 64 yolcuyu çıkıştan geriye doğru yerleştirir. Çıkıştaki tek yolcu çerçeve ve okla belirtilir; arkadaki yolcular iki kişi genişliğinde bir hat üzerinde görünür. Biniş yalnızca motorun ilk yolcusuyla olur. Sıranın tamamı ayrıca düz okuma sırasıyla incelenebilir. Sınırlı görünür yolcu sayısı mobil SVG/animasyon yükünü sınırlar.
+0.5.1: Fiziksel Android geri bildirimi üzerine iki kişilik kıvrımlı sıra kaldırıldı. Ana görünümde ilk altı yolcu soldan sağa numaralı kartlarda gösterilir; ilk kart çerçevelidir ve rengi başlıkta yazılıdır. Tüm sıra penceresi soldan sağa, ardından alt satıra ilerleyen numaralı bir ızgaradır. Sıra ve renkler doğrudan motor durumundan gelir. Bekleme hareketleri korunur; konuşma balonları her üç güncellemeden birinde en fazla bir kişide görünür. İlk yolcu ve tüm sıra penceresi balon göstermez.
 
 Otopark 8×8 ile 9×10 arasında kompakt düzenlerden oluşur. Varsayılan oynanabilir görünüm, parkın bütününü kalan ekran yüksekliğine sığdırır. Araçların boyutu ekran ve bölüm boyutuna göre değişir. Yakınlaştır düğmesi en az 44 piksel dokunma alanı verir; yatay/dikey kaydırma açılır. Tüm park düğmesi tek dokunuşla sığdırılmış görünüme döner. Ayrı, pasif kuşbakışı penceresi yoktur.
 
