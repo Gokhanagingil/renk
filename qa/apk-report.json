@@ -1,0 +1,31 @@
+{
+  "version": "0.7.0",
+  "package": "com.gokhanagingil.renk",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "permissions": [],
+  "bytes": 156328,
+  "sha256": "d4621b5d4b5114831a3a0b286efddc3d7fcba8713f60249fd5409b68205e69f4",
+  "verification": [
+    "Verifies",
+    "Verified using v1 scheme (JAR signing): false",
+    "Verified using v2 scheme (APK Signature Scheme v2): true",
+    "Verified using v3 scheme (APK Signature Scheme v3): true",
+    "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+    "Verified using v4 scheme (APK Signature Scheme v4): false",
+    "Verified for SourceStamp: false",
+    "Number of signers: 1",
+    "Signer #1 certificate DN: CN=Renk Duragi",
+    "Signer #1 certificate SHA-256 digest: d0d711dd72b114d2c4dce491d7b0b0409846391c5c73dd6d2f8691035b9cbb97",
+    "Signer #1 certificate SHA-1 digest: 7b1f0ffed1886f28820f5a2ed3e3e66657df83d6",
+    "Signer #1 certificate MD5 digest: 7a8b41fa696121d9533293bfb6378faa",
+    "Signer #1 key algorithm: RSA",
+    "Signer #1 key size (bits): 3072",
+    "Signer #1 public key SHA-256 digest: c9be9d612965ee2cdae489c974b88e58ed6cecedf3f855a1c477e42d9408abe7",
+    "Signer #1 public key SHA-1 digest: e405cc8d089ffc218767c34e033a6b669cd923fc",
+    "Signer #1 public key MD5 digest: 84ee8eb1f2f904e32f495da0709cfb5a"
+  ],
+  "launchable": "launchable-activity: name='com.gokhanagingil.renk.MainActivity'  label='' icon=''",
+  "offlineAssetsIdentical": true,
+  "physicalDeviceTested": false
+}

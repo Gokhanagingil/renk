@@ -1,0 +1,3933 @@
+{
+  "totalLevels": 500,
+  "newLevels": 489,
+  "authoringVersion": 1,
+  "uniqueGeneratedGeometries": 489,
+  "rotationReflectionDeduplicated": true,
+  "relaxationLevels": 49,
+  "challengeLevels": 48,
+  "range": {
+    "cars": [
+      12,
+      28
+    ],
+    "passengers": [
+      48,
+      120
+    ]
+  },
+  "levels": [
+    {
+      "id": 25,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 26,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 27,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 28,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 29,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 12,
+      "passengers": 48,
+      "depth": 3
+    },
+    {
+      "id": 30,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 31,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 32,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 33,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 34,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 35,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 3
+    },
+    {
+      "id": 36,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 37,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 38,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 39,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 3
+    },
+    {
+      "id": 40,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 41,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 42,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 43,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 3
+    },
+    {
+      "id": 44,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 45,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 46,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 47,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 48,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 49,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 12,
+      "passengers": 48,
+      "depth": 4
+    },
+    {
+      "id": 50,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 3
+    },
+    {
+      "id": 51,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 52,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 53,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 54,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 55,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 56,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 57,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 58,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 59,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 3
+    },
+    {
+      "id": 60,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 3
+    },
+    {
+      "id": 61,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 62,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 63,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 64,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 65,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 66,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 67,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 3
+    },
+    {
+      "id": 68,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 69,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 12,
+      "passengers": 48,
+      "depth": 3
+    },
+    {
+      "id": 70,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 71,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 72,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 73,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 4
+    },
+    {
+      "id": 74,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 75,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 76,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 77,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 78,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 79,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 3
+    },
+    {
+      "id": 80,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 81,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 82,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 83,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 3
+    },
+    {
+      "id": 84,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 5
+    },
+    {
+      "id": 85,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 60,
+      "depth": 4
+    },
+    {
+      "id": 86,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 58,
+      "depth": 3
+    },
+    {
+      "id": 87,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 62,
+      "depth": 5
+    },
+    {
+      "id": 88,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 60,
+      "depth": 5
+    },
+    {
+      "id": 89,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 12,
+      "passengers": 50,
+      "depth": 4
+    },
+    {
+      "id": 90,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 60,
+      "depth": 5
+    },
+    {
+      "id": 91,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 62,
+      "depth": 5
+    },
+    {
+      "id": 92,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 58,
+      "depth": 5
+    },
+    {
+      "id": 93,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 60,
+      "depth": 5
+    },
+    {
+      "id": 94,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 4
+    },
+    {
+      "id": 95,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 5
+    },
+    {
+      "id": 96,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 4
+    },
+    {
+      "id": 97,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 98,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 99,
+      "kind": "mola",
+      "tier": 0,
+      "cars": 14,
+      "passengers": 58,
+      "depth": 4
+    },
+    {
+      "id": 100,
+      "kind": "koridor",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 101,
+      "kind": "kapasite",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 102,
+      "kind": "akış",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 103,
+      "kind": "dört-yön",
+      "tier": 0,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 104,
+      "kind": "düğüm",
+      "tier": 0,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 105,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 3
+    },
+    {
+      "id": 106,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 5
+    },
+    {
+      "id": 107,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 4
+    },
+    {
+      "id": 108,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 4
+    },
+    {
+      "id": 109,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 14,
+      "passengers": 56,
+      "depth": 5
+    },
+    {
+      "id": 110,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 5
+    },
+    {
+      "id": 111,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 112,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 113,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 5
+    },
+    {
+      "id": 114,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 115,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 116,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 117,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 118,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 119,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 5
+    },
+    {
+      "id": 120,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 121,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 122,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 123,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 3
+    },
+    {
+      "id": 124,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 20,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 125,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 3
+    },
+    {
+      "id": 126,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 127,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 128,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 129,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 14,
+      "passengers": 62,
+      "depth": 3
+    },
+    {
+      "id": 130,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 131,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 3
+    },
+    {
+      "id": 132,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 133,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 134,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 135,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 136,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 5
+    },
+    {
+      "id": 137,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 138,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 139,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 140,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 141,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 142,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 143,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 144,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 4
+    },
+    {
+      "id": 145,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 4
+    },
+    {
+      "id": 146,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 147,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 148,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 4
+    },
+    {
+      "id": 149,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 14,
+      "passengers": 58,
+      "depth": 4
+    },
+    {
+      "id": 150,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 151,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 3
+    },
+    {
+      "id": 152,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 153,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 154,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 5
+    },
+    {
+      "id": 155,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 156,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 157,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 158,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 5
+    },
+    {
+      "id": 159,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 160,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 161,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 162,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 163,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 5
+    },
+    {
+      "id": 164,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 165,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 166,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 4
+    },
+    {
+      "id": 167,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 168,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 169,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 14,
+      "passengers": 60,
+      "depth": 5
+    },
+    {
+      "id": 170,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 5
+    },
+    {
+      "id": 171,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 4
+    },
+    {
+      "id": 172,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 5
+    },
+    {
+      "id": 173,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 4
+    },
+    {
+      "id": 174,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 175,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 4
+    },
+    {
+      "id": 176,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 177,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 178,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 179,
+      "kind": "mola",
+      "tier": 1,
+      "cars": 16,
+      "passengers": 66,
+      "depth": 4
+    },
+    {
+      "id": 180,
+      "kind": "koridor",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 181,
+      "kind": "kapasite",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 182,
+      "kind": "akış",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 183,
+      "kind": "dört-yön",
+      "tier": 1,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 184,
+      "kind": "düğüm",
+      "tier": 1,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 185,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 186,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 187,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 188,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 189,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 16,
+      "passengers": 70,
+      "depth": 4
+    },
+    {
+      "id": 190,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 191,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 192,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 193,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 3
+    },
+    {
+      "id": 194,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 195,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 196,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 197,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 198,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 4
+    },
+    {
+      "id": 199,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 200,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 201,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 202,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 203,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 204,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 205,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 206,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 3
+    },
+    {
+      "id": 207,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 208,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 209,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 4
+    },
+    {
+      "id": 210,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 211,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 212,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 213,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 214,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 215,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 3
+    },
+    {
+      "id": 216,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 217,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 218,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 4
+    },
+    {
+      "id": 219,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 72,
+      "depth": 5
+    },
+    {
+      "id": 220,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 221,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 222,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 4
+    },
+    {
+      "id": 223,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 4
+    },
+    {
+      "id": 224,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 225,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 226,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 5
+    },
+    {
+      "id": 227,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 228,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 229,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 16,
+      "passengers": 64,
+      "depth": 4
+    },
+    {
+      "id": 230,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 231,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 232,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 5
+    },
+    {
+      "id": 233,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 234,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 235,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 4
+    },
+    {
+      "id": 236,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 237,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 238,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 4
+    },
+    {
+      "id": 239,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 240,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 241,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 242,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 243,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 244,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 245,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 5
+    },
+    {
+      "id": 246,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 247,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 248,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 249,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 16,
+      "passengers": 68,
+      "depth": 5
+    },
+    {
+      "id": 250,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 74,
+      "depth": 4
+    },
+    {
+      "id": 251,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 252,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 5
+    },
+    {
+      "id": 253,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 254,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 4
+    },
+    {
+      "id": 255,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 256,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 4
+    },
+    {
+      "id": 257,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 258,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 259,
+      "kind": "mola",
+      "tier": 2,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 3
+    },
+    {
+      "id": 260,
+      "kind": "koridor",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 261,
+      "kind": "kapasite",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 262,
+      "kind": "akış",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 4
+    },
+    {
+      "id": 263,
+      "kind": "dört-yön",
+      "tier": 2,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 264,
+      "kind": "düğüm",
+      "tier": 2,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 5
+    },
+    {
+      "id": 265,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 266,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 3
+    },
+    {
+      "id": 267,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 268,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 269,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 3
+    },
+    {
+      "id": 270,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 271,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 272,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 273,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 3
+    },
+    {
+      "id": 274,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 275,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 276,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 3
+    },
+    {
+      "id": 277,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 278,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 279,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 280,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 281,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 282,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 283,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 284,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 285,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 286,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 287,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 3
+    },
+    {
+      "id": 288,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 289,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 18,
+      "passengers": 80,
+      "depth": 5
+    },
+    {
+      "id": 290,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 291,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 4
+    },
+    {
+      "id": 292,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 293,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 294,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 295,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 296,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 4
+    },
+    {
+      "id": 297,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 298,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 299,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 4
+    },
+    {
+      "id": 300,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 3
+    },
+    {
+      "id": 301,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 302,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 303,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 304,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 305,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 306,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 307,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 308,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 80,
+      "depth": 4
+    },
+    {
+      "id": 309,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 18,
+      "passengers": 76,
+      "depth": 4
+    },
+    {
+      "id": 310,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 4
+    },
+    {
+      "id": 311,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 312,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 313,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 314,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 315,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 316,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 317,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 318,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 319,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 320,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 321,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 322,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 323,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 324,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 325,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 326,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 327,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 328,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 5
+    },
+    {
+      "id": 329,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 18,
+      "passengers": 78,
+      "depth": 4
+    },
+    {
+      "id": 330,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 4
+    },
+    {
+      "id": 331,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 332,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 4
+    },
+    {
+      "id": 333,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 86,
+      "depth": 5
+    },
+    {
+      "id": 334,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 335,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 336,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 337,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 338,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 5
+    },
+    {
+      "id": 339,
+      "kind": "mola",
+      "tier": 3,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 340,
+      "kind": "koridor",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 341,
+      "kind": "kapasite",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 342,
+      "kind": "akış",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 343,
+      "kind": "dört-yön",
+      "tier": 3,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 344,
+      "kind": "düğüm",
+      "tier": 3,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 345,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 4
+    },
+    {
+      "id": 346,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 347,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 348,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 349,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 20,
+      "passengers": 84,
+      "depth": 4
+    },
+    {
+      "id": 350,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 351,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 352,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 353,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 4
+    },
+    {
+      "id": 354,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 355,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 356,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 4
+    },
+    {
+      "id": 357,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 358,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 359,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 360,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 361,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 362,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 363,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 364,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 5
+    },
+    {
+      "id": 365,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 366,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 367,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 368,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 369,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 5
+    },
+    {
+      "id": 370,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 371,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 372,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 373,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 374,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 375,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 376,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 377,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 378,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 4
+    },
+    {
+      "id": 379,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 380,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 381,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 382,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 383,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 384,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 26,
+      "passengers": 112,
+      "depth": 5
+    },
+    {
+      "id": 385,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 386,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 387,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 388,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 90,
+      "depth": 3
+    },
+    {
+      "id": 389,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 20,
+      "passengers": 88,
+      "depth": 4
+    },
+    {
+      "id": 390,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 391,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 392,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 393,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 3
+    },
+    {
+      "id": 394,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 395,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 396,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 397,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 398,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 399,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 400,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 401,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 402,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 403,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 404,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 405,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 406,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 407,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 408,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 409,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 20,
+      "passengers": 82,
+      "depth": 5
+    },
+    {
+      "id": 410,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 411,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 412,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 413,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 5
+    },
+    {
+      "id": 414,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 415,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 416,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 417,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 418,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 419,
+      "kind": "mola",
+      "tier": 4,
+      "cars": 22,
+      "passengers": 98,
+      "depth": 5
+    },
+    {
+      "id": 420,
+      "kind": "koridor",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 421,
+      "kind": "kapasite",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 422,
+      "kind": "akış",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 423,
+      "kind": "dört-yön",
+      "tier": 4,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 424,
+      "kind": "düğüm",
+      "tier": 4,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 425,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 3
+    },
+    {
+      "id": 426,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 427,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 428,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 4
+    },
+    {
+      "id": 429,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 22,
+      "passengers": 92,
+      "depth": 5
+    },
+    {
+      "id": 430,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 431,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 432,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 433,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 434,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 435,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 112,
+      "depth": 5
+    },
+    {
+      "id": 436,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 108,
+      "depth": 5
+    },
+    {
+      "id": 437,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 438,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 108,
+      "depth": 5
+    },
+    {
+      "id": 439,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 440,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 441,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 4
+    },
+    {
+      "id": 442,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 443,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 444,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 28,
+      "passengers": 120,
+      "depth": 4
+    },
+    {
+      "id": 445,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 446,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 447,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 448,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 449,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 450,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 451,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 452,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 453,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 454,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 5
+    },
+    {
+      "id": 455,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 5
+    },
+    {
+      "id": 456,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 457,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 112,
+      "depth": 5
+    },
+    {
+      "id": 458,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 108,
+      "depth": 5
+    },
+    {
+      "id": 459,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 460,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 4
+    },
+    {
+      "id": 461,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 462,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 4
+    },
+    {
+      "id": 463,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 464,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 28,
+      "passengers": 118,
+      "depth": 5
+    },
+    {
+      "id": 465,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 466,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 467,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 468,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 469,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 4
+    },
+    {
+      "id": 470,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 471,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 472,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 473,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 474,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 475,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 4
+    },
+    {
+      "id": 476,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 5
+    },
+    {
+      "id": 477,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 478,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 108,
+      "depth": 4
+    },
+    {
+      "id": 479,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 480,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 4
+    },
+    {
+      "id": 481,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 482,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 483,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 484,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 28,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 485,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 4
+    },
+    {
+      "id": 486,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 487,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 488,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 489,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 22,
+      "passengers": 94,
+      "depth": 5
+    },
+    {
+      "id": 490,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 491,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 492,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    },
+    {
+      "id": 493,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 4
+    },
+    {
+      "id": 494,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 5
+    },
+    {
+      "id": 495,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 114,
+      "depth": 5
+    },
+    {
+      "id": 496,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 497,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 498,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 499,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 100,
+      "depth": 5
+    },
+    {
+      "id": 500,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 3
+    },
+    {
+      "id": 501,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 502,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 110,
+      "depth": 5
+    },
+    {
+      "id": 503,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 26,
+      "passengers": 116,
+      "depth": 5
+    },
+    {
+      "id": 504,
+      "kind": "düğüm",
+      "tier": 5,
+      "cars": 28,
+      "passengers": 120,
+      "depth": 4
+    },
+    {
+      "id": 505,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 4
+    },
+    {
+      "id": 506,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 4
+    },
+    {
+      "id": 507,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 508,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 98,
+      "depth": 4
+    },
+    {
+      "id": 509,
+      "kind": "mola",
+      "tier": 5,
+      "cars": 22,
+      "passengers": 96,
+      "depth": 4
+    },
+    {
+      "id": 510,
+      "kind": "koridor",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 104,
+      "depth": 5
+    },
+    {
+      "id": 511,
+      "kind": "kapasite",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 512,
+      "kind": "akış",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 106,
+      "depth": 5
+    },
+    {
+      "id": 513,
+      "kind": "dört-yön",
+      "tier": 5,
+      "cars": 24,
+      "passengers": 102,
+      "depth": 5
+    }
+  ]
+}

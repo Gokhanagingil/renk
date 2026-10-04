@@ -5,3 +5,9 @@ qa/browser*-results.json
 *.zip
 qa/android-layout-results.json
 qa/scene-speed-results.json
+android/build/
+*.p12
+*.jks
+*.keystore
+qa/*.log
+*.apk.idsig

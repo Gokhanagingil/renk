@@ -1,0 +1,191 @@
+{
+  "method": "Design proxy, not measured human difficulty",
+  "tutorialFirst": true,
+  "limits": {
+    "cars": 28,
+    "passengers": 120,
+    "colors": 4,
+    "chainDepth": 5,
+    "longVehicles": 6
+  },
+  "firstSixSeatLevel": 30,
+  "firstFourColorLevel": 154,
+  "maxAdjacentScoreIncrease": 1.35,
+  "blocks": [
+    {
+      "from": 1,
+      "to": 20,
+      "averageScore": 24.28,
+      "minScore": 21.37,
+      "maxScore": 26.77
+    },
+    {
+      "from": 21,
+      "to": 40,
+      "averageScore": 28.13,
+      "minScore": 26.84,
+      "maxScore": 29
+    },
+    {
+      "from": 41,
+      "to": 60,
+      "averageScore": 30.03,
+      "minScore": 29.01,
+      "maxScore": 30.86
+    },
+    {
+      "from": 61,
+      "to": 80,
+      "averageScore": 32.05,
+      "minScore": 30.92,
+      "maxScore": 33.2
+    },
+    {
+      "from": 81,
+      "to": 100,
+      "averageScore": 35.13,
+      "minScore": 33.82,
+      "maxScore": 35.99
+    },
+    {
+      "from": 101,
+      "to": 120,
+      "averageScore": 37.15,
+      "minScore": 36.19,
+      "maxScore": 38.17
+    },
+    {
+      "from": 121,
+      "to": 140,
+      "averageScore": 38.86,
+      "minScore": 38.23,
+      "maxScore": 39.6
+    },
+    {
+      "from": 141,
+      "to": 160,
+      "averageScore": 40.94,
+      "minScore": 39.66,
+      "maxScore": 41.98
+    },
+    {
+      "from": 161,
+      "to": 180,
+      "averageScore": 45.15,
+      "minScore": 42.34,
+      "maxScore": 48.43
+    },
+    {
+      "from": 181,
+      "to": 200,
+      "averageScore": 51.41,
+      "minScore": 49.1,
+      "maxScore": 53.04
+    },
+    {
+      "from": 201,
+      "to": 220,
+      "averageScore": 53.69,
+      "minScore": 53.07,
+      "maxScore": 54.23
+    },
+    {
+      "from": 221,
+      "to": 240,
+      "averageScore": 54.75,
+      "minScore": 54.28,
+      "maxScore": 55.27
+    },
+    {
+      "from": 241,
+      "to": 260,
+      "averageScore": 55.92,
+      "minScore": 55.3,
+      "maxScore": 56.59
+    },
+    {
+      "from": 261,
+      "to": 280,
+      "averageScore": 57.16,
+      "minScore": 56.59,
+      "maxScore": 57.72
+    },
+    {
+      "from": 281,
+      "to": 300,
+      "averageScore": 58.3,
+      "minScore": 57.75,
+      "maxScore": 58.64
+    },
+    {
+      "from": 301,
+      "to": 320,
+      "averageScore": 59.02,
+      "minScore": 58.69,
+      "maxScore": 59.46
+    },
+    {
+      "from": 321,
+      "to": 340,
+      "averageScore": 59.79,
+      "minScore": 59.52,
+      "maxScore": 60.13
+    },
+    {
+      "from": 341,
+      "to": 360,
+      "averageScore": 60.48,
+      "minScore": 60.14,
+      "maxScore": 60.75
+    },
+    {
+      "from": 361,
+      "to": 380,
+      "averageScore": 61.24,
+      "minScore": 60.79,
+      "maxScore": 61.61
+    },
+    {
+      "from": 381,
+      "to": 400,
+      "averageScore": 62.19,
+      "minScore": 61.69,
+      "maxScore": 62.77
+    },
+    {
+      "from": 401,
+      "to": 420,
+      "averageScore": 63.11,
+      "minScore": 62.77,
+      "maxScore": 63.54
+    },
+    {
+      "from": 421,
+      "to": 440,
+      "averageScore": 64.07,
+      "minScore": 63.56,
+      "maxScore": 64.44
+    },
+    {
+      "from": 441,
+      "to": 460,
+      "averageScore": 65.23,
+      "minScore": 64.56,
+      "maxScore": 65.85
+    },
+    {
+      "from": 461,
+      "to": 480,
+      "averageScore": 66.91,
+      "minScore": 65.93,
+      "maxScore": 68.11
+    },
+    {
+      "from": 481,
+      "to": 500,
+      "averageScore": 69.15,
+      "minScore": 68.12,
+      "maxScore": 70.91
+    }
+  ]
+}

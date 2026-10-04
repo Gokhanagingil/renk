@@ -1,4 +1,18 @@
-# 0.6 — canlı şehir ve akıcı oyun
+# 0.7 — uzun ve sınırlı zorlukta kampanya
+
+## Güncel kampanya kararları
+
+500 bölüm; 25 adet 20 bölümlük grup. 0.6'nın mekaniği, kuyruk okunurluğu, üç hız ve canlı sahnesi korunur. Üst sınır 28 araç / 120 yolcu / 4 renk / 5 araçlık fiziksel engel zinciridir. Her çözüm tanığı en fazla iki peronla tamamlanır. Üçüncü peron oyuncuya manevra payı bırakır; yanlış hamle yine kilitlenebilir, ücretsiz geri alma bulunur.
+
+Öğretici ilk bölümden sonra araç sayısı, engellenen araçlar, zincir uzunluğu, doğrudan engel sayısı, uzun araçlar, renk sayısı ve kuyruk renk değişimleri puanlanarak sıralanır. İlk uzun araç 30., ilk dördüncü renk 154. bölümde gelir. Puan insan zorluğunu ölçmez; ani yapısal artışları azaltan bir tasarım aracıdır. İnsan denemesinde sapmalar görüldüğünde sabit kimlikler sayesinde sıralama kayıtları karıştırmadan değiştirilebilir.
+
+13 eski bölüm aşırı uzun engel zinciri veya uzun araç yoğunluğu nedeniyle aktif listeden çıkarıldı. Kalan 11 bölüme 489 yeni ve geometrik olarak tekil düzen eklendi. Kaynaklardaki üretim sırası oyun sırası değildir; `catalog.js` son sıralamayı oluşturur. Eski dosyalar ve kayıt anahtarı silinmez; aktif kalan eski bölüm kayıtları kimlikle taşınır. Aktif olmayan bölümdeki kayıt yeni kampanyanın başlangıcına yönlendirilir. Tarayıcıdan APK'ya kayıt aktarımı eklenmedi.
+
+Android uygulaması oyunu tek gömülü HTML olarak açar. Ağ izni ve JavaScript köprüsü yoktur. Sabit yerel WebView kaydı, arka planda duraklatma ve geri tuşuyla pencere kapatma vardır. Gerçek cihaz testi ayrıca gereklidir.
+
+## Önceki 0.6 tasarım kaydı
+
+Aşağıdaki bölüm sayıları, sıralama ve kayıt uyumluluğu notları 0.6'nın tarihsel kaydıdır; güncel kampanya için yukarıdaki kararlar geçerlidir.
 
 4 Ekim 2026, İstanbul. Kullanıcının 0.3 geri bildirimi uygulandı: daha farklı görsel dil, doğal hareket, işlem sırasında açık kontroller, uzun bölümler, gerçek otopark işaretleri, hareketli yolcular ve görünür koltuklar.
 

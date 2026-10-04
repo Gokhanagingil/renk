@@ -18,3 +18,10 @@ Birinci, altıncı ve dokuzuncu bölümlerde toplam süreyi, yanlış dokunmalar
 Görsel sürüm için ayrıca: çıkıştaki ilk yolcu anlaşılır mı, parkın büyük yön okları okunur mu, peronda açılan koltuklar fark edilir mi? Sürüş ve biniş sırasında Hızlı → Sakin geçişini deneyin. Kalabalık yolcu animasyonunun düşük donanımlı Android cihazda akıcılığını izleyin.
 
 0.6 için: kuyruk yürüyüşünü ve kapıdan koltuğa geçişi takip edebiliyor mu? Yolu açılan araç işareti sebep-sonuç ilişkisini anlatıyor mu? Şehir haritasında hangi durakta olduğunu bulabiliyor mu? 19–24 özel rotalarda farklı bir düşünme ihtiyacı hissediyor mu? Sesli ve sessiz birer bölümün ardından hangisini tercih ediyor? En önemlisi: yönlendirmeden bir bölüm daha oynamak istiyor mu?
+
+
+## 0.7 kampanya ve APK kabulü
+
+Android 8+ bir telefonda APK'yı kur, uçak modunda aç ve bir bölümün ortasında ana ekrana dönüp devam et. Uygulamayı kapatıp yeniden açınca araçlar, sıra, hız ve tamamlanan bölümler korunmalı. Sistem geri tuşuyla önce açık pencere kapanmalı, oyundayken çıkış sorulmalı. Döndürme ve gezinme çubuğu parkı gizlememeli. Bu kontroller henüz gerçek cihazda yapılmadı.
+
+Önce 1–10. bölümleri doğal sırayla oynatın. Sonra 30, 100, 154, 250, 400 ve 500. bölümlerden örnekler deneyin. Her oyuncuda bölüm süresini, geri alma/ipucu sayısını, bırakma sebebini ve zorluk değerlendirmesini kaydedin. Son bölümün keyifli olup olmadığına yalnız çözüm tanığıyla karar vermeyin. İleri gruplarda tekrarlayan vazgeçme veya aşırı ipucu ihtiyacı varsa sıra/engel yoğunluğunu düşürün. 65+ oyuncuya istediği hız ve yakınlaştırmayı seçtirin; süre hedefi dayatmayın.
