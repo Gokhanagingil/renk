@@ -1,4 +1,4 @@
-# 0.4.1 — ekrana sığan şehir otoparkı
+# 0.5 — tek sahne, canlı kuyruk ve üç hız
 
 4 Ekim 2026, İstanbul. Kullanıcının 0.3 geri bildirimi uygulandı: daha farklı görsel dil, doğal hareket, işlem sırasında açık kontroller, uzun bölümler, gerçek otopark işaretleri, hareketli yolcular ve görünür koltuklar.
 
@@ -8,13 +8,17 @@ Fiziksel çıkış engelleri + üç peron + FIFO renk eşleştirmesi. Çıkabile
 
 ## Görsel ve etkileşim
 
-Önceki krem/yeşil görünüm yerine lacivert şehir arayüzü, beyaz paneller, kobalt kontroller ve canlı araçlar. Asfalt, numaralı park cepleri, çıkış okları, çevre şeridi, yaya geçidi ve bariyer alanı tanımlar. Araçlar üstü açık; boş koltuk açık renk, dolu koltukta yolcu başı ve gövdesi görünür.
+Kullanıcının paylaştığı referans, kalabalık kuyruğun ve trafik sıkışıklığının tek sahnede anlaşılmasını hedefliyor. 0.5'te panel sınırları azaltıldı; nötr gri meydan/otopark, kıvrımlı kuyruk korkulukları, kaldırım ve küçük çevre öğeleri kullanıldı. Araç ve yolcu renkleri sahnenin dikkat odağıdır.
+
+Parktaki araçların kapalı gövdesinde gölge/ışık katmanları, camlar ve büyük yön oku bulunur. Perona gelen araç açık kabinle gösterilir, yolcular oturdukça koltuklar dolar. Bu görünüm SVG tabanlı hacim etkisidir; gerçek 3D perspektif veya serbest çapraz sürüş eklenmedi. Fiziksel yönler N/E/S/W olarak korunur.
+
+Kıvrımlı kuyruk, motor sırasından alınan ilk 64 yolcuyu çıkıştan geriye doğru yerleştirir. Çıkıştaki tek yolcu çerçeve ve okla belirtilir; arkadaki yolcular iki kişi genişliğinde bir hat üzerinde görünür. Biniş yalnızca motorun ilk yolcusuyla olur. Sıranın tamamı ayrıca düz okuma sırasıyla incelenebilir. Sınırlı görünür yolcu sayısı mobil SVG/animasyon yükünü sınırlar.
 
 Otopark 8×8 ile 9×10 arasında kompakt düzenlerden oluşur. Varsayılan oynanabilir görünüm, parkın bütününü kalan ekran yüksekliğine sığdırır. Araçların boyutu ekran ve bölüm boyutuna göre değişir. Yakınlaştır düğmesi en az 44 piksel dokunma alanı verir; yatay/dikey kaydırma açılır. Tüm park düğmesi tek dokunuşla sığdırılmış görünüme döner. Ayrı, pasif kuşbakışı penceresi yoktur.
 
 Ekran yüksekliği için 720 piksel eşiği kullanılmaz. `visualViewport` veya `innerHeight` değeri, tarayıcı çubukları açılıp kapanırken de yerleşimi günceller. Parka açık piksel genişlik/yükseklik atanır. Çok kısa ekranda tüm park görünümü daha küçük araçlar gösterir; yakınlaştırma kullanılabilir. Yatay telefonda peron/kontroller solda, otopark sağda durur.
 
-Sakin varsayılan hızda park çıkışı yaklaşık 145 piksel/saniye, yaklaşma en az 1,8 saniye, her yolcunun yürüyüp oturması 1,05–1,25 saniye, araç ayrılması 2,4 saniyedir. Parkın uzak ucundaki araç daha uzun yol alır. Normal seçeneği %30 hızlandırır. Hareket azaltma sistem tercihi desteklenir. Gerçek 65+ oyuncuyla bu süreler henüz doğrulanmadı.
+Sakin varsayılan hızda park çıkışı yaklaşık 145 piksel/saniye, yaklaşma en az 1,8 saniye, her yolcunun yürüyüp oturması 1,05–1,25 saniye, araç ayrılması 2,4 saniyedir. Parkın uzak ucundaki araç daha uzun yol alır. Normal seçeneği %30, Hızlı seçeneği %100 hızlandırır. Hız düğmesi Sakin → Normal → Hızlı → Sakin döngüsündedir. Devam eden Web Animations örneklerinin oynatma oranı da değişir; durum veya FIFO sırası hızdan etkilenmez. Hareket azaltma sistem tercihi desteklenir. Gerçek 65+ oyuncuyla bu süreler henüz doğrulanmadı.
 
 ## Eşzamanlılık ve doğruluk
 
@@ -37,3 +41,7 @@ Nefes alma, hafif sallanma ve el hareketleri sürekli. Yaklaşık 24 saniye sonr
 18 sabit düzen; 12–28 araç, 48–120 yolcu, 4/6 koltuk. İlk sekiz bölüm üç renkli, devamı dört renkli. Zorluk araç engellerinden, sıradan ve peron planından gelir.
 
 Her bölümün çözümü ve gerçek kilitlenme yolu derlemede tekrar doğrulanır. 160 eşit olasılıklı geçerli hamle denemesi yalnız rastgele oynamanın garantili zafer olmadığını gözlemek içindir. Bu örneklem kesin olasılık veya insan başarı tahmini değildir. Büyük durum uzayının tamamı taranmış değildir. Bölüm sırası ve süresi insan denemesiyle ayarlanmalıdır.
+
+## Kapsam sınırı
+
+0.5 görsel ve hız güncellemesidir. 0.4.1 bölüm geometrisi, araç sayısı, renk sınırı ve motor kuralları değişmedi. Yoğun ileri bölümler korunur; ilk öğretici bölüm daha seyrektir. Yeni sürümün estetik beğenisi ve gerçek cihaz akıcılığı kullanıcı denemesiyle değerlendirilmelidir.

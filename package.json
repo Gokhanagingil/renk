@@ -1,6 +1,6 @@
 {
   "name": "renk-duragi",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "private": true,
   "description": "Parkı aç, üç durak yerini planla, yolcuları sırayla bindir.",
   "scripts": {
@@ -8,6 +8,7 @@
     "test": "node --test tests/engine.test.cjs",
     "serve": "python3 -m http.server 8080 --directory dist",
     "test:browser": "node tests/browser.cjs",
-    "test:android": "node tests/android-layout.cjs"
+    "test:android": "node tests/android-layout.cjs",
+    "test:scene": "node tests/scene-speed.cjs"
   }
 }

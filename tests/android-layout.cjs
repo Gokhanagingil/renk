@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs');let pw;try{pw=require('playwright');}catch(_){pw=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright');}
-const root=path.resolve(__dirname,'..'),url='file://'+path.join(root,'dist/renk-duragi-0.4.1.html');let browser;
+const root=path.resolve(__dirname,'..'),url='file://'+path.join(root,'dist/renk-duragi-0.5.0.html');let browser;
 (async()=>{browser=await pw.chromium.launch({headless:true,executablePath:process.env.RENK_CHROMIUM_PATH||undefined,args:['--no-sandbox','--no-zygote','--disable-dev-shm-usage']});const errors=[],results=[];
  for(const [width,height] of [[320,480],[320,568],[360,640],[360,720],[393,700],[412,732],[390,844],[430,932],[640,360],[844,390]]){
   const p=await browser.newPage({viewport:{width,height},isMobile:true,hasTouch:true,deviceScaleFactor:2.75,userAgent:'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36'});p.on('pageerror',e=>errors.push(e.message));await p.goto(url+'?test=1');await p.getByRole('button',{name:'Otoparka gir'}).tap();
@@ -15,5 +15,5 @@ const root=path.resolve(__dirname,'..'),url='file://'+path.join(root,'dist/renk-
  const p=await browser.newPage({viewport:{width:360,height:800},isMobile:true,hasTouch:true});p.on('pageerror',e=>errors.push(e.message));await p.goto(url+'?test=1');await p.getByRole('button',{name:'Otoparka gir'}).tap();for(const height of [640,720,568,800]){await p.setViewportSize({width:360,height});await p.waitForFunction(h=>parseInt(document.documentElement.style.getPropertyValue('--app-height'))===h,height);assert.equal(await p.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),true);}
  // Explicit pixel geometry still works without CSS aspect-ratio support.
  await p.addStyleTag({content:'*{aspect-ratio:auto!important}'});assert.ok(await p.locator('#parking').evaluate(el=>el.clientHeight>150));assert.equal(await p.locator('[data-car]').count(),12);
- assert.deepEqual(errors,[]);fs.writeFileSync(path.join(root,'qa/android-layout-results.json'),JSON.stringify({version:'0.4.1',results,errors},null,2));console.log('Android layout PASS:',results.length,'lot/screen combinations, actual hit targets, two-way zoom, dynamic resize.');await browser.close();
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(root,'qa/android-layout-results.json'),JSON.stringify({version:'0.5.0',results,errors},null,2));console.log('Android layout PASS:',results.length,'lot/screen combinations, actual hit targets, two-way zoom, dynamic resize.');await browser.close();
 })().catch(async e=>{console.error(e);await browser?.close();process.exitCode=1;});

@@ -1,24 +1,24 @@
-# Renk Durağı · Şehir hareketli — 0.4.1
+# Renk Durağı · Şehir hareketli — 0.5.0
 
 **Yolu aç, peronda yer bırak, yolcuları koltuklarına yerleştir.**
 
-[Oynanabilir tek dosya: renk-duragi-0.4.1.html](dist/renk-duragi-0.4.1.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
+[Oynanabilir tek dosya: renk-duragi-0.5.0.html](dist/renk-duragi-0.5.0.html). İndirip tarayıcıda aç. İnternet, hesap ve harici dosya gerekmez. GitHub dosya görüntüleyicisi oyunu çalıştırmaz.
 
-## Android yerleşim düzeltmesi
+## 0.5: tek sahne ve üç hız
 
-0.4.0 sürümünün 720 piksel yükseklik eşiği kısa Android ekranlarında kompakt düzeni kapatıyordu. 360×640 ekranda otoparkın yalnızca 95 pikseli görünüyordu. 0.4.1 bu eşiği kaldırır; tarayıcı çubuklarından kalan gerçek yüksekliğe göre yerleşir.
+Kullanıcının paylaştığı görsel referans doğrultusunda yolcu kuyruğu, peron ve park daha bütünlüklü bir şehir sahnesine dönüştürüldü. Doygun arayüz panelleri yerine nötr zemin, kaldırım ve renkli araçlar öne çıkar.
 
-- Park artık varsayılan olarak bütünüyle görünür; araçlar doğrudan bu görünümden gönderilir.
-- Uzun 5×12–22 düzenlerin yerine kompakt 8×8–9×10 otoparklar bulunur. Araç sayısı ve 48–120 yolcu aralığı korunur.
-- Eski pasif Kuşbakışı penceresi kaldırıldı. **Yakınlaştır + / Tüm park −** aynı oyun alanını büyütüp küçültür; büyütünce iki yönde kaydırılabilir.
-- Açık piksel boyutları CSS `aspect-ratio` bağımlılığını kaldırır. Eski WebView'larda sorun çıkarabilecek karmaşık seçici ve `findLastIndex` kullanımı kaldırıldı.
-- Yeni düzenler ayrı kayıt anahtarı kullanır; 0.4.0 bölüm içi hamleleri taşınmaz. Eski dosya korunur.
+- Kıvrımlı, korkuluklu kuyrukta **64'e kadar gerçek yolcu** görünür. Görünen yolcuların renk ve sırası motorla aynıdır. Daha uzun sıra, sayaç ve Sırayı gör düğmesiyle izlenir.
+- Araçlarda gövde katmanları, ışık/gölge, camlar ve büyük beyaz yön oku vardır. Parkta kapalı tavan; peronda açık kabin ve görünür koltuklar gösterilir. Bunlar kodla çizilen SVG'lerdir, 3D motor kullanılmaz.
+- **Sakin (1×) → Normal (1,3×) → Hızlı (2×)**. Düğme üç seçenek arasında döner; devam eden araç ve biniş animasyonu da yeni hıza geçer. Hız tercihi kaydedilir.
+- Android'de doğrulanan tam park / yakınlaştırma düzeni, üç peron, fiziksel engeller ve 18 bölüm korunur. Kısa ekranlarda dekoratif alan büyüyüp otoparkı gizlemez.
+- 0.4.1 ile kayıt biçimi ve bölüm düzenleri aynıdır. Tarayıcının erişime sunduğu mevcut kayıt yeniden oynatılabilir. Farklı yerel HTML dosyalarının kayıt alanını paylaşması tarayıcıya bağlıdır.
 
 ## Oyun
 
 - Yeni şehir görünümü: koyu asfalt, mavi/beyaz arayüz, canlı araç renkleri, park çizgileri, yaya geçidi ve çıkış işaretleri.
-- Açık araçlarda 4 veya 6 görünür koltuk; yürüyerek gelen yolcu seçilen koltuğa yerleşir.
-- Varsayılan **Sakin** hareket. İsteğe bağlı **Normal** hız yalnızca %30 daha hızlıdır.
+- Peronda açılan araçlarda 4 veya 6 görünür koltuk; yürüyerek gelen yolcu seçilen koltuğa yerleşir.
+- Varsayılan **Sakin** hareket; **Normal** %30, **Hızlı** %100 daha hızlıdır.
 - Bir araç hareket ederken veya yolcu alırken diğer araçlar gönderilebilir. Ekran solmaz, park kilitlenmez.
 - 18 sabit bölüm, bölüm başına **12–28 araç ve 48–120 yolcu**.
 - Küçük araçlarla tüm park ekrana sığar. Yakın görünümde araç dokunma alanı en az 44 pikseldir.
@@ -42,7 +42,7 @@
 npm test
 npm run build
 npm run serve
-# http://localhost:8080/renk-duragi-0.4.1.html
+# http://localhost:8080/renk-duragi-0.5.0.html
 ```
 
 Motor ve derleme için harici paket gerekmez. Tarayıcı testleri için Playwright ve Chromium gerekir:
@@ -52,6 +52,7 @@ npm install --no-save playwright
 npx playwright install chromium
 npm run test:browser
 npm run test:android
+npm run test:scene
 ```
 
 Alternatif Chromium yolu `RENK_CHROMIUM_PATH` ile verilebilir. `?test=1` animasyonları hızlandırır ve test kancalarını açar; kuralları değiştirmez. `?test=1&motion=1` test kancalarını gerçek animasyon hızıyla çalıştırır.
